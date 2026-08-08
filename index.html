@@ -583,6 +583,11 @@ h2{
     transition:.2s;
 }
 
+.day.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
 .day:hover{
     background:rgba(232,196,139,.18);
 }
@@ -1642,8 +1647,9 @@ function initDatePicker(){
 
             today.setHours(0,0,0,0);
 
-            if(date.getTime() === today.getTime()){
-                button.classList.add("today");
+            if(date < today){
+                button.classList.add("disabled");
+                button.disabled = true;
             }
 
             if(
@@ -1654,7 +1660,9 @@ function initDatePicker(){
                 button.classList.add("selected");
             }
 
-            button.onclick = ()=>{
+            if(date >= today){
+
+                button.onclick = ()=>{
 
                 selectedDate = new Date(date);
 
@@ -1675,6 +1683,8 @@ function initDatePicker(){
                 closeMenus();
 
             };
+
+        }
 
             calendarDays.appendChild(button);
 
@@ -1702,6 +1712,25 @@ function initDatePicker(){
     document.getElementById("prevMonth").onclick = (event)=>{
 
         event.stopPropagation();
+
+        const today = new Date();
+        today.setHours(0,0,0,0);
+
+        const currentMonth = new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            1
+        );
+
+        const previousMonth = new Date(
+            calendarDate.getFullYear(),
+            calendarDate.getMonth() - 1,
+            1
+        );
+
+        if(previousMonth < currentMonth){
+            return;
+        }
 
         calendarDate.setMonth(
             calendarDate.getMonth()-1
