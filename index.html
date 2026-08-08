@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Small Invitation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --gold:#e8c48b;
+    --gold-dark:#b9843f;
+    --text:#f7f4ef;
+    --muted:#aaa59e;
+    --glass:rgba(255,255,255,.065);
+    --border:rgba(255,255,255,.13);
+    --shadow:rgba(0,0,0,.45);
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:Inter,sans-serif;
+    color:var(--text);
+    background:#080808;
+    transition:.6s ease;
+}
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+#background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(232,196,139,.11),
+            transparent 32%
+        ),
+        #080808;
+    transition:.6s ease;
+}
+
+.glow{
+    position:absolute;
+    width:430px;
+    height:430px;
+    border-radius:50%;
+    filter:blur(110px);
+    opacity:.15;
+    transition:transform 1s ease;
+}
+
+.glow.one{
+    background:#d9a65d;
+    top:-190px;
+    left:-150px;
+}
+
+.glow.two{
+    background:#765be8;
+    bottom:-220px;
+    right:-160px;
+}
+
+#background::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    opacity:.035;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* =========================================
+   LOADER
+========================================= */
+
+#loader{
+    position:fixed;
+    inset:0;
+    z-index:999;
+    background:#050505;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transition:1s ease;
+}
+
+.loader-title{
+    font-family:"Cormorant Garamond",serif;
+    font-size:38px;
+    letter-spacing:2px;
+}
+
+.loader-sub{
+    margin-top:12px;
+    font-size:10px;
+    letter-spacing:4px;
+    opacity:.4;
+}
+
+/* =========================================
+   TOP CONTROLS
+========================================= */
+
+.top-controls{
+    position:fixed;
+    top:22px;
+    right:22px;
+    z-index:100;
+    display:flex;
+    gap:9px;
+}
+
+.control{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.08);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    backdrop-filter:blur(20px);
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    transition:.3s;
+}
+
+.control:hover{
+    transform:translateY(-2px);
+    background:rgba(255,255,255,.14);
+}
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress{
+    position:fixed;
+    top:34px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:7px;
+    z-index:50;
+}
+
+.progress span{
+    width:6px;
+    height:6px;
+    border-radius:20px;
+    background:rgba(255,255,255,.22);
+    transition:.45s ease;
+}
+
+.progress span.active{
+    width:25px;
+    background:var(--gold);
+}
+
+/* =========================================
+   APP
+========================================= */
+
+#app{
+    position:relative;
+    z-index:2;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.scene{
+    position:absolute;
+    width:min(450px,calc(100% - 30px));
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(25px) scale(.97);
+    filter:blur(8px);
+    transition:
+        opacity .65s ease,
+        transform .65s cubic-bezier(.2,.8,.2,1),
+        filter .65s ease;
+}
+
+.scene.active{
+    opacity:1;
+    pointer-events:auto;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.card{
+    width:100%;
+    max-height:calc(100vh - 80px);
+    overflow:visible;
+    padding:42px 34px;
+    border-radius:30px;
+    text-align:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.085),
+            rgba(255,255,255,.035)
+        );
+
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(35px);
+
+    box-shadow:
+        0 35px 100px var(--shadow),
+        inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
+.eyebrow{
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--muted);
+}
+
+h1,
+h2{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:500;
+}
+
+h1{
+    font-size:72px;
+    line-height:.9;
+    margin:18px 0 20px;
+}
+
+h2{
+    font-size:43px;
+    line-height:1;
+    margin:12px 0 9px;
+}
+
+.subtitle{
+    color:#c7c2bc;
+    font-size:14px;
+    line-height:1.7;
+    max-width:320px;
+    margin:auto;
+}
+
+.highlight{
+    color:var(--gold);
+}
+
+/* =========================================
+   OPENING
+========================================= */
+
+.open-icon{
+    width:82px;
+    height:82px;
+    margin:28px auto 25px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:35px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,196,139,.25),
+            rgba(232,196,139,.04)
+        );
+
+    border:1px solid rgba(232,196,139,.25);
+
+    box-shadow:
+        0 0 60px rgba(232,196,139,.1);
+
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.actions{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    margin-top:27px;
+}
+
+.btn{
+    border:none;
+    padding:14px 25px;
+    border-radius:50px;
+    font-family:Inter,sans-serif;
+    font-size:13px;
+    cursor:pointer;
+    transition:.3s ease;
+    white-space:nowrap;
+}
+
+.btn.gold{
+    color:#15120e;
+    background:
+        linear-gradient(
+            135deg,
+            #efd29b,
+            #b9843f
+        );
+    box-shadow:
+        0 12px 30px rgba(185,132,63,.2);
+}
+
+.btn.gold:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 17px 35px rgba(185,132,63,.3);
+}
+
+.btn.ghost{
+    color:#eee;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.14);
+}
+
+.btn.ghost:hover{
+    background:rgba(255,255,255,.1);
+}
+
+#thinkBtn{
+    min-width:145px;
+    transition:
+        transform .3s ease,
+        background .3s ease;
+}
+
+/* =========================================
+   LETTER
+========================================= */
+
+.letter-copy{
+    margin:24px auto 0;
+    max-width:350px;
+}
+
+.letter-main{
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    line-height:1.25;
+    margin-bottom:15px;
+}
+
+.letter-small{
+    color:#bdb8b1;
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* =========================================
+   PLANNER
+========================================= */
+
+.planner{
+    margin-top:24px;
+    text-align:left;
+}
+
+.section-label{
+    display:block;
+    margin:0 0 9px 4px;
+    font-size:9px;
+    letter-spacing:3px;
+    color:#8f8a84;
+}
+
+/* =========================================
+   PREMIUM PICKER
+========================================= */
+
+.picker{
+    position:relative;
+    margin-bottom:18px;
+}
+
+.picker-trigger{
+    width:100%;
+    min-height:58px;
+    border-radius:19px;
+    border:1px solid rgba(255,255,255,.13);
+    background:rgba(255,255,255,.055);
+    color:white;
+    display:flex;
+    align-items:center;
+    padding:0 16px;
+    cursor:pointer;
+    text-align:left;
+    transition:.3s;
+}
+
+.picker-trigger:hover{
+    border-color:rgba(232,196,139,.45);
+    background:rgba(255,255,255,.075);
+}
+
+.picker-icon{
+    width:34px;
+    height:34px;
+    border-radius:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(232,196,139,.1);
+    margin-right:12px;
+    font-size:17px;
+}
+
+.picker-value{
+    flex:1;
+}
+
+.picker-value small{
+    display:block;
+    color:#77736d;
+    font-size:8px;
+    letter-spacing:2px;
+    margin-bottom:3px;
+}
+
+.picker-value strong{
+    font-size:13px;
+    font-weight:400;
+}
+
+.picker-status{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#777;
+    transition:.3s;
+}
+
+.picker-trigger.selected .picker-status{
+    background:var(--gold);
+    box-shadow:0 0 12px rgba(232,196,139,.5);
+}
+
+/* =========================================
+   PICKER POPUP
+========================================= */
+
+.picker-menu{
+    position:absolute;
+    left:0;
+    right:0;
+    top:calc(100% + 8px);
+    z-index:100;
+
+    padding:17px;
+    border-radius:22px;
+
+    background:
+        rgba(20,20,20,.98);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 25px 65px rgba(0,0,0,.5);
+
+    backdrop-filter:blur(30px);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-8px) scale(.98);
+    transition:.25s ease;
+}
+
+.picker-menu.open{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0) scale(1);
+}
+
+/* =========================================
+   CALENDAR
+========================================= */
+
+.calendar-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+
+.calendar-head strong{
+    font-family:"Cormorant Garamond",serif;
+    font-size:21px;
+    font-weight:500;
+}
+
+.month-btn{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.05);
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.month-btn:hover{
+    background:var(--gold);
+    color:#111;
+}
+
+.weekdays,
+.days{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:4px;
+}
+
+.weekdays{
+    margin-bottom:6px;
+}
+
+.weekdays span{
+    text-align:center;
+    font-size:8px;
+    letter-spacing:1px;
+    color:#777;
+}
+
+.day{
+    aspect-ratio:1;
+    border:none;
+    border-radius:10px;
+    background:transparent;
+    color:#ddd;
+    cursor:pointer;
+    font-size:12px;
+    transition:.2s;
+}
+
+.day:hover{
+    background:rgba(232,196,139,.18);
+}
+
+.day.today{
+    border:1px solid rgba(232,196,139,.55);
+}
+
+.day.selected{
+    background:linear-gradient(135deg,#e8c48b,#b9843f);
+    color:#111;
+    font-weight:600;
+}
+
+/* =========================================
+   TIME PICKER
+========================================= */
+
+.time-grid{
+    display:grid;
+    grid-template-columns:1fr 12px 1fr 1fr;
+    gap:7px;
+    align-items:center;
+}
+
+.time-title{
+    text-align:center;
+    font-size:8px;
+    letter-spacing:2px;
+    color:#777;
+    margin-bottom:7px;
+}
+
+.time-list{
+    max-height:165px;
+    overflow-y:auto;
+    padding-right:2px;
+}
+
+.time-list::-webkit-scrollbar{
+    width:3px;
+}
+
+.time-list::-webkit-scrollbar-thumb{
+    background:rgba(232,196,139,.35);
+    border-radius:10px;
+}
+
+.time-option,
+.period-option{
+    width:100%;
+    height:35px;
+    border:none;
+    border-radius:10px;
+    background:transparent;
+    color:#ddd;
+    cursor:pointer;
+    font-size:12px;
+    margin-bottom:3px;
+}
+
+.time-option:hover,
+.period-option:hover{
+    background:rgba(232,196,139,.15);
+}
+
+.time-option.selected,
+.period-option.selected{
+    background:linear-gradient(135deg,#e8c48b,#b9843f);
+    color:#111;
+    font-weight:600;
+}
+
+.time-colon{
+    text-align:center;
+    padding-top:20px;
+    color:#777;
+    font-size:18px;
+}
+
+/* =========================================
+   PLACES
+========================================= */
+
+.places{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:9px;
+}
+
+.place{
+    position:relative;
+    min-height:66px;
+    border-radius:17px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.045);
+    color:white;
+    cursor:pointer;
+    text-align:left;
+    padding:13px;
+    transition:.3s;
+}
+
+.place-icon{
+    font-size:21px;
+    display:block;
+    margin-bottom:5px;
+}
+
+.place-name{
+    font-size:11px;
+}
+
+.place.selected{
+    border-color:rgba(232,196,139,.7);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(232,196,139,.19),
+            rgba(185,132,63,.1)
+        );
+    transform:translateY(-2px);
+}
+
+.place.selected::after{
+    content:"✓";
+    position:absolute;
+    top:10px;
+    right:11px;
+    color:var(--gold);
+    font-size:12px;
+}
+
+/* =========================================
+   CONTINUE
+========================================= */
+
+.continue{
+    width:100%;
+    margin-top:20px;
+    height:50px;
+}
+
+/* =========================================
+   FINAL
+========================================= */
+
+.final-icon{
+    width:72px;
+    height:72px;
+    margin:25px auto 17px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    background:rgba(232,196,139,.12);
+    border:1px solid rgba(232,196,139,.3);
+}
+
+.final-intro{
+    color:#aaa59e;
+    font-size:12px;
+    margin-top:8px;
+}
+
+.final-details{
+    margin-top:22px;
+    display:grid;
+    gap:8px;
+}
+
+.detail{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:13px 15px;
+    border-radius:15px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.detail-label{
+    color:#77736d;
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+.detail-value{
+    font-size:12px;
+}
+
+.final-message{
+    margin-top:20px;
+    color:#b8b3ac;
+    font-family:"Cormorant Garamond",serif;
+    font-size:19px;
+    line-height:1.35;
+}
+
+/* =========================================
+   LIGHT MODE
+========================================= */
+
+body.light-mode{
+    color:#161616;
+    background:#f8f8f7;
+}
+
+body.light-mode #background{
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(232,196,139,.17),
+            transparent 35%
+        ),
+        #f8f8f7;
+}
+
+body.light-mode .glow{
+    opacity:.09;
+}
+
+body.light-mode .card{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.95),
+            rgba(250,250,250,.88)
+        );
+    border-color:rgba(0,0,0,.08);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.1),
+        inset 0 1px 0 white;
+}
+
+body.light-mode .subtitle,
+body.light-mode .letter-small{
+    color:#666;
+}
+
+body.light-mode .picker-trigger{
+    color:#171717;
+    background:rgba(0,0,0,.025);
+    border-color:rgba(0,0,0,.09);
+}
+
+body.light-mode .picker-trigger:hover{
+    background:rgba(0,0,0,.045);
+}
+
+body.light-mode .picker-menu{
+    background:rgba(255,255,255,.98);
+    border-color:rgba(0,0,0,.08);
+    box-shadow:0 25px 65px rgba(0,0,0,.15);
+}
+
+body.light-mode .calendar-head strong{
+    color:#171717;
+}
+
+body.light-mode .month-btn{
+    color:#222;
+    background:rgba(0,0,0,.035);
+    border-color:rgba(0,0,0,.08);
+}
+
+body.light-mode .day,
+body.light-mode .time-option,
+body.light-mode .period-option{
+    color:#222;
+}
+
+body.light-mode .place{
+    color:#222;
+    background:rgba(0,0,0,.025);
+    border-color:rgba(0,0,0,.08);
+}
+
+body.light-mode .place.selected{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(232,196,139,.35),
+            rgba(185,132,63,.16)
+        );
+}
+
+body.light-mode .btn.ghost{
+    color:#222;
+    background:rgba(0,0,0,.035);
+    border-color:rgba(0,0,0,.12);
+}
+
+body.light-mode .detail{
+    background:rgba(0,0,0,.025);
+    border-color:rgba(0,0,0,.06);
+}
+
+body.light-mode .detail-value{
+    color:#222;
+}
+
+body.light-mode .final-message{
+    color:#555;
+}
+
+body.light-mode .control{
+    color:#222;
+    background:rgba(255,255,255,.8);
+    border-color:rgba(0,0,0,.08);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:500px){
+
+    .scene{
+        width:calc(100% - 22px);
+    }
+
+    .card{
+        padding:32px 21px;
+        border-radius:25px;
+    }
+
+    h1{
+        font-size:60px;
+    }
+
+    h2{
+        font-size:37px;
+    }
+
+    .subtitle{
+        font-size:13px;
+    }
+
+    .open-icon{
+        width:70px;
+        height:70px;
+        font-size:30px;
+        margin:22px auto;
+    }
+
+    .actions{
+        gap:8px;
+    }
+
+    .btn{
+        padding:13px 19px;
+        font-size:12px;
+    }
+
+    .planner{
+        margin-top:19px;
+    }
+
+    .picker{
+        margin-bottom:13px;
+    }
+
+    .places{
+        gap:7px;
+    }
+
+    .place{
+        min-height:59px;
+        padding:10px;
+    }
+
+    .place-icon{
+        font-size:18px;
+    }
+
+    .picker-menu{
+        padding:14px;
+    }
+}
+
+@media(max-height:700px){
+
+    .card{
+        padding:27px 25px;
+    }
+
+    h1{
+        font-size:57px;
+        margin:12px 0;
+    }
+
+    .open-icon{
+        margin:18px auto;
+        width:65px;
+        height:65px;
+    }
+
+    .planner{
+        margin-top:15px;
+    }
+
+    .planner .section-label{
+        margin-bottom:6px;
+    }
+
+    .picker{
+        margin-bottom:9px;
+    }
+
+    .picker-trigger{
+        min-height:51px;
+    }
+
+    .place{
+        min-height:53px;
+    }
+
+    .continue{
+        margin-top:13px;
+        height:45px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+    <div class="loader-title">A Small invitation</div>
+    <div class="loader-sub">JUST FOR THE TWO OF US</div>
+</div>
+
+<div id="background">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+</div>
+
+<div class="top-controls">
+    <button class="control" id="themeBtn" aria-label="Toggle theme">☼</button>
+    <button class="control" id="musicBtn" aria-label="Toggle music">♪</button>
+</div>
+
+<div class="progress">
+    <span class="active"></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div id="app">
+
+<!-- =====================================
+     SCENE 1
+===================================== -->
+
+<section class="scene active" id="opening">
+    <div class="card">
+
+        <div class="eyebrow">A Small invitation</div>
+
+        <h1>Just us.</h1>
+
+        <p class="subtitle">
+            Good food, good conversation,<br>
+            and hopefully a great story to tell.
+        </p>
+
+        <div class="open-icon">
+            ✨
+        </div>
+
+        <p class="subtitle">
+            Shall we make a plan?
+        </p>
+
+        <button class="btn gold" id="openBtn">
+            Open Invitation
+        </button>
+
+    </div>
+</section>
+
+
+<!-- =====================================
+     SCENE 2
+===================================== -->
+
+<section class="scene" id="invitation">
+    <div class="card">
+
+        <div class="eyebrow">One little question</div>
+
+        <h2>Want to make<br>some time for us?</h2>
+
+        <div class="letter-copy">
+
+            <div class="letter-main">
+                No big plans.<br>
+                No pressure.<br>
+                <span class="highlight">Just a good time together.</span>
+            </div>
+
+            <div class="letter-small">
+                Coffee, dessert, dinner…<br>
+                or maybe something completely unexpected. 😉
+            </div>
+
+        </div>
+
+        <div class="actions">
+
+            <button class="btn gold" id="yesBtn">
+                I'm in ✨
+            </button>
+
+            <button class="btn ghost" id="thinkBtn">
+                Let me think 😏
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =====================================
+     SCENE 3
+===================================== -->
+
+<section class="scene" id="planner">
+    <div class="card">
+
+        <div class="eyebrow">Make it yours</div>
+
+        <h2>Pick the details</h2>
+
+        <p class="subtitle">
+            You choose the when.<br>
+            I'll take care of the rest.
+        </p>
+
+        <div class="planner">
+
+            <!-- DATE -->
+
+            <div class="picker">
+
+                <span class="section-label">DATE</span>
+
+                <button class="picker-trigger" id="dateTrigger">
+
+                    <span class="picker-icon">◷</span>
+
+                    <span class="picker-value">
+                        <small>WHEN</small>
+                        <strong id="dateValue">Choose a date</strong>
+                    </span>
+
+                    <span class="picker-status"></span>
+
+                </button>
+
+                <div class="picker-menu" id="dateMenu">
+
+                    <div class="calendar-head">
+
+                        <button class="month-btn" id="prevMonth">‹</button>
+
+                        <strong id="monthYear"></strong>
+
+                        <button class="month-btn" id="nextMonth">›</button>
+
+                    </div>
+
+                    <div class="weekdays">
+                        <span>S</span>
+                        <span>M</span>
+                        <span>T</span>
+                        <span>W</span>
+                        <span>T</span>
+                        <span>F</span>
+                        <span>S</span>
+                    </div>
+
+                    <div class="days" id="calendarDays"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TIME -->
+
+            <div class="picker">
+
+                <span class="section-label">TIME</span>
+
+                <button class="picker-trigger" id="timeTrigger">
+
+                    <span class="picker-icon">◴</span>
+
+                    <span class="picker-value">
+                        <small>WHAT TIME</small>
+                        <strong id="timeValue">Choose a time</strong>
+                    </span>
+
+                    <span class="picker-status"></span>
+
+                </button>
+
+                <div class="picker-menu" id="timeMenu">
+
+                    <div class="time-grid">
+
+                        <div>
+                            <div class="time-title">HOUR</div>
+                            <div class="time-list" id="hours"></div>
+                        </div>
+
+                        <div class="time-colon">:</div>
+
+                        <div>
+                            <div class="time-title">MIN</div>
+                            <div class="time-list" id="minutes"></div>
+                        </div>
+
+                        <div>
+                            <div class="time-title">PERIOD</div>
+
+                            <button
+                                class="period-option"
+                                data-period="AM">
+                                AM
+                            </button>
+
+                            <button
+                                class="period-option"
+                                data-period="PM">
+                                PM
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PLACE -->
+
+            <div>
+
+                <span class="section-label">THE VIBE</span>
+
+                <div class="places">
+
+                    <button class="place" data-place="☕ Coffee">
+
+                        <span class="place-icon">☕</span>
+                        <span class="place-name">Coffee</span>
+
+                    </button>
+
+                    <button class="place" data-place="🍰 Dessert">
+
+                        <span class="place-icon">🍰</span>
+                        <span class="place-name">Dessert</span>
+
+                    </button>
+
+                    <button class="place" data-place="🍽️ Dinner">
+
+                        <span class="place-icon">🍽️</span>
+                        <span class="place-name">Dinner</span>
+
+                    </button>
+
+                    <button class="place" data-place="✨ Surprise">
+
+                        <span class="place-icon">✨</span>
+                        <span class="place-name">Surprise me</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <button class="btn gold continue" id="continueBtn">
+                That sounds good →
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =====================================
+     SCENE 4
+===================================== -->
+
+<section class="scene" id="final">
+    <div class="card">
+
+        <div class="eyebrow">It's happening</div>
+
+        <div class="final-icon">
+            ✨
+        </div>
+
+        <h2>It's a Date.</h2>
+
+        <p class="final-intro">
+            Everything looks perfect.
+        </p>
+
+        <div class="final-details">
+
+            <div class="detail">
+                <span class="detail-label">DATE</span>
+                <span class="detail-value" id="finalDate"></span>
+            </div>
+
+            <div class="detail">
+                <span class="detail-label">TIME</span>
+                <span class="detail-value" id="finalTime"></span>
+            </div>
+
+            <div class="detail">
+                <span class="detail-label">PLAN</span>
+                <span class="detail-value" id="finalPlace"></span>
+            </div>
+
+        </div>
+
+        <div class="final-message">
+            One plan.<br>
+            One good time.<br>
+            Let's see where it goes. ❤️
+        </div>
+
+        <button class="btn gold continue" id="whatsappBtn">
+            Send the plan 💌
+        </button>
+
+    </div>
+</section>
+
+</div>
+
+<audio id="music" loop preload="auto">
+    <source src="./romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* =========================================
+   STATE
+========================================= */
+
+const scenes = [
+    "opening",
+    "invitation",
+    "planner",
+    "final"
+];
+
+let selectedDate = null;
+let selectedHour = "";
+let selectedMinute = "";
+let selectedPeriod = "";
+let selectedPlace = "";
+
+let calendarDate = new Date();
+
+
+/* =========================================
+   SCENE ENGINE
+========================================= */
+
+function showScene(id){
+
+    document.querySelectorAll(".scene").forEach(scene=>{
+        scene.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+
+    const index = scenes.indexOf(id);
+
+    document.querySelectorAll(".progress span").forEach((dot,i)=>{
+        dot.classList.toggle("active",i === index);
+    });
+}
+
+
+/* =========================================
+   LOADER
+========================================= */
+
+setTimeout(()=>{
+
+    const loader = document.getElementById("loader");
+
+    loader.style.opacity = "0";
+
+    setTimeout(()=>{
+        loader.remove();
+    },1000);
+
+},1800);
+
+
+/* =========================================
+   OPENING
+========================================= */
+
+document.getElementById("openBtn").onclick = ()=>{
+
+    showScene("invitation");
+
+};
+
+
+/* =========================================
+   FUNNY THINK BUTTON
+========================================= */
+
+const thinkBtn = document.getElementById("thinkBtn");
+
+const thinkMessages = [
+
+    "Let me think 😏",
+    "Still thinking? 😂",
+    "Take your time 👀",
+    "The suspense! 😂",
+    "Okay… I'm waiting ☕",
+    "You really like thinking 🤭"
+
+];
+
+let thinkIndex = 0;
+
+thinkBtn.onclick = ()=>{
+
+    thinkIndex++;
+
+    if(thinkIndex >= thinkMessages.length){
+        thinkIndex = 0;
+    }
+
+    thinkBtn.textContent = thinkMessages[thinkIndex];
+
+    thinkBtn.animate(
+        [
+            {transform:"scale(1) rotate(0deg)"},
+            {transform:"scale(.96) rotate(-2deg)"},
+            {transform:"scale(1.03) rotate(2deg)"},
+            {transform:"scale(1) rotate(0deg)"}
+        ],
+        {
+            duration:420,
+            easing:"ease-out"
+        }
+    );
+
+};
+
+
+/* =========================================
+   YES
+========================================= */
+
+document.getElementById("yesBtn").onclick = ()=>{
+
+    celebrate();
+
+    setTimeout(()=>{
+        showScene("planner");
+        initPlanner();
+    },600);
+
+};
+
+
+/* =========================================
+   CELEBRATION
+========================================= */
+
+function celebrate(){
+
+    const symbols = ["✦","✧","·","✨"];
+
+    for(let i=0;i<28;i++){
+
+        const particle = document.createElement("div");
+
+        particle.textContent =
+            symbols[Math.floor(Math.random()*symbols.length)];
+
+        particle.style.position = "fixed";
+        particle.style.left = "50%";
+        particle.style.top = "50%";
+        particle.style.zIndex = "300";
+        particle.style.pointerEvents = "none";
+        particle.style.color = "#e8c48b";
+
+        document.body.appendChild(particle);
+
+        const x = (Math.random()-.5)*500;
+        const y = (Math.random()-.5)*500;
+
+        particle.animate(
+            [
+                {
+                    transform:"scale(0)",
+                    opacity:1
+                },
+                {
+                    transform:
+                        `translate(${x}px,${y}px) scale(1)`,
+                    opacity:0
+                }
+            ],
+            {
+                duration:1000 + Math.random()*500,
+                easing:"ease-out"
+            }
+        );
+
+        setTimeout(()=>{
+            particle.remove();
+        },1600);
+    }
+}
+
+
+/* =========================================
+   PLANNER
+========================================= */
+
+let plannerInitialized = false;
+
+function initPlanner(){
+
+    if(plannerInitialized) return;
+
+    plannerInitialized = true;
+
+    initDatePicker();
+    initTimePicker();
+    initPlaces();
+
+}
+
+
+/* =========================================
+   CLOSE MENUS
+========================================= */
+
+function closeMenus(){
+
+    document.querySelectorAll(".picker-menu").forEach(menu=>{
+        menu.classList.remove("open");
+    });
+
+}
+
+
+/* =========================================
+   DATE PICKER
+========================================= */
+
+function initDatePicker(){
+
+    const trigger =
+        document.getElementById("dateTrigger");
+
+    const menu =
+        document.getElementById("dateMenu");
+
+    const dateValue =
+        document.getElementById("dateValue");
+
+    const calendarDays =
+        document.getElementById("calendarDays");
+
+    const monthYear =
+        document.getElementById("monthYear");
+
+
+    function renderCalendar(){
+
+        const year =
+            calendarDate.getFullYear();
+
+        const month =
+            calendarDate.getMonth();
+
+        monthYear.textContent =
+            calendarDate.toLocaleDateString(
+                "en-US",
+                {
+                    month:"long",
+                    year:"numeric"
+                }
+            );
+
+        calendarDays.innerHTML = "";
+
+        const firstDay =
+            new Date(year,month,1).getDay();
+
+        const daysInMonth =
+            new Date(year,month+1,0).getDate();
+
+        for(let i=0;i<firstDay;i++){
+
+            calendarDays.appendChild(
+                document.createElement("div")
+            );
+
+        }
+
+        for(let day=1;day<=daysInMonth;day++){
+
+            const button =
+                document.createElement("button");
+
+            button.className = "day";
+            button.type = "button";
+            button.textContent = day;
+
+            const date =
+                new Date(year,month,day);
+
+            const today =
+                new Date();
+
+            today.setHours(0,0,0,0);
+
+            if(date.getTime() === today.getTime()){
+                button.classList.add("today");
+            }
+
+            if(
+                selectedDate &&
+                date.toDateString() ===
+                selectedDate.toDateString()
+            ){
+                button.classList.add("selected");
+            }
+
+            button.onclick = ()=>{
+
+                selectedDate = new Date(date);
+
+                dateValue.textContent =
+                    selectedDate.toLocaleDateString(
+                        "en-IN",
+                        {
+                            weekday:"short",
+                            day:"numeric",
+                            month:"short"
+                        }
+                    );
+
+                trigger.classList.add("selected");
+
+                renderCalendar();
+
+                closeMenus();
+
+            };
+
+            calendarDays.appendChild(button);
+
+        }
+
+    }
+
+
+    trigger.onclick = (event)=>{
+
+        event.stopPropagation();
+
+        const alreadyOpen =
+            menu.classList.contains("open");
+
+        closeMenus();
+
+        if(!alreadyOpen){
+            menu.classList.add("open");
+        }
+
+    };
+
+
+    document.getElementById("prevMonth").onclick = (event)=>{
+
+        event.stopPropagation();
+
+        calendarDate.setMonth(
+            calendarDate.getMonth()-1
+        );
+
+        renderCalendar();
+
+    };
+
+
+    document.getElementById("nextMonth").onclick = (event)=>{
+
+        event.stopPropagation();
+
+        calendarDate.setMonth(
+            calendarDate.getMonth()+1
+        );
+
+        renderCalendar();
+
+    };
+
+
+    menu.onclick = event=>{
+        event.stopPropagation();
+    };
+
+
+    renderCalendar();
+
+}
+
+
+/* =========================================
+   TIME PICKER
+========================================= */
+
+function initTimePicker(){
+
+    const trigger =
+        document.getElementById("timeTrigger");
+
+    const menu =
+        document.getElementById("timeMenu");
+
+    const hours =
+        document.getElementById("hours");
+
+    const minutes =
+        document.getElementById("minutes");
+
+    const timeValue =
+        document.getElementById("timeValue");
+
+
+    for(let hour=1;hour<=12;hour++){
+
+        const button =
+            document.createElement("button");
+
+        button.type = "button";
+        button.className = "time-option";
+        button.textContent =
+            String(hour).padStart(2,"0");
+
+        button.onclick = ()=>{
+
+            selectedHour =
+                String(hour).padStart(2,"0");
+
+            document
+                .querySelectorAll("#hours .time-option")
+                .forEach(item=>{
+                    item.classList.remove("selected");
+                });
+
+            button.classList.add("selected");
+
+            updateTime();
+
+        };
+
+        hours.appendChild(button);
+
+    }
+
+
+    for(let minute=0;minute<60;minute+=5){
+
+        const button =
+            document.createElement("button");
+
+        button.type = "button";
+        button.className = "time-option";
+        button.textContent =
+            String(minute).padStart(2,"0");
+
+        button.onclick = ()=>{
+
+            selectedMinute =
+                String(minute).padStart(2,"0");
+
+            document
+                .querySelectorAll("#minutes .time-option")
+                .forEach(item=>{
+                    item.classList.remove("selected");
+                });
+
+            button.classList.add("selected");
+
+            updateTime();
+
+        };
+
+        minutes.appendChild(button);
+
+    }
+
+
+    document
+        .querySelectorAll(".period-option")
+        .forEach(button=>{
+
+            button.onclick = ()=>{
+
+                selectedPeriod =
+                    button.dataset.period;
+
+                document
+                    .querySelectorAll(".period-option")
+                    .forEach(item=>{
+                        item.classList.remove("selected");
+                    });
+
+                button.classList.add("selected");
+
+                updateTime();
+
+            };
+
+        });
+
+
+    function updateTime(){
+
+        if(
+            !selectedHour ||
+            !selectedMinute ||
+            !selectedPeriod
+        ){
+            return;
+        }
+
+        const time =
+            `${selectedHour}:${selectedMinute} ${selectedPeriod}`;
+
+        timeValue.textContent = time;
+
+        trigger.classList.add("selected");
+
+        /*
+         * Once AM/PM has been selected,
+         * the picker closes automatically.
+         */
+        setTimeout(()=>{
+            closeMenus();
+        },180);
+
+    }
+
+
+    trigger.onclick = (event)=>{
+
+        event.stopPropagation();
+
+        const alreadyOpen =
+            menu.classList.contains("open");
+
+        closeMenus();
+
+        if(!alreadyOpen){
+            menu.classList.add("open");
+        }
+
+    };
+
+
+    menu.onclick = event=>{
+        event.stopPropagation();
+    };
+
+}
+
+
+/* =========================================
+   PLACES
+========================================= */
+
+function initPlaces(){
+
+    document.querySelectorAll(".place").forEach(button=>{
+
+        button.onclick = ()=>{
+
+            document.querySelectorAll(".place").forEach(item=>{
+                item.classList.remove("selected");
+            });
+
+            button.classList.add("selected");
+
+            selectedPlace =
+                button.dataset.place;
+
+        };
+
+    });
+
+}
+
+
+/* =========================================
+   OUTSIDE CLICK
+========================================= */
+
+document.addEventListener("click",()=>{
+
+    closeMenus();
+
+});
+
+
+/* =========================================
+   CONTINUE
+========================================= */
+
+document.getElementById("continueBtn").onclick = ()=>{
+
+    if(
+        !selectedDate ||
+        !selectedHour ||
+        !selectedMinute ||
+        !selectedPeriod ||
+        !selectedPlace
+    ){
+
+        alert(
+            "Just one more thing — choose your date, time and plan. ❤️"
+        );
+
+        return;
+    }
+
+    document.getElementById("finalDate").textContent =
+        selectedDate.toLocaleDateString(
+            "en-IN",
+            {
+                weekday:"long",
+                day:"numeric",
+                month:"long"
+            }
+        );
+
+    document.getElementById("finalTime").textContent =
+        `${selectedHour}:${selectedMinute} ${selectedPeriod}`;
+
+    document.getElementById("finalPlace").textContent =
+        selectedPlace;
+
+    celebrate();
+
+    setTimeout(()=>{
+        showScene("final");
+    },500);
+
+};
+
+
+/* =========================================
+   WHATSAPP
+========================================= */
+
+document.getElementById("whatsappBtn").onclick = ()=>{
+
+    const date =
+        document.getElementById("finalDate").textContent;
+
+    const time =
+        document.getElementById("finalTime").textContent;
+
+    const place =
+        document.getElementById("finalPlace").textContent;
+
+    const message =
+`Hey 😊
+
+Looks like we have a plan!
+
+📅 ${date}
+🕐 ${time}
+✨ ${place}
+
+Looking forward to it ❤️`;
+
+    window.open(
+        "https://wa.me/?text=" +
+        encodeURIComponent(message),
+        "_blank"
+    );
+
+};
+
+
+/* =========================================
+   THEME
+========================================= */
+
+const themeBtn =
+    document.getElementById("themeBtn");
+
+let lightMode = false;
+
+themeBtn.onclick = ()=>{
+
+    lightMode = !lightMode;
+
+    document.body.classList.toggle(
+        "light-mode",
+        lightMode
+    );
+
+    themeBtn.textContent =
+        lightMode ? "☾" : "☼";
+
+};
+
+
+/* =========================================
+   MUSIC
+========================================= */
+
+const music =
+    document.getElementById("music");
+
+const musicBtn =
+    document.getElementById("musicBtn");
+
+let playing = false;
+
+music.volume = .12;
+
+musicBtn.onclick = async ()=>{
+
+    try{
+
+        if(!playing){
+
+            await music.play();
+
+            playing = true;
+
+            musicBtn.textContent = "♫";
+
+        }else{
+
+            music.pause();
+
+            playing = false;
+
+            musicBtn.textContent = "♪";
+
+        }
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+};
+
+
+/* =========================================
+   AMBIENT MOVEMENT
+========================================= */
+
+document.addEventListener("mousemove",event=>{
+
+    const x =
+        event.clientX / window.innerWidth;
+
+    const y =
+        event.clientY / window.innerHeight;
+
+    const one =
+        document.querySelector(".glow.one");
+
+    const two =
+        document.querySelector(".glow.two");
+
+    if(one){
+        one.style.transform =
+            `translate(${x*35}px,${y*25}px)`;
+    }
+
+    if(two){
+        two.style.transform =
+            `translate(${-x*30}px,${-y*20}px)`;
+    }
+
+});
+
+</script>
+
+</body>
+</html>
