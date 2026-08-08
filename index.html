@@ -1405,9 +1405,22 @@ setTimeout(()=>{
    OPENING
 ========================================= */
 
-document.getElementById("openBtn").onclick = ()=>{
+document.getElementById("openBtn").onclick = async ()=>{
 
     showScene("invitation");
+
+    try {
+
+        await music.play();
+
+        playing = true;
+        musicBtn.textContent = "♫";
+
+    } catch(error) {
+
+        console.log("Music could not start:", error);
+
+    }
 
 };
 
@@ -2037,7 +2050,7 @@ const musicBtn =
 
 let playing = false;
 
-music.volume = .12;
+music.volume = .35;
 
 musicBtn.onclick = async ()=>{
 
