@@ -753,16 +753,17 @@ h2{
    FINAL ACTIONS
 ========================================================= */
 
-.final-actions{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    margin-top:20px;
+.final-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
-.final-actions .btn{
-    width:100%;
-    padding:13px 8px;
+.final-actions .btn {
+    min-width: 280px;
+    padding: 15px 32px;
+    font-size: 16px;
 }
 
 /* =========================================================
@@ -1563,14 +1564,6 @@ body.light-mode .final-message{
                 id="createCardBtn">
 
                 Create Invitation ✨
-
-            </button>
-
-            <button
-                class="btn ghost"
-                id="whatsappBtn">
-
-                WhatsApp 💌
 
             </button>
 
