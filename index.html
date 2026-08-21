@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Small Invitation</title>
+<title>Just Us — A Little Invitation</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,13 +18,13 @@
 }
 
 :root{
-    --gold:#e8c48b;
-    --gold-dark:#b9843f;
+    --gold:#e7c38b;
+    --gold-light:#f4dfb4;
+    --gold-dark:#a8793c;
+    --cream:#f6f0e5;
     --text:#f7f4ef;
-    --muted:#aaa59e;
-    --glass:rgba(255,255,255,.065);
+    --muted:#aaa49b;
     --border:rgba(255,255,255,.13);
-    --shadow:rgba(0,0,0,.45);
 }
 
 html,
@@ -37,13 +37,16 @@ body{
 body{
     font-family:Inter,sans-serif;
     color:var(--text);
-    background:#080808;
-    transition:.6s ease;
+    background:#070707;
 }
 
-/* =========================================
+button{
+    font-family:inherit;
+}
+
+/* =========================================================
    BACKGROUND
-========================================= */
+========================================================= */
 
 #background{
     position:fixed;
@@ -52,11 +55,15 @@ body{
     background:
         radial-gradient(
             circle at 50% 20%,
-            rgba(232,196,139,.11),
-            transparent 32%
+            rgba(231,195,139,.12),
+            transparent 33%
+        ),
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(117,76,37,.10),
+            transparent 30%
         ),
         #080808;
-    transition:.6s ease;
 }
 
 .glow{
@@ -64,98 +71,96 @@ body{
     width:430px;
     height:430px;
     border-radius:50%;
-    filter:blur(110px);
-    opacity:.15;
-    transition:transform 1s ease;
+    filter:blur(120px);
+    opacity:.13;
 }
 
 .glow.one{
-    background:#d9a65d;
+    background:#d5a257;
     top:-190px;
-    left:-150px;
+    left:-160px;
 }
 
 .glow.two{
     background:#765be8;
     bottom:-220px;
-    right:-160px;
+    right:-180px;
 }
 
 #background::after{
     content:"";
     position:absolute;
     inset:0;
-    opacity:.035;
+    opacity:.025;
     background-image:
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* =========================================
+/* =========================================================
    LOADER
-========================================= */
+========================================================= */
 
 #loader{
     position:fixed;
     inset:0;
-    z-index:999;
+    z-index:9999;
     background:#050505;
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
-    transition:1s ease;
+    justify-content:center;
+    transition:opacity 1s ease;
 }
 
 .loader-title{
     font-family:"Cormorant Garamond",serif;
-    font-size:38px;
+    font-size:40px;
     letter-spacing:2px;
 }
 
 .loader-sub{
     margin-top:12px;
-    font-size:10px;
+    font-size:9px;
     letter-spacing:4px;
     opacity:.4;
 }
 
-/* =========================================
-   TOP CONTROLS
-========================================= */
+/* =========================================================
+   CONTROLS
+========================================================= */
 
 .top-controls{
     position:fixed;
-    top:22px;
-    right:22px;
+    top:20px;
+    right:20px;
     z-index:100;
     display:flex;
-    gap:9px;
+    gap:8px;
 }
 
 .control{
     width:40px;
     height:40px;
     border-radius:50%;
-    border:1px solid rgba(255,255,255,.15);
-    background:rgba(255,255,255,.08);
-    color:white;
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.07);
+    color:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
     cursor:pointer;
     backdrop-filter:blur(20px);
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
     transition:.3s;
 }
 
 .control:hover{
     transform:translateY(-2px);
-    background:rgba(255,255,255,.14);
+    background:rgba(255,255,255,.12);
 }
 
-/* =========================================
+/* =========================================================
    PROGRESS
-========================================= */
+========================================================= */
 
 .progress{
     position:fixed;
@@ -171,8 +176,8 @@ body{
     width:6px;
     height:6px;
     border-radius:20px;
-    background:rgba(255,255,255,.22);
-    transition:.45s ease;
+    background:rgba(255,255,255,.2);
+    transition:.45s;
 }
 
 .progress span.active{
@@ -180,9 +185,9 @@ body{
     background:var(--gold);
 }
 
-/* =========================================
+/* =========================================================
    APP
-========================================= */
+========================================================= */
 
 #app{
     position:relative;
@@ -196,11 +201,11 @@ body{
 
 .scene{
     position:absolute;
-    width:min(450px,calc(100% - 30px));
+    width:min(450px,calc(100% - 24px));
     opacity:0;
     pointer-events:none;
-    transform:translateY(25px) scale(.97);
-    filter:blur(8px);
+    transform:translateY(24px) scale(.97);
+    filter:blur(7px);
     transition:
         opacity .65s ease,
         transform .65s cubic-bezier(.2,.8,.2,1),
@@ -214,14 +219,12 @@ body{
     filter:blur(0);
 }
 
-/* =========================================
-   CARD
-========================================= */
+/* =========================================================
+   MAIN CARD
+========================================================= */
 
 .card{
     width:100%;
-    max-height:calc(100vh - 80px);
-    overflow:visible;
     padding:42px 34px;
     border-radius:30px;
     text-align:center;
@@ -233,24 +236,24 @@ body{
             rgba(255,255,255,.035)
         );
 
-    border:1px solid var(--border);
+    border:1px solid rgba(255,255,255,.13);
 
     backdrop-filter:blur(35px);
 
     box-shadow:
-        0 35px 100px var(--shadow),
+        0 35px 100px rgba(0,0,0,.48),
         inset 0 1px 0 rgba(255,255,255,.07);
 }
 
-/* =========================================
-   TYPOGRAPHY
-========================================= */
+/* =========================================================
+   TYPE
+========================================================= */
 
 .eyebrow{
-    font-size:10px;
+    font-size:9px;
     letter-spacing:4px;
     text-transform:uppercase;
-    color:var(--muted);
+    color:#969087;
 }
 
 h1,
@@ -273,7 +276,7 @@ h2{
 
 .subtitle{
     color:#c7c2bc;
-    font-size:14px;
+    font-size:13px;
     line-height:1.7;
     max-width:320px;
     margin:auto;
@@ -283,32 +286,35 @@ h2{
     color:var(--gold);
 }
 
-/* =========================================
-   OPENING
-========================================= */
+/* =========================================================
+   OPENING ICON
+========================================================= */
 
-.open-icon{
-    width:82px;
-    height:82px;
-    margin:28px auto 25px;
+.open-icon,
+.final-icon{
+    width:78px;
+    height:78px;
+    margin:27px auto 23px;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:35px;
+    font-size:31px;
 
     background:
         radial-gradient(
             circle,
-            rgba(232,196,139,.25),
-            rgba(232,196,139,.04)
+            rgba(231,195,139,.23),
+            rgba(231,195,139,.035)
         );
 
-    border:1px solid rgba(232,196,139,.25);
+    border:1px solid rgba(231,195,139,.25);
 
     box-shadow:
-        0 0 60px rgba(232,196,139,.1);
+        0 0 65px rgba(231,195,139,.09);
+}
 
+.open-icon{
     animation:float 4s ease-in-out infinite;
 }
 
@@ -318,36 +324,36 @@ h2{
     }
 }
 
-/* =========================================
+/* =========================================================
    BUTTONS
-========================================= */
+========================================================= */
 
 .actions{
     display:flex;
-    gap:10px;
     justify-content:center;
+    gap:9px;
     margin-top:27px;
 }
 
 .btn{
     border:none;
-    padding:14px 25px;
+    padding:14px 24px;
     border-radius:50px;
-    font-family:Inter,sans-serif;
-    font-size:13px;
+    font-size:12px;
     cursor:pointer;
-    transition:.3s ease;
+    transition:.3s;
     white-space:nowrap;
 }
 
 .btn.gold{
-    color:#15120e;
+    color:#16120c;
     background:
         linear-gradient(
             135deg,
-            #efd29b,
+            #f0d39d,
             #b9843f
         );
+
     box-shadow:
         0 12px 30px rgba(185,132,63,.2);
 }
@@ -355,29 +361,22 @@ h2{
 .btn.gold:hover{
     transform:translateY(-3px);
     box-shadow:
-        0 17px 35px rgba(185,132,63,.3);
+        0 17px 35px rgba(185,132,63,.32);
 }
 
 .btn.ghost{
     color:#eee;
-    background:rgba(255,255,255,.055);
-    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.13);
 }
 
 .btn.ghost:hover{
     background:rgba(255,255,255,.1);
 }
 
-#thinkBtn{
-    min-width:145px;
-    transition:
-        transform .3s ease,
-        background .3s ease;
-}
-
-/* =========================================
+/* =========================================================
    LETTER
-========================================= */
+========================================================= */
 
 .letter-copy{
     margin:24px auto 0;
@@ -393,13 +392,13 @@ h2{
 
 .letter-small{
     color:#bdb8b1;
-    font-size:13px;
+    font-size:12px;
     line-height:1.7;
 }
 
-/* =========================================
+/* =========================================================
    PLANNER
-========================================= */
+========================================================= */
 
 .planner{
     margin-top:24px;
@@ -409,38 +408,37 @@ h2{
 .section-label{
     display:block;
     margin:0 0 9px 4px;
-    font-size:9px;
+    font-size:8px;
     letter-spacing:3px;
     color:#8f8a84;
 }
 
-/* =========================================
-   PREMIUM PICKER
-========================================= */
+/* =========================================================
+   PICKERS
+========================================================= */
 
 .picker{
     position:relative;
-    margin-bottom:18px;
+    margin-bottom:16px;
 }
 
 .picker-trigger{
     width:100%;
-    min-height:58px;
-    border-radius:19px;
+    min-height:57px;
+    border-radius:18px;
     border:1px solid rgba(255,255,255,.13);
-    background:rgba(255,255,255,.055);
-    color:white;
+    background:rgba(255,255,255,.05);
+    color:#fff;
     display:flex;
     align-items:center;
-    padding:0 16px;
+    padding:0 15px;
     cursor:pointer;
     text-align:left;
     transition:.3s;
 }
 
 .picker-trigger:hover{
-    border-color:rgba(232,196,139,.45);
-    background:rgba(255,255,255,.075);
+    border-color:rgba(231,195,139,.45);
 }
 
 .picker-icon{
@@ -450,9 +448,8 @@ h2{
     display:flex;
     align-items:center;
     justify-content:center;
-    background:rgba(232,196,139,.1);
+    background:rgba(231,195,139,.1);
     margin-right:12px;
-    font-size:17px;
 }
 
 .picker-value{
@@ -462,13 +459,13 @@ h2{
 .picker-value small{
     display:block;
     color:#77736d;
-    font-size:8px;
+    font-size:7px;
     letter-spacing:2px;
     margin-bottom:3px;
 }
 
 .picker-value strong{
-    font-size:13px;
+    font-size:12px;
     font-weight:400;
 }
 
@@ -477,17 +474,16 @@ h2{
     height:7px;
     border-radius:50%;
     background:#777;
-    transition:.3s;
 }
 
 .picker-trigger.selected .picker-status{
     background:var(--gold);
-    box-shadow:0 0 12px rgba(232,196,139,.5);
+    box-shadow:0 0 12px rgba(231,195,139,.5);
 }
 
-/* =========================================
-   PICKER POPUP
-========================================= */
+/* =========================================================
+   POPUPS
+========================================================= */
 
 .picker-menu{
     position:absolute;
@@ -496,23 +492,18 @@ h2{
     top:calc(100% + 8px);
     z-index:100;
 
-    padding:17px;
-    border-radius:22px;
+    padding:16px;
+    border-radius:21px;
 
-    background:
-        rgba(20,20,20,.98);
-
+    background:rgba(20,20,20,.98);
     border:1px solid rgba(255,255,255,.12);
 
-    box-shadow:
-        0 25px 65px rgba(0,0,0,.5);
-
-    backdrop-filter:blur(30px);
+    box-shadow:0 25px 65px rgba(0,0,0,.5);
 
     opacity:0;
     visibility:hidden;
     transform:translateY(-8px) scale(.98);
-    transition:.25s ease;
+    transition:.25s;
 }
 
 .picker-menu.open{
@@ -521,9 +512,9 @@ h2{
     transform:translateY(0) scale(1);
 }
 
-/* =========================================
+/* =========================================================
    CALENDAR
-========================================= */
+========================================================= */
 
 .calendar-head{
     display:flex;
@@ -544,9 +535,8 @@ h2{
     border-radius:50%;
     border:1px solid rgba(255,255,255,.1);
     background:rgba(255,255,255,.05);
-    color:white;
+    color:#fff;
     cursor:pointer;
-    font-size:18px;
 }
 
 .month-btn:hover{
@@ -568,7 +558,6 @@ h2{
 .weekdays span{
     text-align:center;
     font-size:8px;
-    letter-spacing:1px;
     color:#777;
 }
 
@@ -580,20 +569,19 @@ h2{
     color:#ddd;
     cursor:pointer;
     font-size:12px;
-    transition:.2s;
-}
-
-.day.disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
 }
 
 .day:hover{
-    background:rgba(232,196,139,.18);
+    background:rgba(231,195,139,.18);
+}
+
+.day.disabled{
+    opacity:.25;
+    cursor:not-allowed;
 }
 
 .day.today{
-    border:1px solid rgba(232,196,139,.55);
+    border:1px solid rgba(231,195,139,.55);
 }
 
 .day.selected{
@@ -602,15 +590,14 @@ h2{
     font-weight:600;
 }
 
-/* =========================================
-   TIME PICKER
-========================================= */
+/* =========================================================
+   TIME
+========================================================= */
 
 .time-grid{
     display:grid;
     grid-template-columns:1fr 12px 1fr 1fr;
     gap:7px;
-    align-items:center;
 }
 
 .time-title{
@@ -624,16 +611,11 @@ h2{
 .time-list{
     max-height:165px;
     overflow-y:auto;
-    padding-right:2px;
+    scrollbar-width: none;
 }
 
 .time-list::-webkit-scrollbar{
-    width:3px;
-}
-
-.time-list::-webkit-scrollbar-thumb{
-    background:rgba(232,196,139,.35);
-    border-radius:10px;
+    display: none;
 }
 
 .time-option,
@@ -651,7 +633,7 @@ h2{
 
 .time-option:hover,
 .period-option:hover{
-    background:rgba(232,196,139,.15);
+    background:rgba(231,195,139,.15);
 }
 
 .time-option.selected,
@@ -663,14 +645,13 @@ h2{
 
 .time-colon{
     text-align:center;
-    padding-top:20px;
+    padding-top:22px;
     color:#777;
-    font-size:18px;
 }
 
-/* =========================================
+/* =========================================================
    PLACES
-========================================= */
+========================================================= */
 
 .places{
     display:grid;
@@ -680,33 +661,33 @@ h2{
 
 .place{
     position:relative;
-    min-height:66px;
-    border-radius:17px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.045);
-    color:white;
+    min-height:65px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.11);
+    background:rgba(255,255,255,.04);
+    color:#fff;
     cursor:pointer;
     text-align:left;
-    padding:13px;
+    padding:12px;
     transition:.3s;
 }
 
 .place-icon{
-    font-size:21px;
     display:block;
+    font-size:20px;
     margin-bottom:5px;
 }
 
 .place-name{
-    font-size:11px;
+    font-size:10px;
 }
 
 .place.selected{
-    border-color:rgba(232,196,139,.7);
+    border-color:rgba(231,195,139,.7);
     background:
         linear-gradient(
             135deg,
-            rgba(232,196,139,.19),
+            rgba(231,195,139,.19),
             rgba(185,132,63,.1)
         );
     transform:translateY(-2px);
@@ -715,47 +696,27 @@ h2{
 .place.selected::after{
     content:"✓";
     position:absolute;
-    top:10px;
-    right:11px;
+    top:9px;
+    right:10px;
     color:var(--gold);
-    font-size:12px;
 }
 
-/* =========================================
-   CONTINUE
-========================================= */
-
-.continue{
-    width:100%;
-    margin-top:20px;
-    height:50px;
-}
-
-/* =========================================
+/* =========================================================
    FINAL
-========================================= */
+========================================================= */
 
 .final-icon{
-    width:72px;
-    height:72px;
-    margin:25px auto 17px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:30px;
-    background:rgba(232,196,139,.12);
-    border:1px solid rgba(232,196,139,.3);
+    margin:23px auto 15px;
 }
 
 .final-intro{
     color:#aaa59e;
-    font-size:12px;
-    margin-top:8px;
+    font-size:11px;
+    margin-top:7px;
 }
 
 .final-details{
-    margin-top:22px;
+    margin-top:21px;
     display:grid;
     gap:8px;
 }
@@ -764,33 +725,124 @@ h2{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:13px 15px;
-    border-radius:15px;
+    padding:12px 14px;
+    border-radius:14px;
     background:rgba(255,255,255,.045);
     border:1px solid rgba(255,255,255,.07);
 }
 
 .detail-label{
     color:#77736d;
-    font-size:8px;
+    font-size:7px;
     letter-spacing:2px;
 }
 
 .detail-value{
-    font-size:12px;
+    font-size:11px;
 }
 
 .final-message{
-    margin-top:20px;
+    margin-top:19px;
     color:#b8b3ac;
     font-family:"Cormorant Garamond",serif;
     font-size:19px;
-    line-height:1.35;
+    line-height:1.3;
 }
 
-/* =========================================
+/* =========================================================
+   FINAL ACTIONS
+========================================================= */
+
+.final-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:20px;
+}
+
+.final-actions .btn{
+    width:100%;
+    padding:13px 8px;
+}
+
+/* =========================================================
+   CARD PREVIEW
+========================================================= */
+
+#cardModal{
+    position:fixed;
+    inset:0;
+    z-index:5000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(18px);
+
+    opacity:0;
+    visibility:hidden;
+    transition:.35s;
+}
+
+#cardModal.open{
+    opacity:1;
+    visibility:visible;
+}
+
+.card-preview{
+    width:min(390px,90vw);
+    max-height:90vh;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+}
+
+.preview-image{
+    width:100%;
+    max-height:74vh;
+    object-fit:contain;
+
+    border-radius:8px;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.7);
+}
+
+.preview-actions{
+    display:flex;
+    gap:8px;
+    width:100%;
+}
+
+.preview-actions .btn{
+    flex:1;
+}
+
+.close-preview{
+    position:absolute;
+    top:18px;
+    right:18px;
+
+    width:38px;
+    height:38px;
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.08);
+    color:#fff;
+
+    cursor:pointer;
+}
+
+/* =========================================================
    LIGHT MODE
-========================================= */
+========================================================= */
 
 body.light-mode{
     color:#161616;
@@ -801,14 +853,10 @@ body.light-mode #background{
     background:
         radial-gradient(
             circle at 50% 15%,
-            rgba(232,196,139,.17),
+            rgba(231,195,139,.17),
             transparent 35%
         ),
         #f8f8f7;
-}
-
-body.light-mode .glow{
-    opacity:.09;
 }
 
 body.light-mode .card{
@@ -829,20 +877,21 @@ body.light-mode .letter-small{
     color:#666;
 }
 
+body.light-mode .control{
+    color:#222;
+    background:rgba(255,255,255,.8);
+    border-color:rgba(0,0,0,.08);
+}
+
 body.light-mode .picker-trigger{
     color:#171717;
     background:rgba(0,0,0,.025);
     border-color:rgba(0,0,0,.09);
 }
 
-body.light-mode .picker-trigger:hover{
-    background:rgba(0,0,0,.045);
-}
-
 body.light-mode .picker-menu{
     background:rgba(255,255,255,.98);
     border-color:rgba(0,0,0,.08);
-    box-shadow:0 25px 65px rgba(0,0,0,.15);
 }
 
 body.light-mode .calendar-head strong{
@@ -851,8 +900,6 @@ body.light-mode .calendar-head strong{
 
 body.light-mode .month-btn{
     color:#222;
-    background:rgba(0,0,0,.035);
-    border-color:rgba(0,0,0,.08);
 }
 
 body.light-mode .day,
@@ -871,7 +918,7 @@ body.light-mode .place.selected{
     background:
         linear-gradient(
             135deg,
-            rgba(232,196,139,.35),
+            rgba(231,195,139,.35),
             rgba(185,132,63,.16)
         );
 }
@@ -884,7 +931,6 @@ body.light-mode .btn.ghost{
 
 body.light-mode .detail{
     background:rgba(0,0,0,.025);
-    border-color:rgba(0,0,0,.06);
 }
 
 body.light-mode .detail-value{
@@ -895,29 +941,23 @@ body.light-mode .final-message{
     color:#555;
 }
 
-body.light-mode .control{
-    color:#222;
-    background:rgba(255,255,255,.8);
-    border-color:rgba(0,0,0,.08);
-}
-
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:500px){
 
     .scene{
-        width:calc(100% - 22px);
+        width:calc(100% - 18px);
     }
 
     .card{
-        padding:32px 21px;
+        padding:31px 20px;
         border-radius:25px;
     }
 
     h1{
-        font-size:60px;
+        font-size:59px;
     }
 
     h2{
@@ -925,23 +965,15 @@ body.light-mode .control{
     }
 
     .subtitle{
-        font-size:13px;
-    }
-
-    .open-icon{
-        width:70px;
-        height:70px;
-        font-size:30px;
-        margin:22px auto;
-    }
-
-    .actions{
-        gap:8px;
-    }
-
-    .btn{
-        padding:13px 19px;
         font-size:12px;
+    }
+
+    .open-icon,
+    .final-icon{
+        width:68px;
+        height:68px;
+        font-size:28px;
+        margin:21px auto;
     }
 
     .planner{
@@ -949,7 +981,7 @@ body.light-mode .control{
     }
 
     .picker{
-        margin-bottom:13px;
+        margin-bottom:12px;
     }
 
     .places{
@@ -957,59 +989,46 @@ body.light-mode .control{
     }
 
     .place{
-        min-height:59px;
+        min-height:58px;
         padding:10px;
     }
 
-    .place-icon{
-        font-size:18px;
-    }
-
-    .picker-menu{
-        padding:14px;
+    .final-actions{
+        grid-template-columns:1fr;
     }
 }
 
 @media(max-height:700px){
 
     .card{
-        padding:27px 25px;
+        padding:25px 22px;
     }
 
     h1{
-        font-size:57px;
-        margin:12px 0;
+        font-size:55px;
+        margin:10px 0;
     }
 
     .open-icon{
-        margin:18px auto;
-        width:65px;
-        height:65px;
+        margin:15px auto;
+        width:62px;
+        height:62px;
     }
 
     .planner{
-        margin-top:15px;
-    }
-
-    .planner .section-label{
-        margin-bottom:6px;
+        margin-top:14px;
     }
 
     .picker{
-        margin-bottom:9px;
+        margin-bottom:8px;
     }
 
     .picker-trigger{
-        min-height:51px;
+        min-height:49px;
     }
 
     .place{
-        min-height:53px;
-    }
-
-    .continue{
-        margin-top:13px;
-        height:45px;
+        min-height:51px;
     }
 }
 </style>
@@ -1017,20 +1036,44 @@ body.light-mode .control{
 
 <body>
 
+<!-- =========================================================
+     LOADER
+========================================================= -->
+
 <div id="loader">
-    <div class="loader-title">A Small invitation</div>
+    <div class="loader-title">A Small Invitation</div>
     <div class="loader-sub">JUST FOR THE TWO OF US</div>
 </div>
+
 
 <div id="background">
     <div class="glow one"></div>
     <div class="glow two"></div>
 </div>
 
+
+<!-- =========================================================
+     CONTROLS
+========================================================= -->
+
 <div class="top-controls">
-    <button class="control" id="themeBtn" aria-label="Toggle theme">☼</button>
-    <button class="control" id="musicBtn" aria-label="Toggle music">♪</button>
+
+    <button
+        class="control"
+        id="themeBtn"
+        aria-label="Toggle theme">
+        ☼
+    </button>
+
+    <button
+        class="control"
+        id="musicBtn"
+        aria-label="Toggle music">
+        ♪
+    </button>
+
 </div>
+
 
 <div class="progress">
     <span class="active"></span>
@@ -1039,18 +1082,29 @@ body.light-mode .control{
     <span></span>
 </div>
 
+
+<!-- =========================================================
+     APP
+========================================================= -->
+
 <div id="app">
 
-<!-- =====================================
+
+<!-- =========================================================
      SCENE 1
-===================================== -->
+========================================================= -->
 
 <section class="scene active" id="opening">
+
     <div class="card">
 
-        <div class="eyebrow">A Small invitation</div>
+        <div class="eyebrow">
+            A Small Invitation
+        </div>
 
-        <h1>Just us.</h1>
+        <h1>
+            Just us.
+        </h1>
 
         <p class="subtitle">
             Good food, good conversation,<br>
@@ -1065,31 +1119,42 @@ body.light-mode .control{
             Shall we make a plan?
         </p>
 
-        <button class="btn gold" id="openBtn">
+        <button
+            class="btn gold"
+            id="openBtn">
             Open Invitation
         </button>
 
     </div>
+
 </section>
 
 
-<!-- =====================================
+<!-- =========================================================
      SCENE 2
-===================================== -->
+========================================================= -->
 
 <section class="scene" id="invitation">
+
     <div class="card">
 
-        <div class="eyebrow">One little question</div>
+        <div class="eyebrow">
+            One Little Question
+        </div>
 
-        <h2>Want to make<br>some time for us?</h2>
+        <h2>
+            Want to make<br>
+            some time for us?
+        </h2>
 
         <div class="letter-copy">
 
             <div class="letter-main">
                 No big plans.<br>
                 No pressure.<br>
-                <span class="highlight">Just a good time together.</span>
+                <span class="highlight">
+                    Just a good time together.
+                </span>
             </div>
 
             <div class="letter-small">
@@ -1101,70 +1166,107 @@ body.light-mode .control{
 
         <div class="actions">
 
-            <button class="btn gold" id="yesBtn">
+            <button
+                class="btn gold"
+                id="yesBtn">
                 I'm in ✨
             </button>
 
-            <button class="btn ghost" id="thinkBtn">
+            <button
+                class="btn ghost"
+                id="thinkBtn">
                 Let me think 😏
             </button>
 
         </div>
 
     </div>
+
 </section>
 
 
-<!-- =====================================
+<!-- =========================================================
      SCENE 3
-===================================== -->
+========================================================= -->
 
 <section class="scene" id="planner">
+
     <div class="card">
 
-        <div class="eyebrow">Make it yours</div>
+        <div class="eyebrow">
+            Make It Yours
+        </div>
 
-        <h2>Pick the details</h2>
+        <h2>
+            Pick the details
+        </h2>
 
         <p class="subtitle">
             You choose the when.<br>
             I'll take care of the rest.
         </p>
 
+
         <div class="planner">
+
 
             <!-- DATE -->
 
             <div class="picker">
 
-                <span class="section-label">DATE</span>
+                <span class="section-label">
+                    DATE
+                </span>
 
-                <button class="picker-trigger" id="dateTrigger">
+                <button
+                    class="picker-trigger"
+                    id="dateTrigger">
 
-                    <span class="picker-icon">◷</span>
+                    <span class="picker-icon">
+                        ◷
+                    </span>
 
                     <span class="picker-value">
-                        <small>WHEN</small>
-                        <strong id="dateValue">Choose a date</strong>
+
+                        <small>
+                            WHEN
+                        </small>
+
+                        <strong id="dateValue">
+                            Choose a date
+                        </strong>
+
                     </span>
 
                     <span class="picker-status"></span>
 
                 </button>
 
-                <div class="picker-menu" id="dateMenu">
+
+                <div
+                    class="picker-menu"
+                    id="dateMenu">
 
                     <div class="calendar-head">
 
-                        <button class="month-btn" id="prevMonth">‹</button>
+                        <button
+                            class="month-btn"
+                            id="prevMonth">
+                            ‹
+                        </button>
 
                         <strong id="monthYear"></strong>
 
-                        <button class="month-btn" id="nextMonth">›</button>
+                        <button
+                            class="month-btn"
+                            id="nextMonth">
+                            ›
+                        </button>
 
                     </div>
 
                     <div class="weekdays">
+
                         <span>S</span>
                         <span>M</span>
                         <span>T</span>
@@ -1172,9 +1274,13 @@ body.light-mode .control{
                         <span>T</span>
                         <span>F</span>
                         <span>S</span>
+
                     </div>
 
-                    <div class="days" id="calendarDays"></div>
+                    <div
+                        class="days"
+                        id="calendarDays">
+                    </div>
 
                 </div>
 
@@ -1185,39 +1291,79 @@ body.light-mode .control{
 
             <div class="picker">
 
-                <span class="section-label">TIME</span>
+                <span class="section-label">
+                    TIME
+                </span>
 
-                <button class="picker-trigger" id="timeTrigger">
+                <button
+                    class="picker-trigger"
+                    id="timeTrigger">
 
-                    <span class="picker-icon">◴</span>
+                    <span class="picker-icon">
+                        ◴
+                    </span>
 
                     <span class="picker-value">
-                        <small>WHAT TIME</small>
-                        <strong id="timeValue">Choose a time</strong>
+
+                        <small>
+                            WHAT TIME
+                        </small>
+
+                        <strong id="timeValue">
+                            Choose a time
+                        </strong>
+
                     </span>
 
                     <span class="picker-status"></span>
 
                 </button>
 
-                <div class="picker-menu" id="timeMenu">
+
+                <div
+                    class="picker-menu"
+                    id="timeMenu">
 
                     <div class="time-grid">
 
                         <div>
-                            <div class="time-title">HOUR</div>
-                            <div class="time-list" id="hours"></div>
+
+                            <div class="time-title">
+                                HOUR
+                            </div>
+
+                            <div
+                                class="time-list"
+                                id="hours">
+                            </div>
+
                         </div>
 
-                        <div class="time-colon">:</div>
 
-                        <div>
-                            <div class="time-title">MIN</div>
-                            <div class="time-list" id="minutes"></div>
+                        <div class="time-colon">
+                            :
                         </div>
 
+
                         <div>
-                            <div class="time-title">PERIOD</div>
+
+                            <div class="time-title">
+                                MIN
+                            </div>
+
+                            <div
+                                class="time-list"
+                                id="minutes">
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="time-title">
+                                PERIOD
+                            </div>
 
                             <button
                                 class="period-option"
@@ -1240,39 +1386,72 @@ body.light-mode .control{
             </div>
 
 
-            <!-- PLACE -->
+            <!-- VIBE -->
 
             <div>
 
-                <span class="section-label">THE VIBE</span>
+                <span class="section-label">
+                    THE VIBE
+                </span>
 
                 <div class="places">
 
-                    <button class="place" data-place="☕ Coffee">
+                    <button
+                        class="place"
+                        data-place="☕ Coffee">
 
-                        <span class="place-icon">☕</span>
-                        <span class="place-name">Coffee</span>
+                        <span class="place-icon">
+                            ☕
+                        </span>
 
-                    </button>
-
-                    <button class="place" data-place="🍰 Dessert">
-
-                        <span class="place-icon">🍰</span>
-                        <span class="place-name">Dessert</span>
-
-                    </button>
-
-                    <button class="place" data-place="🍽️ Dinner">
-
-                        <span class="place-icon">🍽️</span>
-                        <span class="place-name">Dinner</span>
+                        <span class="place-name">
+                            Coffee
+                        </span>
 
                     </button>
 
-                    <button class="place" data-place="✨ Surprise">
 
-                        <span class="place-icon">✨</span>
-                        <span class="place-name">Surprise me</span>
+                    <button
+                        class="place"
+                        data-place="🍰 Dessert">
+
+                        <span class="place-icon">
+                            🍰
+                        </span>
+
+                        <span class="place-name">
+                            Dessert
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="place"
+                        data-place="🍽️ Dinner">
+
+                        <span class="place-icon">
+                            🍽️
+                        </span>
+
+                        <span class="place-name">
+                            Dinner
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="place"
+                        data-place="✨ Surprise">
+
+                        <span class="place-icon">
+                            ✨
+                        </span>
+
+                        <span class="place-name">
+                            Surprise me
+                        </span>
 
                     </button>
 
@@ -1280,78 +1459,191 @@ body.light-mode .control{
 
             </div>
 
-            <button class="btn gold continue" id="continueBtn">
+
+            <button
+                class="btn gold"
+                style="width:100%;margin-top:19px;height:50px"
+                id="continueBtn">
+
                 That sounds good →
+
             </button>
 
         </div>
 
     </div>
+
 </section>
 
 
-<!-- =====================================
+<!-- =========================================================
      SCENE 4
-===================================== -->
+========================================================= -->
 
 <section class="scene" id="final">
+
     <div class="card">
 
-        <div class="eyebrow">It's happening</div>
+        <div class="eyebrow">
+            It's Happening
+        </div>
 
         <div class="final-icon">
             ✨
         </div>
 
-        <h2>It's a Date.</h2>
+        <h2>
+            It's a Date.
+        </h2>
 
         <p class="final-intro">
             Everything looks perfect.
         </p>
 
+
         <div class="final-details">
 
             <div class="detail">
-                <span class="detail-label">DATE</span>
-                <span class="detail-value" id="finalDate"></span>
+
+                <span class="detail-label">
+                    DATE
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="finalDate">
+                </span>
+
             </div>
 
-            <div class="detail">
-                <span class="detail-label">TIME</span>
-                <span class="detail-value" id="finalTime"></span>
-            </div>
 
             <div class="detail">
-                <span class="detail-label">PLAN</span>
-                <span class="detail-value" id="finalPlace"></span>
+
+                <span class="detail-label">
+                    TIME
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="finalTime">
+                </span>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span class="detail-label">
+                    PLAN
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="finalPlace">
+                </span>
+
             </div>
 
         </div>
 
+
         <div class="final-message">
+
             One plan.<br>
             One good time.<br>
             Let's see where it goes. ❤️
+
         </div>
 
-        <button class="btn gold continue" id="whatsappBtn">
-            Send the plan 💌
-        </button>
+
+        <div class="final-actions">
+
+            <button
+                class="btn gold"
+                id="createCardBtn">
+
+                Create Invitation ✨
+
+            </button>
+
+            <button
+                class="btn ghost"
+                id="whatsappBtn">
+
+                WhatsApp 💌
+
+            </button>
+
+        </div>
 
     </div>
+
 </section>
 
 </div>
 
-<audio id="music" loop preload="auto">
-    <source src="./romantic.mp3" type="audio/mpeg">
+
+<!-- =========================================================
+     CARD MODAL
+========================================================= -->
+
+<div id="cardModal">
+
+    <button
+        class="close-preview"
+        id="closePreview">
+        ×
+    </button>
+
+    <div class="card-preview">
+
+        <img
+            id="previewImage"
+            class="preview-image"
+            alt="Invitation preview">
+
+        <div class="preview-actions">
+
+            <button
+                class="btn gold"
+                id="saveCardBtn">
+
+                Save Invitation
+
+            </button>
+
+            <button
+                class="btn ghost"
+                id="shareCardBtn">
+
+                Share ✨
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<audio
+    id="music"
+    loop
+    preload="auto">
+
+    <source
+        src="./romantic.mp3"
+        type="audio/mpeg">
+
 </audio>
+
 
 <script>
 
-/* =========================================
+/* =========================================================
    STATE
-========================================= */
+========================================================= */
 
 const scenes = [
     "opening",
@@ -1368,10 +1660,15 @@ let selectedPlace = "";
 
 let calendarDate = new Date();
 
+let plannerInitialized = false;
 
-/* =========================================
+let generatedCardBlob = null;
+let generatedCardURL = null;
+
+
+/* =========================================================
    SCENE ENGINE
-========================================= */
+========================================================= */
 
 function showScene(id){
 
@@ -1379,23 +1676,35 @@ function showScene(id){
         scene.classList.remove("active");
     });
 
-    document.getElementById(id).classList.add("active");
+    const target = document.getElementById(id);
+
+    if(target){
+        target.classList.add("active");
+    }
 
     const index = scenes.indexOf(id);
 
-    document.querySelectorAll(".progress span").forEach((dot,i)=>{
-        dot.classList.toggle("active",i === index);
-    });
+    document.querySelectorAll(".progress span")
+        .forEach((dot,i)=>{
+
+            dot.classList.toggle(
+                "active",
+                i === index
+            );
+
+        });
+
 }
 
 
-/* =========================================
+/* =========================================================
    LOADER
-========================================= */
+========================================================= */
 
 setTimeout(()=>{
 
-    const loader = document.getElementById("loader");
+    const loader =
+        document.getElementById("loader");
 
     loader.style.opacity = "0";
 
@@ -1403,673 +1712,12 @@ setTimeout(()=>{
         loader.remove();
     },1000);
 
-},1800);
+},1600);
 
 
-/* =========================================
-   OPENING
-========================================= */
-
-document.getElementById("openBtn").onclick = async ()=>{
-
-    showScene("invitation");
-
-    try {
-
-        await music.play();
-
-        playing = true;
-        musicBtn.textContent = "♫";
-
-    } catch(error) {
-
-        console.log("Music could not start:", error);
-
-    }
-
-};
-
-
-/* =========================================
-   FUNNY THINK BUTTON
-========================================= */
-
-const thinkBtn = document.getElementById("thinkBtn");
-
-const thinkMessages = [
-
-    "Let me think 😏",
-    "Still thinking? 😂",
-    "Take your time 👀",
-    "The suspense! 😂",
-    "Okay… I'm waiting ☕",
-    "You really like thinking 🤭"
-
-];
-
-let thinkIndex = 0;
-
-thinkBtn.onclick = ()=>{
-
-    thinkIndex++;
-
-    if(thinkIndex >= thinkMessages.length){
-        thinkIndex = 0;
-    }
-
-    thinkBtn.textContent = thinkMessages[thinkIndex];
-
-    thinkBtn.animate(
-        [
-            {transform:"scale(1) rotate(0deg)"},
-            {transform:"scale(.96) rotate(-2deg)"},
-            {transform:"scale(1.03) rotate(2deg)"},
-            {transform:"scale(1) rotate(0deg)"}
-        ],
-        {
-            duration:420,
-            easing:"ease-out"
-        }
-    );
-
-};
-
-
-/* =========================================
-   YES
-========================================= */
-
-document.getElementById("yesBtn").onclick = ()=>{
-
-    celebrate();
-
-    setTimeout(()=>{
-        showScene("planner");
-        initPlanner();
-    },600);
-
-};
-
-
-/* =========================================
-   CELEBRATION
-========================================= */
-
-function celebrate(){
-
-    const symbols = ["✦","✧","·","✨"];
-
-    for(let i=0;i<28;i++){
-
-        const particle = document.createElement("div");
-
-        particle.textContent =
-            symbols[Math.floor(Math.random()*symbols.length)];
-
-        particle.style.position = "fixed";
-        particle.style.left = "50%";
-        particle.style.top = "50%";
-        particle.style.zIndex = "300";
-        particle.style.pointerEvents = "none";
-        particle.style.color = "#e8c48b";
-
-        document.body.appendChild(particle);
-
-        const x = (Math.random()-.5)*500;
-        const y = (Math.random()-.5)*500;
-
-        particle.animate(
-            [
-                {
-                    transform:"scale(0)",
-                    opacity:1
-                },
-                {
-                    transform:
-                        `translate(${x}px,${y}px) scale(1)`,
-                    opacity:0
-                }
-            ],
-            {
-                duration:1000 + Math.random()*500,
-                easing:"ease-out"
-            }
-        );
-
-        setTimeout(()=>{
-            particle.remove();
-        },1600);
-    }
-}
-
-
-/* =========================================
-   PLANNER
-========================================= */
-
-let plannerInitialized = false;
-
-function initPlanner(){
-
-    if(plannerInitialized) return;
-
-    plannerInitialized = true;
-
-    initDatePicker();
-    initTimePicker();
-    initPlaces();
-
-}
-
-
-/* =========================================
-   CLOSE MENUS
-========================================= */
-
-function closeMenus(){
-
-    document.querySelectorAll(".picker-menu").forEach(menu=>{
-        menu.classList.remove("open");
-    });
-
-}
-
-
-/* =========================================
-   DATE PICKER
-========================================= */
-
-function initDatePicker(){
-
-    const trigger =
-        document.getElementById("dateTrigger");
-
-    const menu =
-        document.getElementById("dateMenu");
-
-    const dateValue =
-        document.getElementById("dateValue");
-
-    const calendarDays =
-        document.getElementById("calendarDays");
-
-    const monthYear =
-        document.getElementById("monthYear");
-
-
-    function renderCalendar(){
-
-        const year =
-            calendarDate.getFullYear();
-
-        const month =
-            calendarDate.getMonth();
-
-        monthYear.textContent =
-            calendarDate.toLocaleDateString(
-                "en-US",
-                {
-                    month:"long",
-                    year:"numeric"
-                }
-            );
-
-        calendarDays.innerHTML = "";
-
-        const firstDay =
-            new Date(year,month,1).getDay();
-
-        const daysInMonth =
-            new Date(year,month+1,0).getDate();
-
-        for(let i=0;i<firstDay;i++){
-
-            calendarDays.appendChild(
-                document.createElement("div")
-            );
-
-        }
-
-        for(let day=1;day<=daysInMonth;day++){
-
-            const button =
-                document.createElement("button");
-
-            button.className = "day";
-            button.type = "button";
-            button.textContent = day;
-
-            const date =
-                new Date(year,month,day);
-
-            const today =
-                new Date();
-
-            today.setHours(0,0,0,0);
-
-            if(date < today){
-                button.classList.add("disabled");
-                button.disabled = true;
-            }
-
-            if(
-                selectedDate &&
-                date.toDateString() ===
-                selectedDate.toDateString()
-            ){
-                button.classList.add("selected");
-            }
-
-            if(date >= today){
-
-                button.onclick = ()=>{
-
-                selectedDate = new Date(date);
-
-                dateValue.textContent =
-                    selectedDate.toLocaleDateString(
-                        "en-IN",
-                        {
-                            weekday:"short",
-                            day:"numeric",
-                            month:"short"
-                        }
-                    );
-
-                trigger.classList.add("selected");
-
-                renderCalendar();
-
-                closeMenus();
-
-            };
-
-        }
-
-            calendarDays.appendChild(button);
-
-        }
-
-    }
-
-
-    trigger.onclick = (event)=>{
-
-        event.stopPropagation();
-
-        const alreadyOpen =
-            menu.classList.contains("open");
-
-        closeMenus();
-
-        if(!alreadyOpen){
-            menu.classList.add("open");
-        }
-
-    };
-
-
-    document.getElementById("prevMonth").onclick = (event)=>{
-
-        event.stopPropagation();
-
-        const today = new Date();
-        today.setHours(0,0,0,0);
-
-        const currentMonth = new Date(
-            today.getFullYear(),
-            today.getMonth(),
-            1
-        );
-
-        const previousMonth = new Date(
-            calendarDate.getFullYear(),
-            calendarDate.getMonth() - 1,
-            1
-        );
-
-        if(previousMonth < currentMonth){
-            return;
-        }
-
-        calendarDate.setMonth(
-            calendarDate.getMonth()-1
-        );
-
-        renderCalendar();
-
-    };
-
-
-    document.getElementById("nextMonth").onclick = (event)=>{
-
-        event.stopPropagation();
-
-        calendarDate.setMonth(
-            calendarDate.getMonth()+1
-        );
-
-        renderCalendar();
-
-    };
-
-
-    menu.onclick = event=>{
-        event.stopPropagation();
-    };
-
-
-    renderCalendar();
-
-}
-
-
-/* =========================================
-   TIME PICKER
-========================================= */
-
-function initTimePicker(){
-
-    const trigger =
-        document.getElementById("timeTrigger");
-
-    const menu =
-        document.getElementById("timeMenu");
-
-    const hours =
-        document.getElementById("hours");
-
-    const minutes =
-        document.getElementById("minutes");
-
-    const timeValue =
-        document.getElementById("timeValue");
-
-
-    for(let hour=1;hour<=12;hour++){
-
-        const button =
-            document.createElement("button");
-
-        button.type = "button";
-        button.className = "time-option";
-        button.textContent =
-            String(hour).padStart(2,"0");
-
-        button.onclick = ()=>{
-
-            selectedHour =
-                String(hour).padStart(2,"0");
-
-            document
-                .querySelectorAll("#hours .time-option")
-                .forEach(item=>{
-                    item.classList.remove("selected");
-                });
-
-            button.classList.add("selected");
-
-            updateTime();
-
-        };
-
-        hours.appendChild(button);
-
-    }
-
-
-    for(let minute=0;minute<60;minute+=5){
-
-        const button =
-            document.createElement("button");
-
-        button.type = "button";
-        button.className = "time-option";
-        button.textContent =
-            String(minute).padStart(2,"0");
-
-        button.onclick = ()=>{
-
-            selectedMinute =
-                String(minute).padStart(2,"0");
-
-            document
-                .querySelectorAll("#minutes .time-option")
-                .forEach(item=>{
-                    item.classList.remove("selected");
-                });
-
-            button.classList.add("selected");
-
-            updateTime();
-
-        };
-
-        minutes.appendChild(button);
-
-    }
-
-
-    document
-        .querySelectorAll(".period-option")
-        .forEach(button=>{
-
-            button.onclick = ()=>{
-
-                selectedPeriod =
-                    button.dataset.period;
-
-                document
-                    .querySelectorAll(".period-option")
-                    .forEach(item=>{
-                        item.classList.remove("selected");
-                    });
-
-                button.classList.add("selected");
-
-                updateTime();
-
-            };
-
-        });
-
-
-    function updateTime(){
-
-        if(
-            !selectedHour ||
-            !selectedMinute ||
-            !selectedPeriod
-        ){
-            return;
-        }
-
-        const time =
-            `${selectedHour}:${selectedMinute} ${selectedPeriod}`;
-
-        timeValue.textContent = time;
-
-        trigger.classList.add("selected");
-
-        /*
-         * Once AM/PM has been selected,
-         * the picker closes automatically.
-         */
-        setTimeout(()=>{
-            closeMenus();
-        },180);
-
-    }
-
-
-    trigger.onclick = (event)=>{
-
-        event.stopPropagation();
-
-        const alreadyOpen =
-            menu.classList.contains("open");
-
-        closeMenus();
-
-        if(!alreadyOpen){
-            menu.classList.add("open");
-        }
-
-    };
-
-
-    menu.onclick = event=>{
-        event.stopPropagation();
-    };
-
-}
-
-
-/* =========================================
-   PLACES
-========================================= */
-
-function initPlaces(){
-
-    document.querySelectorAll(".place").forEach(button=>{
-
-        button.onclick = ()=>{
-
-            document.querySelectorAll(".place").forEach(item=>{
-                item.classList.remove("selected");
-            });
-
-            button.classList.add("selected");
-
-            selectedPlace =
-                button.dataset.place;
-
-        };
-
-    });
-
-}
-
-
-/* =========================================
-   OUTSIDE CLICK
-========================================= */
-
-document.addEventListener("click",()=>{
-
-    closeMenus();
-
-});
-
-
-/* =========================================
-   CONTINUE
-========================================= */
-
-document.getElementById("continueBtn").onclick = ()=>{
-
-    if(
-        !selectedDate ||
-        !selectedHour ||
-        !selectedMinute ||
-        !selectedPeriod ||
-        !selectedPlace
-    ){
-
-        alert(
-            "Just one more thing — choose your date, time and plan. ❤️"
-        );
-
-        return;
-    }
-
-    document.getElementById("finalDate").textContent =
-        selectedDate.toLocaleDateString(
-            "en-IN",
-            {
-                weekday:"long",
-                day:"numeric",
-                month:"long"
-            }
-        );
-
-    document.getElementById("finalTime").textContent =
-        `${selectedHour}:${selectedMinute} ${selectedPeriod}`;
-
-    document.getElementById("finalPlace").textContent =
-        selectedPlace;
-
-    celebrate();
-
-    setTimeout(()=>{
-        showScene("final");
-    },500);
-
-};
-
-
-/* =========================================
-   WHATSAPP
-========================================= */
-
-document.getElementById("whatsappBtn").onclick = ()=>{
-
-    const date =
-        document.getElementById("finalDate").textContent;
-
-    const time =
-        document.getElementById("finalTime").textContent;
-
-    const place =
-        document.getElementById("finalPlace").textContent;
-
-    const message =
-`Hey 😊
-
-Looks like we have a plan!
-
-📅 ${date}
-🕐 ${time}
-✨ ${place}
-
-Looking forward to it ❤️`;
-
-    window.open(
-        "https://wa.me/?text=" +
-        encodeURIComponent(message),
-        "_blank"
-    );
-
-};
-
-
-/* =========================================
-   THEME
-========================================= */
-
-const themeBtn =
-    document.getElementById("themeBtn");
-
-let lightMode = false;
-
-themeBtn.onclick = ()=>{
-
-    lightMode = !lightMode;
-
-    document.body.classList.toggle(
-        "light-mode",
-        lightMode
-    );
-
-    themeBtn.textContent =
-        lightMode ? "☾" : "☼";
-
-};
-
-
-/* =========================================
+/* =========================================================
    MUSIC
-========================================= */
+========================================================= */
 
 const music =
     document.getElementById("music");
@@ -2105,6 +1753,35 @@ musicBtn.onclick = async ()=>{
 
     }catch(error){
 
+        console.log(
+            "Music could not start:",
+            error
+        );
+
+    }
+
+};
+
+
+/* =========================================================
+   OPEN
+========================================================= */
+
+document.getElementById("openBtn").onclick =
+async ()=>{
+
+    showScene("invitation");
+
+    try{
+
+        await music.play();
+
+        playing = true;
+
+        musicBtn.textContent = "♫";
+
+    }catch(error){
+
         console.log(error);
 
     }
@@ -2112,35 +1789,2779 @@ musicBtn.onclick = async ()=>{
 };
 
 
-/* =========================================
+/* =========================================================
+   THINK BUTTON
+========================================================= */
+
+const thinkBtn =
+    document.getElementById("thinkBtn");
+
+const thinkMessages = [
+
+    "Let me think 😏",
+    "Still thinking? 😂",
+    "Take your time 👀",
+    "The suspense! 😂",
+    "Okay… I'm waiting ☕",
+    "You really like thinking 🤭"
+
+];
+
+let thinkIndex = 0;
+
+thinkBtn.onclick = ()=>{
+
+    thinkIndex++;
+
+    if(
+        thinkIndex >=
+        thinkMessages.length
+    ){
+        thinkIndex = 0;
+    }
+
+    thinkBtn.textContent =
+        thinkMessages[thinkIndex];
+
+    thinkBtn.animate(
+        [
+            {
+                transform:"scale(1) rotate(0deg)"
+            },
+            {
+                transform:"scale(.96) rotate(-2deg)"
+            },
+            {
+                transform:"scale(1.03) rotate(2deg)"
+            },
+            {
+                transform:"scale(1) rotate(0deg)"
+            }
+        ],
+        {
+            duration:420,
+            easing:"ease-out"
+        }
+    );
+
+};
+
+
+/* =========================================================
+   YES
+========================================================= */
+
+document.getElementById("yesBtn").onclick =
+()=>{
+
+    celebrate();
+
+    setTimeout(()=>{
+
+        showScene("planner");
+
+        initPlanner();
+
+    },600);
+
+};
+
+
+/* =========================================================
+   CELEBRATION
+========================================================= */
+
+function celebrate(){
+
+    const symbols = [
+        "✦",
+        "✧",
+        "·",
+        "✨"
+    ];
+
+    for(let i=0;i<28;i++){
+
+        const particle =
+            document.createElement("div");
+
+        particle.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+        particle.style.position =
+            "fixed";
+
+        particle.style.left = "50%";
+        particle.style.top = "50%";
+        particle.style.zIndex = "300";
+        particle.style.pointerEvents =
+            "none";
+
+        particle.style.color =
+            "#e8c48b";
+
+        document.body.appendChild(
+            particle
+        );
+
+        const x =
+            (Math.random()-.5)*500;
+
+        const y =
+            (Math.random()-.5)*500;
+
+        particle.animate(
+            [
+                {
+                    transform:"scale(0)",
+                    opacity:1
+                },
+                {
+                    transform:
+                        `translate(${x}px,${y}px) scale(1)`,
+                    opacity:0
+                }
+            ],
+            {
+                duration:
+                    1000 +
+                    Math.random()*500,
+
+                easing:"ease-out"
+            }
+        );
+
+        setTimeout(()=>{
+            particle.remove();
+        },1600);
+
+    }
+
+}
+
+
+/* =========================================================
+   PLANNER
+========================================================= */
+
+function initPlanner(){
+
+    if(plannerInitialized){
+        return;
+    }
+
+    plannerInitialized = true;
+
+    initDatePicker();
+    initTimePicker();
+    initPlaces();
+
+}
+
+
+/* =========================================================
+   CLOSE MENUS
+========================================================= */
+
+function closeMenus(){
+
+    document
+        .querySelectorAll(".picker-menu")
+        .forEach(menu=>{
+
+            menu.classList.remove("open");
+
+        });
+
+}
+
+
+/* =========================================================
+   DATE PICKER
+========================================================= */
+
+function initDatePicker(){
+
+    const trigger =
+        document.getElementById(
+            "dateTrigger"
+        );
+
+    const menu =
+        document.getElementById(
+            "dateMenu"
+        );
+
+    const dateValue =
+        document.getElementById(
+            "dateValue"
+        );
+
+    const calendarDays =
+        document.getElementById(
+            "calendarDays"
+        );
+
+    const monthYear =
+        document.getElementById(
+            "monthYear"
+        );
+
+
+    function renderCalendar(){
+
+        const year =
+            calendarDate.getFullYear();
+
+        const month =
+            calendarDate.getMonth();
+
+        monthYear.textContent =
+            calendarDate.toLocaleDateString(
+                "en-US",
+                {
+                    month:"long",
+                    year:"numeric"
+                }
+            );
+
+        calendarDays.innerHTML = "";
+
+        const firstDay =
+            new Date(
+                year,
+                month,
+                1
+            ).getDay();
+
+        const daysInMonth =
+            new Date(
+                year,
+                month + 1,
+                0
+            ).getDate();
+
+        for(
+            let i=0;
+            i<firstDay;
+            i++
+        ){
+
+            calendarDays.appendChild(
+                document.createElement("div")
+            );
+
+        }
+
+
+        for(
+            let day=1;
+            day<=daysInMonth;
+            day++
+        ){
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.type = "button";
+
+            button.className =
+                "day";
+
+            button.textContent = day;
+
+
+            const date =
+                new Date(
+                    year,
+                    month,
+                    day
+                );
+
+            const today =
+                new Date();
+
+            today.setHours(
+                0,0,0,0
+            );
+
+
+            if(date < today){
+
+                button.classList.add(
+                    "disabled"
+                );
+
+                button.disabled = true;
+
+            }
+
+
+            if(
+                selectedDate &&
+                date.toDateString() ===
+                selectedDate.toDateString()
+            ){
+
+                button.classList.add(
+                    "selected"
+                );
+
+            }
+
+
+            if(date >= today){
+
+                button.onclick = ()=>{
+
+                    selectedDate =
+                        new Date(date);
+
+                    dateValue.textContent =
+                        selectedDate
+                            .toLocaleDateString(
+                                "en-IN",
+                                {
+                                    weekday:"short",
+                                    day:"numeric",
+                                    month:"short"
+                                }
+                            );
+
+                    trigger.classList.add(
+                        "selected"
+                    );
+
+                    renderCalendar();
+
+                    closeMenus();
+
+                };
+
+            }
+
+
+            calendarDays.appendChild(
+                button
+            );
+
+        }
+
+    }
+
+
+    trigger.onclick = event=>{
+
+        event.stopPropagation();
+
+        const alreadyOpen =
+            menu.classList.contains(
+                "open"
+            );
+
+        closeMenus();
+
+        if(!alreadyOpen){
+
+            menu.classList.add(
+                "open"
+            );
+
+        }
+
+    };
+
+
+    document.getElementById(
+        "prevMonth"
+    ).onclick = event=>{
+
+        event.stopPropagation();
+
+        const today =
+            new Date();
+
+        today.setHours(
+            0,0,0,0
+        );
+
+        const currentMonth =
+            new Date(
+                today.getFullYear(),
+                today.getMonth(),
+                1
+            );
+
+        const previousMonth =
+            new Date(
+                calendarDate.getFullYear(),
+                calendarDate.getMonth()-1,
+                1
+            );
+
+        if(
+            previousMonth <
+            currentMonth
+        ){
+
+            return;
+
+        }
+
+        calendarDate.setMonth(
+            calendarDate.getMonth()-1
+        );
+
+        renderCalendar();
+
+    };
+
+
+    document.getElementById(
+        "nextMonth"
+    ).onclick = event=>{
+
+        event.stopPropagation();
+
+        calendarDate.setMonth(
+            calendarDate.getMonth()+1
+        );
+
+        renderCalendar();
+
+    };
+
+
+    menu.onclick = event=>{
+        event.stopPropagation();
+    };
+
+
+    renderCalendar();
+
+}
+
+
+/* =========================================================
+   TIME PICKER
+========================================================= */
+
+function initTimePicker(){
+
+    const trigger =
+        document.getElementById(
+            "timeTrigger"
+        );
+
+    const menu =
+        document.getElementById(
+            "timeMenu"
+        );
+
+    const hours =
+        document.getElementById(
+            "hours"
+        );
+
+    const minutes =
+        document.getElementById(
+            "minutes"
+        );
+
+    const timeValue =
+        document.getElementById(
+            "timeValue"
+        );
+
+
+    for(
+        let hour=1;
+        hour<=12;
+        hour++
+    ){
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+        button.type = "button";
+
+        button.className =
+            "time-option";
+
+        button.textContent =
+            String(hour).padStart(
+                2,
+                "0"
+            );
+
+
+        button.onclick = ()=>{
+
+            selectedHour =
+                String(hour).padStart(
+                    2,
+                    "0"
+                );
+
+            document
+                .querySelectorAll(
+                    "#hours .time-option"
+                )
+                .forEach(item=>{
+                    item.classList.remove(
+                        "selected"
+                    );
+                });
+
+            button.classList.add(
+                "selected"
+            );
+
+            updateTime();
+
+        };
+
+
+        hours.appendChild(
+            button
+        );
+
+    }
+
+
+    for(
+        let minute=0;
+        minute<60;
+        minute+=5
+    ){
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+        button.type = "button";
+
+        button.className =
+            "time-option";
+
+        button.textContent =
+            String(minute).padStart(
+                2,
+                "0"
+            );
+
+
+        button.onclick = ()=>{
+
+            selectedMinute =
+                String(minute).padStart(
+                    2,
+                    "0"
+                );
+
+            document
+                .querySelectorAll(
+                    "#minutes .time-option"
+                )
+                .forEach(item=>{
+                    item.classList.remove(
+                        "selected"
+                    );
+                });
+
+            button.classList.add(
+                "selected"
+            );
+
+            updateTime();
+
+        };
+
+
+        minutes.appendChild(
+            button
+        );
+
+    }
+
+
+    document
+        .querySelectorAll(
+            ".period-option"
+        )
+        .forEach(button=>{
+
+            button.onclick = ()=>{
+
+                selectedPeriod =
+                    button.dataset.period;
+
+                document
+                    .querySelectorAll(
+                        ".period-option"
+                    )
+                    .forEach(item=>{
+                        item.classList.remove(
+                            "selected"
+                        );
+                    });
+
+                button.classList.add(
+                    "selected"
+                );
+
+                updateTime();
+
+            };
+
+        });
+
+
+    function updateTime(){
+
+        if(
+            !selectedHour ||
+            !selectedMinute ||
+            !selectedPeriod
+        ){
+
+            return;
+
+        }
+
+        timeValue.textContent =
+            `${selectedHour}:${selectedMinute} ${selectedPeriod}`;
+
+        trigger.classList.add(
+            "selected"
+        );
+
+        setTimeout(
+            closeMenus,
+            180
+        );
+
+    }
+
+
+    trigger.onclick = event=>{
+
+        event.stopPropagation();
+
+        const alreadyOpen =
+            menu.classList.contains(
+                "open"
+            );
+
+        closeMenus();
+
+        if(!alreadyOpen){
+
+            menu.classList.add(
+                "open"
+            );
+
+        }
+
+    };
+
+
+    menu.onclick = event=>{
+        event.stopPropagation();
+    };
+
+}
+
+
+/* =========================================================
+   PLACES
+========================================================= */
+
+function initPlaces(){
+
+    document
+        .querySelectorAll(".place")
+        .forEach(button=>{
+
+            button.onclick = ()=>{
+
+                document
+                    .querySelectorAll(".place")
+                    .forEach(item=>{
+                        item.classList.remove(
+                            "selected"
+                        );
+                    });
+
+                button.classList.add(
+                    "selected"
+                );
+
+                selectedPlace =
+                    button.dataset.place;
+
+            };
+
+        });
+
+}
+
+
+/* =========================================================
+   OUTSIDE CLICK
+========================================================= */
+
+document.addEventListener(
+    "click",
+    closeMenus
+);
+
+
+/* =========================================================
+   CONTINUE
+========================================================= */
+
+document.getElementById(
+    "continueBtn"
+).onclick = ()=>{
+
+    if(
+        !selectedDate ||
+        !selectedHour ||
+        !selectedMinute ||
+        !selectedPeriod ||
+        !selectedPlace
+    ){
+
+        alert(
+            "Just one more thing — choose your date, time and plan. ❤️"
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "finalDate"
+    ).textContent =
+        selectedDate.toLocaleDateString(
+            "en-IN",
+            {
+                weekday:"long",
+                day:"numeric",
+                month:"long"
+            }
+        );
+
+
+    document.getElementById(
+        "finalTime"
+    ).textContent =
+        `${selectedHour}:${selectedMinute} ${selectedPeriod}`;
+
+
+    document.getElementById(
+        "finalPlace"
+    ).textContent =
+        selectedPlace;
+
+
+    celebrate();
+
+
+    setTimeout(()=>{
+
+        showScene("final");
+
+    },500);
+
+};
+
+
+/* =========================================================
+   PREMIUM CANVA-STYLE CARD
+========================================================= */
+
+/*
+    IMPORTANT FIX:
+
+    We create a normal HTMLCanvasElement with
+    explicit dimensions BEFORE doing any drawing.
+
+    No createPattern() is used.
+
+    This completely avoids:
+
+    InvalidStateError:
+    Failed to execute 'createPattern'...
+*/
+
+function createInvitationCanvas() {
+
+    const width = 1080;
+    const height = 1350;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+
+    const ctx = canvas.getContext("2d");
+
+    if (!ctx) {
+        throw new Error("Canvas not supported");
+    }
+
+    /* =====================================================
+       PALETTE — BRIGHT CREAM / BURGUNDY / GOLD
+    ===================================================== */
+
+    const CREAM       = "#F1E1CC";
+    const CREAM_LIGHT = "#FBF3E6";
+    const CREAM_DEEP  = "#E7D1B3";
+
+    const BURGUNDY    = "#671E2B";
+    const BURGUNDY_D  = "#4A101C";
+
+    const GOLD        = "#A87932";
+    const GOLD_LIGHT  = "#C9A65F";
+
+    const INK         = "#34272A";
+    const MUTED       = "#705D5D";
+
+
+    /* =====================================================
+       HELPERS
+    ===================================================== */
+
+    function line(x1, y1, x2, y2, color, width = 1) {
+
+        ctx.beginPath();
+
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+
+        ctx.stroke();
+    }
+
+
+    function spacedText(text, x, y, spacing) {
+
+        const chars = [...text];
+
+        let total = 0;
+
+        chars.forEach(char => {
+            total += ctx.measureText(char).width;
+        });
+
+        total += spacing * Math.max(0, chars.length - 1);
+
+        let current = x - total / 2;
+
+        chars.forEach(char => {
+
+            ctx.fillText(char, current, y);
+
+            current +=
+                ctx.measureText(char).width + spacing;
+        });
+    }
+
+
+    /* =====================================================
+       DIAMOND
+    ===================================================== */
+
+    function diamond(x, y, size = 1) {
+
+        ctx.save();
+
+        ctx.translate(x, y);
+        ctx.scale(size, size);
+
+        ctx.strokeStyle =
+            "rgba(168,121,50,.9)";
+
+        ctx.lineWidth = 1.1;
+
+        ctx.beginPath();
+
+        ctx.moveTo(0, -7);
+        ctx.lineTo(7, 0);
+        ctx.lineTo(0, 7);
+        ctx.lineTo(-7, 0);
+
+        ctx.closePath();
+
+        ctx.stroke();
+
+        ctx.restore();
+    }
+
+
+    /* =====================================================
+       LOTUS
+    ===================================================== */
+
+    function lotus(x, y, scale = 1) {
+
+        ctx.save();
+
+        ctx.translate(x, y);
+        ctx.scale(scale, scale);
+
+        ctx.strokeStyle =
+            "rgba(103,30,43,.82)";
+
+        ctx.lineWidth = 1.5;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+
+
+        // Center petal
+
+        ctx.beginPath();
+
+        ctx.moveTo(0, 12);
+
+        ctx.bezierCurveTo(
+            -15, 2,
+            -15, -13,
+            0, -28
+        );
+
+        ctx.bezierCurveTo(
+            15, -13,
+            15, 2,
+            0, 12
+        );
+
+        ctx.stroke();
+
+
+        // Left inner petal
+
+        ctx.beginPath();
+
+        ctx.moveTo(-3, 12);
+
+        ctx.bezierCurveTo(
+            -25, 9,
+            -34, -3,
+            -31, -19
+        );
+
+        ctx.bezierCurveTo(
+            -17, -16,
+            -7, -3,
+            -3, 12
+        );
+
+        ctx.stroke();
+
+
+        // Right inner petal
+
+        ctx.beginPath();
+
+        ctx.moveTo(3, 12);
+
+        ctx.bezierCurveTo(
+            25, 9,
+            34, -3,
+            31, -19
+        );
+
+        ctx.bezierCurveTo(
+            17, -16,
+            7, -3,
+            3, 12
+        );
+
+        ctx.stroke();
+
+
+        // Outer left petal
+
+        ctx.beginPath();
+
+        ctx.moveTo(-9, 10);
+
+        ctx.bezierCurveTo(
+            -36, 8,
+            -46, -3,
+            -48, -15
+        );
+
+        ctx.bezierCurveTo(
+            -32, -15,
+            -18, -7,
+            -9, 10
+        );
+
+        ctx.stroke();
+
+
+        // Outer right petal
+
+        ctx.beginPath();
+
+        ctx.moveTo(9, 10);
+
+        ctx.bezierCurveTo(
+            36, 8,
+            46, -3,
+            48, -15
+        );
+
+        ctx.bezierCurveTo(
+            32, -15,
+            18, -7,
+            9, 10
+        );
+
+        ctx.stroke();
+
+
+        // Lotus base
+
+        ctx.beginPath();
+
+        ctx.moveTo(-32, 16);
+
+        ctx.quadraticCurveTo(
+            0,
+            27,
+            32,
+            16
+        );
+
+        ctx.stroke();
+
+
+        ctx.restore();
+    }
+
+
+    /* =====================================================
+       SMALL LOTUS MOTIF FOR BORDER
+    ===================================================== */
+
+    function miniLotus(x, y, scale = 1, rotation = 0) {
+
+        ctx.save();
+
+        ctx.translate(x, y);
+        ctx.rotate(rotation);
+        ctx.scale(scale, scale);
+
+        ctx.strokeStyle =
+            "rgba(103,30,43,.72)";
+
+        ctx.lineWidth = 1;
+
+        // center
+
+        ctx.beginPath();
+
+        ctx.moveTo(0, 6);
+
+        ctx.bezierCurveTo(
+            -6, 1,
+            -6, -5,
+            0, -10
+        );
+
+        ctx.bezierCurveTo(
+            6, -5,
+            6, 1,
+            0, 6
+        );
+
+        ctx.stroke();
+
+
+        // left
+
+        ctx.beginPath();
+
+        ctx.moveTo(-2, 6);
+
+        ctx.bezierCurveTo(
+            -12, 4,
+            -17, -2,
+            -16, -9
+        );
+
+        ctx.bezierCurveTo(
+            -9, -8,
+            -4, -2,
+            -2, 6
+        );
+
+        ctx.stroke();
+
+
+        // right
+
+        ctx.beginPath();
+
+        ctx.moveTo(2, 6);
+
+        ctx.bezierCurveTo(
+            12, 4,
+            17, -2,
+            16, -9
+        );
+
+        ctx.bezierCurveTo(
+            9, -8,
+            4, -2,
+            2, 6
+        );
+
+        ctx.stroke();
+
+        ctx.restore();
+    }
+
+
+    /* =====================================================
+       INDIAN FLORAL CORNER
+    ===================================================== */
+
+    function floralCorner(x, y, flipX, flipY) {
+
+        ctx.save();
+
+        ctx.translate(x, y);
+
+        ctx.scale(
+            flipX ? -1 : 1,
+            flipY ? -1 : 1
+        );
+
+        ctx.strokeStyle =
+            "rgba(103,30,43,.48)";
+
+        ctx.lineWidth = 1.35;
+        ctx.lineCap = "round";
+
+
+        // Main vine
+
+        ctx.beginPath();
+
+        ctx.moveTo(0, 0);
+
+        ctx.bezierCurveTo(
+            22, 12,
+            45, 44,
+            94, 88
+        );
+
+        ctx.stroke();
+
+
+        // Second curve
+
+        ctx.beginPath();
+
+        ctx.moveTo(8, 2);
+
+        ctx.bezierCurveTo(
+            34, 20,
+            54, 56,
+            66, 98
+        );
+
+        ctx.stroke();
+
+
+        function leaf(px, py, angle, size) {
+
+            ctx.save();
+
+            ctx.translate(px, py);
+            ctx.rotate(angle);
+
+            ctx.beginPath();
+
+            ctx.moveTo(0, 0);
+
+            ctx.bezierCurveTo(
+                size * .25,
+                -size * .65,
+                size,
+                -size * .48,
+                size,
+                0
+            );
+
+            ctx.bezierCurveTo(
+                size * .55,
+                size * .35,
+                size * .18,
+                size * .25,
+                0,
+                0
+            );
+
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+
+        leaf(23, 20, -.7, 22);
+        leaf(39, 37, .45, 24);
+        leaf(54, 53, -.7, 24);
+        leaf(70, 69, .45, 22);
+
+
+        // Small gold dots
+
+        ctx.fillStyle =
+            "rgba(168,121,50,.75)";
+
+        [
+            [17, 12],
+            [34, 29],
+            [49, 45],
+            [65, 62]
+        ].forEach(([px, py]) => {
+
+            ctx.beginPath();
+
+            ctx.arc(
+                px,
+                py,
+                1.8,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fill();
+        });
+
+        ctx.restore();
+    }
+
+
+    /* =====================================================
+       INDIAN BORDER MOTIF
+       Inspired by traditional floral / jaali ornament
+    ===================================================== */
+
+    function borderMotif(x, y, rotation = 0, scale = 1) {
+
+        ctx.save();
+
+        ctx.translate(x, y);
+        ctx.rotate(rotation);
+        ctx.scale(scale, scale);
+
+        ctx.strokeStyle =
+            "rgba(103,30,43,.65)";
+
+        ctx.lineWidth = 1;
+
+
+        // Central leaf
+
+        ctx.beginPath();
+
+        ctx.moveTo(0, 7);
+
+        ctx.bezierCurveTo(
+            -7, 2,
+            -7, -5,
+            0, -10
+        );
+
+        ctx.bezierCurveTo(
+            7, -5,
+            7, 2,
+            0, 7
+        );
+
+        ctx.stroke();
+
+
+        // Left leaf
+
+        ctx.beginPath();
+
+        ctx.moveTo(-5, 7);
+
+        ctx.bezierCurveTo(
+            -15, 4,
+            -19, -2,
+            -18, -9
+        );
+
+        ctx.bezierCurveTo(
+            -10, -8,
+            -6, -1,
+            -5, 7
+        );
+
+        ctx.stroke();
+
+
+        // Right leaf
+
+        ctx.beginPath();
+
+        ctx.moveTo(5, 7);
+
+        ctx.bezierCurveTo(
+            15, 4,
+            19, -2,
+            18, -9
+        );
+
+        ctx.bezierCurveTo(
+            10, -8,
+            6, -1,
+            5, 7
+        );
+
+        ctx.stroke();
+
+
+        ctx.restore();
+    }
+
+
+    /* =====================================================
+       PAPER
+    ===================================================== */
+
+    const background =
+        ctx.createLinearGradient(
+            0,
+            0,
+            width,
+            height
+        );
+
+    background.addColorStop(
+        0,
+        CREAM_LIGHT
+    );
+
+    background.addColorStop(
+        .5,
+        CREAM
+    );
+
+    background.addColorStop(
+        1,
+        CREAM_DEEP
+    );
+
+    ctx.fillStyle = background;
+
+    ctx.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    /* =====================================================
+       BRIGHT CENTER LIGHT
+    ===================================================== */
+
+    const glow =
+        ctx.createRadialGradient(
+            width / 2,
+            height * .42,
+            30,
+            width / 2,
+            height * .42,
+            720
+        );
+
+    glow.addColorStop(
+        0,
+        "rgba(255,255,255,.62)"
+    );
+
+    glow.addColorStop(
+        .55,
+        "rgba(255,255,255,.20)"
+    );
+
+    glow.addColorStop(
+        1,
+        "rgba(255,255,255,0)"
+    );
+
+    ctx.fillStyle = glow;
+
+    ctx.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    /* =====================================================
+       VERY SUBTLE PAPER TEXTURE
+    ===================================================== */
+
+    ctx.fillStyle =
+        "rgba(80,45,30,.014)";
+
+    for (let i = 0; i < 2200; i++) {
+
+        const px =
+            Math.random() * width;
+
+        const py =
+            Math.random() * height;
+
+        const size =
+            Math.random() * 1.1;
+
+        ctx.fillRect(
+            px,
+            py,
+            size,
+            size
+        );
+    }
+
+
+    /* =====================================================
+       PREMIUM FRAME
+    ===================================================== */
+
+    ctx.strokeStyle =
+        "rgba(168,121,50,.92)";
+
+    ctx.lineWidth = 2;
+
+    ctx.strokeRect(
+        40,
+        40,
+        width - 80,
+        height - 80
+    );
+
+
+    ctx.strokeStyle =
+        "rgba(103,30,43,.72)";
+
+    ctx.lineWidth = 1;
+
+    ctx.strokeRect(
+        54,
+        54,
+        width - 108,
+        height - 108
+    );
+
+
+    ctx.strokeStyle =
+        "rgba(168,121,50,.38)";
+
+    ctx.lineWidth = 1;
+
+    ctx.strokeRect(
+        69,
+        69,
+        width - 138,
+        height - 138
+    );
+
+
+    /* =====================================================
+       STRONGER INDIAN ORNAMENTAL BORDER
+    ===================================================== */
+
+    const borderTop = 92;
+    const borderBottom = height - 92;
+    const borderLeft = 92;
+    const borderRight = width - 92;
+
+
+    // horizontal lines
+
+    line(
+        borderLeft + 16,
+        borderTop,
+        borderRight - 16,
+        borderTop,
+        "rgba(103,30,43,.38)",
+        1
+    );
+
+    line(
+        borderLeft + 16,
+        borderBottom,
+        borderRight - 16,
+        borderBottom,
+        "rgba(103,30,43,.38)",
+        1
+    );
+
+
+    // repeating upper motifs
+
+    for (
+        let x = borderLeft + 45;
+        x <= borderRight - 45;
+        x += 70
+    ) {
+
+        borderMotif(
+            x,
+            borderTop,
+            0,
+            .82
+        );
+    }
+
+
+    // repeating lower motifs
+
+    for (
+        let x = borderLeft + 45;
+        x <= borderRight - 45;
+        x += 70
+    ) {
+
+        borderMotif(
+            x,
+            borderBottom,
+            Math.PI,
+            .82
+        );
+    }
+
+
+    // vertical lines
+
+    line(
+        borderLeft,
+        borderTop + 16,
+        borderLeft,
+        borderBottom - 16,
+        "rgba(103,30,43,.38)",
+        1
+    );
+
+    line(
+        borderRight,
+        borderTop + 16,
+        borderRight,
+        borderBottom - 16,
+        "rgba(103,30,43,.38)",
+        1
+    );
+
+
+    // vertical motifs
+
+    for (
+        let y = borderTop + 48;
+        y <= borderBottom - 48;
+        y += 74
+    ) {
+
+        borderMotif(
+            borderLeft,
+            y,
+            -Math.PI / 2,
+            .82
+        );
+
+        borderMotif(
+            borderRight,
+            y,
+            Math.PI / 2,
+            .82
+        );
+    }
+
+
+    /* =====================================================
+       CORNER FLORAL DETAILS
+    ===================================================== */
+
+    floralCorner(
+        82,
+        82,
+        false,
+        false
+    );
+
+    floralCorner(
+        width - 82,
+        82,
+        true,
+        false
+    );
+
+    floralCorner(
+        82,
+        height - 82,
+        false,
+        true
+    );
+
+    floralCorner(
+        width - 82,
+        height - 82,
+        true,
+        true
+    );
+
+
+    /* =====================================================
+       CORNER MINI LOTUS
+    ===================================================== */
+
+    miniLotus(
+        112,
+        112,
+        .82
+    );
+
+    miniLotus(
+        width - 112,
+        112,
+        .82,
+        0
+    );
+
+    miniLotus(
+        112,
+        height - 112,
+        .82,
+        Math.PI
+    );
+
+    miniLotus(
+        width - 112,
+        height - 112,
+        .82,
+        Math.PI
+    );
+
+
+    /* =====================================================
+       TOP LOTUS — HERO ORNAMENT
+    ===================================================== */
+
+    lotus(
+        width / 2,
+        148,
+        .78
+    );
+
+
+    /* =====================================================
+       EYEBROW
+    ===================================================== */
+
+    ctx.textAlign = "center";
+
+    ctx.fillStyle =
+        BURGUNDY;
+
+    ctx.font =
+        "600 17px Inter, Arial, sans-serif";
+
+    spacedText(
+        "A LITTLE INVITATION",
+        width / 2,
+        245,
+        6
+    );
+
+
+    /* =====================================================
+       MAIN TITLE
+    ===================================================== */
+
+    ctx.fillStyle =
+        INK;
+
+    ctx.font =
+        "500 114px 'Cormorant Garamond', Georgia, serif";
+
+    ctx.fillText(
+        "Just Us.",
+        width / 2,
+        370
+    );
+
+
+    /* =====================================================
+       SUBTITLE
+    ===================================================== */
+
+    ctx.fillStyle =
+        MUTED;
+
+    ctx.font =
+        "italic 27px 'Cormorant Garamond', Georgia, serif";
+
+    ctx.fillText(
+        "an invitation to make a little time for us",
+        width / 2,
+        420
+    );
+
+
+    /* =====================================================
+       GOLD DIVIDER
+    ===================================================== */
+
+    line(
+        405,
+        470,
+        475,
+        470,
+        "rgba(168,121,50,.55)",
+        1
+    );
+
+    diamond(
+        width / 2,
+        470,
+        .78
+    );
+
+    line(
+        605,
+        470,
+        675,
+        470,
+        "rgba(168,121,50,.55)",
+        1
+    );
+
+
+    /* =====================================================
+       DATE / TIME
+    ===================================================== */
+
+    ctx.fillStyle =
+        BURGUNDY;
+
+    ctx.font =
+        "600 14px Inter, Arial, sans-serif";
+
+    spacedText(
+        "THE DATE",
+        width / 2,
+        540,
+        5
+    );
+
+
+    ctx.fillStyle =
+        INK;
+
+    ctx.font =
+        "500 50px 'Cormorant Garamond', Georgia, serif";
+
+    ctx.fillText(
+        formatCardDate(selectedDate),
+        width / 2,
+        607
+    );
+
+
+    ctx.fillStyle =
+        BURGUNDY;
+
+    ctx.font =
+        "500 24px Inter, Arial, sans-serif";
+
+    ctx.fillText(
+        `${selectedHour}:${selectedMinute} ${selectedPeriod}`,
+        width / 2,
+        650
+    );
+
+
+    /* =====================================================
+       CENTER DIVIDER
+    ===================================================== */
+
+    line(
+        350,
+        700,
+        730,
+        700,
+        "rgba(168,121,50,.42)",
+        1
+    );
+
+    diamond(
+        width / 2,
+        700,
+        .65
+    );
+
+
+    /* =====================================================
+       PLACE / PLAN
+    ===================================================== */
+
+    const placeText =
+        selectedPlace
+            .replace(/^./u, "")
+            .trim();
+
+
+    ctx.fillStyle =
+        BURGUNDY;
+
+    ctx.font =
+        "600 14px Inter, Arial, sans-serif";
+
+    spacedText(
+        "THE PLAN",
+        width / 2,
+        760,
+        5
+    );
+
+
+    ctx.fillStyle =
+        INK;
+
+    ctx.font =
+        "500 60px 'Cormorant Garamond', Georgia, serif";
+
+    ctx.fillText(
+        placeText,
+        width / 2,
+        830
+    );
+
+
+    /* =====================================================
+       GOLD ACCENT
+    ===================================================== */
+
+    line(
+        420,
+        868,
+        660,
+        868,
+        "rgba(168,121,50,.42)",
+        1
+    );
+
+
+    /* =====================================================
+       SHORT PERSONAL MESSAGE
+    ===================================================== */
+
+    ctx.fillStyle =
+        MUTED;
+
+    ctx.font =
+        "italic 31px 'Cormorant Garamond', Georgia, serif";
+
+    ctx.fillText(
+        "Good food. Good conversation.",
+        width / 2,
+        940
+    );
+
+    ctx.fillText(
+        "And a little time together.",
+        width / 2,
+        982
+    );
+
+
+    /* =====================================================
+       LOWER LOTUS
+    ===================================================== */
+
+    lotus(
+        width / 2,
+        1060,
+        .60
+    );
+
+
+    /* =====================================================
+       SMALL CLOSING
+    ===================================================== */
+
+    ctx.fillStyle =
+        BURGUNDY;
+
+    ctx.font =
+        "600 13px Inter, Arial, sans-serif";
+
+    spacedText(
+        "SEE YOU THERE",
+        width / 2,
+        1135,
+        5
+    );
+
+
+    /* =====================================================
+       GOLD DOT ACCENTS
+    ===================================================== */
+
+    ctx.fillStyle =
+        GOLD_LIGHT;
+
+    [-22, 22].forEach(offset => {
+
+        ctx.beginPath();
+
+        ctx.arc(
+            width / 2 + offset,
+            1170,
+            2.2,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+    });
+
+
+    /* =====================================================
+       MICRO FOOTER
+    ===================================================== */
+
+    ctx.fillStyle =
+        "rgba(103,30,43,.55)";
+
+    ctx.font =
+        "500 11px Inter, Arial, sans-serif";
+
+    spacedText(
+        "MADE WITH A LITTLE LOVE",
+        width / 2,
+        1230,
+        4
+    );
+
+
+    /* =====================================================
+       RETURN
+    ===================================================== */
+
+    return canvas;
+}
+
+
+/* =========================================================
+   CANVAS HELPERS
+========================================================= */
+
+function roundRect(
+    ctx,
+    x,
+    y,
+    width,
+    height,
+    radius
+){
+
+    const r =
+        Math.min(
+            radius,
+            width/2,
+            height/2
+        );
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        x+r,
+        y
+    );
+
+    ctx.lineTo(
+        x+width-r,
+        y
+    );
+
+    ctx.quadraticCurveTo(
+        x+width,
+        y,
+        x+width,
+        y+r
+    );
+
+    ctx.lineTo(
+        x+width,
+        y+height-r
+    );
+
+    ctx.quadraticCurveTo(
+        x+width,
+        y+height,
+        x+width-r,
+        y+height
+    );
+
+    ctx.lineTo(
+        x+r,
+        y+height
+    );
+
+    ctx.quadraticCurveTo(
+        x,
+        y+height,
+        x,
+        y+height-r
+    );
+
+    ctx.lineTo(
+        x,
+        y+r
+    );
+
+    ctx.quadraticCurveTo(
+        x,
+        y,
+        x+r,
+        y
+    );
+
+    ctx.closePath();
+
+}
+
+
+/* =========================================================
+   SPACED TEXT
+========================================================= */
+
+function drawSpacedText(
+    ctx,
+    text,
+    x,
+    y,
+    spacing
+){
+
+    const chars =
+        [...text];
+
+    let totalWidth = 0;
+
+    chars.forEach(char=>{
+
+        totalWidth +=
+            ctx.measureText(
+                char
+            ).width +
+            spacing;
+
+    });
+
+    totalWidth -= spacing;
+
+    let current =
+        x - totalWidth/2;
+
+    chars.forEach(char=>{
+
+        const charWidth =
+            ctx.measureText(
+                char
+            ).width;
+
+        ctx.fillText(
+            char,
+            current + charWidth/2,
+            y
+        );
+
+        current +=
+            charWidth +
+            spacing;
+
+    });
+
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+function drawDivider(
+    ctx,
+    x,
+    y
+){
+
+    ctx.strokeStyle =
+        "rgba(231,195,139,.4)";
+
+    ctx.lineWidth = 1;
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        x-115,
+        y
+    );
+
+    ctx.lineTo(
+        x-30,
+        y
+    );
+
+    ctx.stroke();
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        x+30,
+        y
+    );
+
+    ctx.lineTo(
+        x+115,
+        y
+    );
+
+    ctx.stroke();
+
+
+    ctx.fillStyle =
+        "#d9b777";
+
+    ctx.font =
+        "20px serif";
+
+    ctx.fillText(
+        "✦",
+        x,
+        y+7
+    );
+
+}
+
+
+/* =========================================================
+   ORNAMENT
+========================================================= */
+
+function drawOrnament(
+    ctx,
+    x,
+    y,
+    direction
+){
+
+    ctx.save();
+
+    ctx.translate(
+        x,
+        y
+    );
+
+    ctx.scale(
+        1,
+        direction
+    );
+
+
+    ctx.strokeStyle =
+        "rgba(211,174,111,.58)";
+
+    ctx.lineWidth = 1.2;
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        -110,
+        0
+    );
+
+    ctx.bezierCurveTo(
+        -75,
+        -35,
+        -42,
+        -35,
+        0,
+        0
+    );
+
+    ctx.bezierCurveTo(
+        42,
+        -35,
+        75,
+        -35,
+        110,
+        0
+    );
+
+    ctx.stroke();
+
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        -80,
+        -8
+    );
+
+    ctx.bezierCurveTo(
+        -55,
+        18,
+        -25,
+        18,
+        0,
+        0
+    );
+
+    ctx.bezierCurveTo(
+        25,
+        18,
+        55,
+        18,
+        80,
+        -8
+    );
+
+    ctx.stroke();
+
+
+    ctx.fillStyle =
+        "#d8b679";
+
+    ctx.font =
+        "24px serif";
+
+    ctx.fillText(
+        "✦",
+        0,
+        8
+    );
+
+
+    ctx.restore();
+
+}
+
+
+/* =========================================================
+   DATE FORMAT FOR CARD
+========================================================= */
+
+function formatCardDate(date){
+
+    if(!date){
+        return "";
+    }
+
+    return date.toLocaleDateString(
+        "en-US",
+        {
+            weekday:"long",
+            month:"long",
+            day:"numeric"
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CREATE CARD
+========================================================= */
+
+async function generateInvitation(){
+
+    try{
+
+        const canvas =
+            createInvitationCanvas();
+
+        /*
+            Convert canvas directly to PNG.
+
+            Because canvas has explicit 1080x1350
+            dimensions, there is no zero-size canvas.
+        */
+
+        const blob =
+            await new Promise(
+                (resolve,reject)=>{
+
+                    canvas.toBlob(
+                        result=>{
+
+                            if(result){
+                                resolve(result);
+                            }else{
+                                reject(
+                                    new Error(
+                                        "Could not create invitation image."
+                                    )
+                                );
+                            }
+
+                        },
+                        "image/png",
+                        1
+                    );
+
+                }
+            );
+
+
+        generatedCardBlob =
+            blob;
+
+
+        if(generatedCardURL){
+
+            URL.revokeObjectURL(
+                generatedCardURL
+            );
+
+        }
+
+
+        generatedCardURL =
+            URL.createObjectURL(
+                blob
+            );
+
+
+        const preview =
+            document.getElementById(
+                "previewImage"
+            );
+
+        preview.src =
+            generatedCardURL;
+
+
+        document.getElementById(
+            "cardModal"
+        ).classList.add(
+            "open"
+        );
+
+
+        return blob;
+
+    }catch(error){
+
+        console.error(
+            "Invitation generation error:",
+            error
+        );
+
+        alert(
+            "Something went wrong while creating the invitation. Please try again."
+        );
+
+        return null;
+
+    }
+
+}
+
+
+/* =========================================================
+   CREATE CARD BUTTON
+========================================================= */
+
+document.getElementById(
+    "createCardBtn"
+).onclick = async ()=>{
+
+    await generateInvitation();
+
+};
+
+
+/* =========================================================
+   CLOSE PREVIEW
+========================================================= */
+
+document.getElementById(
+    "closePreview"
+).onclick = ()=>{
+
+    document.getElementById(
+        "cardModal"
+    ).classList.remove(
+        "open"
+    );
+
+};
+
+
+/* =========================================================
+   CLOSE MODAL BACKDROP
+========================================================= */
+
+document.getElementById(
+    "cardModal"
+).onclick = event=>{
+
+    if(
+        event.target.id ===
+        "cardModal"
+    ){
+
+        document.getElementById(
+            "cardModal"
+        ).classList.remove(
+            "open"
+        );
+
+    }
+
+};
+
+
+/* =========================================================
+   SAVE CARD
+========================================================= */
+
+document.getElementById(
+    "saveCardBtn"
+).onclick = async ()=>{
+
+    if(!generatedCardBlob){
+
+        const blob =
+            await generateInvitation();
+
+        if(!blob){
+            return;
+        }
+
+    }
+
+
+    const filename =
+        "just-us-invitation.png";
+
+
+    /*
+       Use download link.
+
+       This is much more reliable than trying to
+       save a canvas directly.
+    */
+
+    const url =
+        URL.createObjectURL(
+            generatedCardBlob
+        );
+
+    const link =
+        document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+        filename;
+
+    document.body.appendChild(
+        link
+    );
+
+    link.click();
+
+    link.remove();
+
+
+    setTimeout(()=>{
+
+        URL.revokeObjectURL(
+            url
+        );
+
+    },1000);
+
+};
+
+
+/* =========================================================
+   SHARE CARD
+========================================================= */
+
+document.getElementById(
+    "shareCardBtn"
+).onclick = async ()=>{
+
+    if(!generatedCardBlob){
+
+        const blob =
+            await generateInvitation();
+
+        if(!blob){
+            return;
+        }
+
+    }
+
+
+    const file =
+        new File(
+            [
+                generatedCardBlob
+            ],
+            "just-us-invitation.png",
+            {
+                type:"image/png"
+            }
+        );
+
+
+    /*
+       On Android / supported browsers this can open
+       the native share sheet and allow WhatsApp.
+    */
+
+    if(
+        navigator.share &&
+        navigator.canShare &&
+        navigator.canShare({
+            files:[file]
+        })
+    ){
+
+        try{
+
+            await navigator.share({
+
+                title:
+                    "A Little Invitation",
+
+                text:
+                    "A little plan for us. 🤎",
+
+                files:[
+                    file
+                ]
+
+            });
+
+            return;
+
+        }catch(error){
+
+            /*
+               User may simply have cancelled
+               the native share dialog.
+            */
+
+            if(
+                error.name ===
+                "AbortError"
+            ){
+
+                return;
+
+            }
+
+        }
+
+    }
+
+
+    /*
+       Desktop browsers may not support
+       file sharing.
+
+       In that case, save the image.
+    */
+
+    alert(
+        "Image sharing isn't supported by this browser. The invitation will be saved instead."
+    );
+
+
+    const url =
+        URL.createObjectURL(
+            generatedCardBlob
+        );
+
+    const link =
+        document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+        "just-us-invitation.png";
+
+    document.body.appendChild(
+        link
+    );
+
+    link.click();
+
+    link.remove();
+
+    setTimeout(()=>{
+
+        URL.revokeObjectURL(
+            url
+        );
+
+    },1000);
+
+};
+
+
+/* =========================================================
+   WHATSAPP TEXT
+========================================================= */
+
+document.getElementById(
+    "whatsappBtn"
+).onclick = ()=>{
+
+    const date =
+        document.getElementById(
+            "finalDate"
+        ).textContent;
+
+    const time =
+        document.getElementById(
+            "finalTime"
+        ).textContent;
+
+    const place =
+        document.getElementById(
+            "finalPlace"
+        ).textContent;
+
+
+    const message =
+`A little plan for us. 🤎
+
+${date}
+${time}
+${place}
+
+Good food. Good conversation.
+And some time together. ✨
+
+I'm looking forward to it. ❤️`;
+
+
+    window.open(
+        "https://wa.me/?text=" +
+        encodeURIComponent(message),
+        "_blank"
+    );
+
+};
+
+
+/* =========================================================
+   THEME
+========================================================= */
+
+const themeBtn =
+    document.getElementById(
+        "themeBtn"
+    );
+
+let lightMode = false;
+
+themeBtn.onclick = ()=>{
+
+    lightMode = !lightMode;
+
+    document.body.classList.toggle(
+        "light-mode",
+        lightMode
+    );
+
+    themeBtn.textContent =
+        lightMode
+            ? "☾"
+            : "☼";
+
+};
+
+
+/* =========================================================
    AMBIENT MOVEMENT
-========================================= */
+========================================================= */
 
-document.addEventListener("mousemove",event=>{
+document.addEventListener(
+    "mousemove",
+    event=>{
 
-    const x =
-        event.clientX / window.innerWidth;
+        const x =
+            event.clientX /
+            window.innerWidth;
 
-    const y =
-        event.clientY / window.innerHeight;
+        const y =
+            event.clientY /
+            window.innerHeight;
 
-    const one =
-        document.querySelector(".glow.one");
+        const one =
+            document.querySelector(
+                ".glow.one"
+            );
 
-    const two =
-        document.querySelector(".glow.two");
+        const two =
+            document.querySelector(
+                ".glow.two"
+            );
 
-    if(one){
-        one.style.transform =
-            `translate(${x*35}px,${y*25}px)`;
+
+        if(one){
+
+            one.style.transform =
+                `translate(${x*35}px,${y*25}px)`;
+
+        }
+
+
+        if(two){
+
+            two.style.transform =
+                `translate(${-x*30}px,${-y*20}px)`;
+
+        }
+
     }
-
-    if(two){
-        two.style.transform =
-            `translate(${-x*30}px,${-y*20}px)`;
-    }
-
-});
+);
 
 </script>
 
