@@ -364,16 +364,6 @@ h2{
         0 17px 35px rgba(185,132,63,.32);
 }
 
-.btn.ghost{
-    color:#eee;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.13);
-}
-
-.btn.ghost:hover{
-    background:rgba(255,255,255,.1);
-}
-
 /* =========================================================
    LETTER
 ========================================================= */
@@ -924,12 +914,6 @@ body.light-mode .place.selected{
         );
 }
 
-body.light-mode .btn.ghost{
-    color:#222;
-    background:rgba(0,0,0,.035);
-    border-color:rgba(0,0,0,.12);
-}
-
 body.light-mode .detail{
     background:rgba(0,0,0,.025);
 }
@@ -940,6 +924,11 @@ body.light-mode .detail-value{
 
 body.light-mode .final-message{
     color:#555;
+}
+
+/* Modal visible in light mode */
+body.light-mode #cardModal{
+    background: rgba(0,0,0,.55);
 }
 
 /* =========================================================
@@ -1037,45 +1026,25 @@ body.light-mode .final-message{
 
 <body>
 
-<!-- =========================================================
-     LOADER
-========================================================= -->
-
+<!-- LOADER -->
 <div id="loader">
     <div class="loader-title">A Small Invitation</div>
     <div class="loader-sub">JUST FOR THE TWO OF US</div>
 </div>
 
-
+<!-- BACKGROUND -->
 <div id="background">
     <div class="glow one"></div>
     <div class="glow two"></div>
 </div>
 
-
-<!-- =========================================================
-     CONTROLS
-========================================================= -->
-
+<!-- CONTROLS -->
 <div class="top-controls">
-
-    <button
-        class="control"
-        id="themeBtn"
-        aria-label="Toggle theme">
-        ☼
-    </button>
-
-    <button
-        class="control"
-        id="musicBtn"
-        aria-label="Toggle music">
-        ♪
-    </button>
-
+    <button class="control" id="themeBtn" aria-label="Toggle theme">☼</button>
+    <button class="control" id="musicBtn" aria-label="Toggle music">♪</button>
 </div>
 
-
+<!-- PROGRESS -->
 <div class="progress">
     <span class="active"></span>
     <span></span>
@@ -1083,534 +1052,201 @@ body.light-mode .final-message{
     <span></span>
 </div>
 
-
-<!-- =========================================================
-     APP
-========================================================= -->
-
+<!-- APP -->
 <div id="app">
 
-
-<!-- =========================================================
-     SCENE 1
-========================================================= -->
-
+<!-- SCENE 1 -->
 <section class="scene active" id="opening">
-
     <div class="card">
-
-        <div class="eyebrow">
-            A Small Invitation
-        </div>
-
-        <h1>
-            Just us.
-        </h1>
-
+        <div class="eyebrow">A Small Invitation</div>
+        <h1>Just us.</h1>
         <p class="subtitle">
             Good food, good conversation,<br>
             and hopefully a great story to tell.
         </p>
-
-        <div class="open-icon">
-            ✨
-        </div>
-
-        <p class="subtitle">
-            Shall we make a plan?
-        </p>
-
-        <button
-            class="btn gold"
-            id="openBtn">
-            Open Invitation
-        </button>
-
+        <div class="open-icon">✨</div>
+        <p class="subtitle">Shall we make a plan?</p>
+        <button class="btn gold" id="openBtn">Open Invitation</button>
     </div>
-
 </section>
 
-
-<!-- =========================================================
-     SCENE 2
-========================================================= -->
-
+<!-- SCENE 2 -->
 <section class="scene" id="invitation">
-
     <div class="card">
-
-        <div class="eyebrow">
-            One Little Question
-        </div>
-
-        <h2>
-            Want to make<br>
-            some time for us?
-        </h2>
-
+        <div class="eyebrow">One Little Question</div>
+        <h2>Want to make<br>some time for us?</h2>
         <div class="letter-copy">
-
             <div class="letter-main">
                 No big plans.<br>
                 No pressure.<br>
-                <span class="highlight">
-                    Just a good time together.
-                </span>
+                <span class="highlight">Just a good time together.</span>
             </div>
-
             <div class="letter-small">
                 Coffee, dessert, dinner…<br>
                 or maybe something completely unexpected. 😉
             </div>
-
         </div>
-
         <div class="actions">
-
-            <button
-                class="btn gold"
-                id="yesBtn">
-                I'm in ✨
-            </button>
-
-            <button
-                class="btn ghost"
-                id="thinkBtn">
-                Let me think 😏
-            </button>
-
+            <button class="btn gold" id="yesBtn">I'm in ✨</button>
+            <button class="btn" id="thinkBtn" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);color:#eee;">Let me think 😏</button>
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================================================
-     SCENE 3
-========================================================= -->
-
+<!-- SCENE 3 -->
 <section class="scene" id="planner">
-
     <div class="card">
-
-        <div class="eyebrow">
-            Make It Yours
-        </div>
-
-        <h2>
-            Pick the details
-        </h2>
-
+        <div class="eyebrow">Make It Yours</div>
+        <h2>Pick the details</h2>
         <p class="subtitle">
             You choose the when.<br>
             I'll take care of the rest.
         </p>
 
-
         <div class="planner">
 
-
             <!-- DATE -->
-
             <div class="picker">
-
-                <span class="section-label">
-                    DATE
-                </span>
-
-                <button
-                    class="picker-trigger"
-                    id="dateTrigger">
-
-                    <span class="picker-icon">
-                        ◷
-                    </span>
-
+                <span class="section-label">DATE</span>
+                <button class="picker-trigger" id="dateTrigger">
+                    <span class="picker-icon">◷</span>
                     <span class="picker-value">
-
-                        <small>
-                            WHEN
-                        </small>
-
-                        <strong id="dateValue">
-                            Choose a date
-                        </strong>
-
+                        <small>WHEN</small>
+                        <strong id="dateValue">Choose a date</strong>
                     </span>
-
                     <span class="picker-status"></span>
-
                 </button>
-
-
-                <div
-                    class="picker-menu"
-                    id="dateMenu">
-
+                <div class="picker-menu" id="dateMenu">
                     <div class="calendar-head">
-
-                        <button
-                            class="month-btn"
-                            id="prevMonth">
-                            ‹
-                        </button>
-
+                        <button class="month-btn" id="prevMonth">‹</button>
                         <strong id="monthYear"></strong>
-
-                        <button
-                            class="month-btn"
-                            id="nextMonth">
-                            ›
-                        </button>
-
+                        <button class="month-btn" id="nextMonth">›</button>
                     </div>
-
                     <div class="weekdays">
-
-                        <span>S</span>
-                        <span>M</span>
-                        <span>T</span>
-                        <span>W</span>
-                        <span>T</span>
-                        <span>F</span>
-                        <span>S</span>
-
+                        <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
                     </div>
-
-                    <div
-                        class="days"
-                        id="calendarDays">
-                    </div>
-
+                    <div class="days" id="calendarDays"></div>
                 </div>
-
             </div>
-
 
             <!-- TIME -->
-
             <div class="picker">
-
-                <span class="section-label">
-                    TIME
-                </span>
-
-                <button
-                    class="picker-trigger"
-                    id="timeTrigger">
-
-                    <span class="picker-icon">
-                        ◴
-                    </span>
-
+                <span class="section-label">TIME</span>
+                <button class="picker-trigger" id="timeTrigger">
+                    <span class="picker-icon">◴</span>
                     <span class="picker-value">
-
-                        <small>
-                            WHAT TIME
-                        </small>
-
-                        <strong id="timeValue">
-                            Choose a time
-                        </strong>
-
+                        <small>WHAT TIME</small>
+                        <strong id="timeValue">Choose a time</strong>
                     </span>
-
                     <span class="picker-status"></span>
-
                 </button>
-
-
-                <div
-                    class="picker-menu"
-                    id="timeMenu">
-
+                <div class="picker-menu" id="timeMenu">
                     <div class="time-grid">
-
                         <div>
-
-                            <div class="time-title">
-                                HOUR
-                            </div>
-
-                            <div
-                                class="time-list"
-                                id="hours">
-                            </div>
-
+                            <div class="time-title">HOUR</div>
+                            <div class="time-list" id="hours"></div>
                         </div>
-
-
-                        <div class="time-colon">
-                            :
-                        </div>
-
-
+                        <div class="time-colon">:</div>
                         <div>
-
-                            <div class="time-title">
-                                MIN
-                            </div>
-
-                            <div
-                                class="time-list"
-                                id="minutes">
-                            </div>
-
+                            <div class="time-title">MIN</div>
+                            <div class="time-list" id="minutes"></div>
                         </div>
-
-
                         <div>
-
-                            <div class="time-title">
-                                PERIOD
-                            </div>
-
-                            <button
-                                class="period-option"
-                                data-period="AM">
-                                AM
-                            </button>
-
-                            <button
-                                class="period-option"
-                                data-period="PM">
-                                PM
-                            </button>
-
+                            <div class="time-title">PERIOD</div>
+                            <button class="period-option" data-period="AM">AM</button>
+                            <button class="period-option" data-period="PM">PM</button>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
 
             <!-- VIBE -->
-
             <div>
-
-                <span class="section-label">
-                    THE VIBE
-                </span>
-
+                <span class="section-label">THE VIBE</span>
                 <div class="places">
-
-                    <button
-                        class="place"
-                        data-place="☕ Coffee">
-
-                        <span class="place-icon">
-                            ☕
-                        </span>
-
-                        <span class="place-name">
-                            Coffee
-                        </span>
-
+                    <button class="place" data-place="☕ Coffee">
+                        <span class="place-icon">☕</span>
+                        <span class="place-name">Coffee</span>
                     </button>
-
-
-                    <button
-                        class="place"
-                        data-place="🍰 Dessert">
-
-                        <span class="place-icon">
-                            🍰
-                        </span>
-
-                        <span class="place-name">
-                            Dessert
-                        </span>
-
+                    <button class="place" data-place="🍰 Dessert">
+                        <span class="place-icon">🍰</span>
+                        <span class="place-name">Dessert</span>
                     </button>
-
-
-                    <button
-                        class="place"
-                        data-place="🍽️ Dinner">
-
-                        <span class="place-icon">
-                            🍽️
-                        </span>
-
-                        <span class="place-name">
-                            Dinner
-                        </span>
-
+                    <button class="place" data-place="🍽️ Dinner">
+                        <span class="place-icon">🍽️</span>
+                        <span class="place-name">Dinner</span>
                     </button>
-
-
-                    <button
-                        class="place"
-                        data-place="✨ Surprise">
-
-                        <span class="place-icon">
-                            ✨
-                        </span>
-
-                        <span class="place-name">
-                            Surprise me
-                        </span>
-
+                    <button class="place" data-place="✨ Surprise">
+                        <span class="place-icon">✨</span>
+                        <span class="place-name">Surprise me</span>
                     </button>
-
                 </div>
-
             </div>
 
-
-            <button
-                class="btn gold"
-                style="width:100%;margin-top:19px;height:50px"
-                id="continueBtn">
-
+            <button class="btn gold" style="width:100%;margin-top:19px;height:50px" id="continueBtn">
                 That sounds good →
-
             </button>
 
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================================================
-     SCENE 4
-========================================================= -->
-
+<!-- SCENE 4 -->
 <section class="scene" id="final">
-
     <div class="card">
-
-        <div class="eyebrow">
-            It's Happening
-        </div>
-
-        <div class="final-icon">
-            ✨
-        </div>
-
-        <h2>
-            It's a Date.
-        </h2>
-
-        <p class="final-intro">
-            Everything looks perfect.
-        </p>
-
+        <div class="eyebrow">It's Happening</div>
+        <div class="final-icon">✨</div>
+        <h2>It's a Date.</h2>
+        <p class="final-intro">Everything looks perfect.</p>
 
         <div class="final-details">
-
             <div class="detail">
-
-                <span class="detail-label">
-                    DATE
-                </span>
-
-                <span
-                    class="detail-value"
-                    id="finalDate">
-                </span>
-
+                <span class="detail-label">DATE</span>
+                <span class="detail-value" id="finalDate"></span>
             </div>
-
-
             <div class="detail">
-
-                <span class="detail-label">
-                    TIME
-                </span>
-
-                <span
-                    class="detail-value"
-                    id="finalTime">
-                </span>
-
+                <span class="detail-label">TIME</span>
+                <span class="detail-value" id="finalTime"></span>
             </div>
-
-
             <div class="detail">
-
-                <span class="detail-label">
-                    PLAN
-                </span>
-
-                <span
-                    class="detail-value"
-                    id="finalPlace">
-                </span>
-
+                <span class="detail-label">PLAN</span>
+                <span class="detail-value" id="finalPlace"></span>
             </div>
-
         </div>
 
-
         <div class="final-message">
-
             One plan.<br>
             One good time.<br>
             Let's see where it goes. ❤️
-
         </div>
-
 
         <div class="final-actions">
-
-            <button
-                class="btn gold"
-                id="createCardBtn">
-
+            <button class="btn gold" id="createCardBtn">
                 Create Invitation ✨
-
             </button>
-
         </div>
-
     </div>
-
 </section>
 
 </div>
 
-
-<!-- =========================================================
-     CARD MODAL
-========================================================= -->
-
+<!-- CARD MODAL -->
 <div id="cardModal">
 
-    <button
-        class="close-preview"
-        id="closePreview">
-        ×
-    </button>
+    <button class="close-preview" id="closePreview">×</button>
 
     <div class="card-preview">
 
-        <img
-            id="previewImage"
-            class="preview-image"
-            alt="Invitation preview">
+        <img id="previewImage" class="preview-image" alt="Invitation preview">
 
         <div class="preview-actions">
 
-            <button
-                class="btn gold"
-                id="saveCardBtn">
-
+            <button class="btn gold" id="saveCardBtn">
                 Save Invitation
-
             </button>
 
-            <button
-                class="btn ghost"
-                id="shareCardBtn">
-
+            <button class="btn gold" id="shareCardBtn">
                 Share ✨
-
             </button>
 
         </div>
@@ -1619,2943 +1255,818 @@ body.light-mode .final-message{
 
 </div>
 
-
-<audio
-    id="music"
-    loop
-    preload="auto">
-
-    <source
-        src="./romantic.mp3"
-        type="audio/mpeg">
-
+<!-- MUSIC -->
+<audio id="music" loop preload="auto">
+    <source src="./romantic.mp3" type="audio/mpeg">
 </audio>
 
-
 <script>
-
-/* =========================================================
-   STATE
-========================================================= */
-
-const scenes = [
-    "opening",
-    "invitation",
-    "planner",
-    "final"
-];
-
+/* ================= STATE ================= */
+const scenes = ["opening","invitation","planner","final"];
 let selectedDate = null;
 let selectedHour = "";
 let selectedMinute = "";
 let selectedPeriod = "";
 let selectedPlace = "";
-
 let calendarDate = new Date();
-
 let plannerInitialized = false;
-
 let generatedCardBlob = null;
 let generatedCardURL = null;
 
-
-/* =========================================================
-   SCENE ENGINE
-========================================================= */
-
+/* ================= SCENE ENGINE ================= */
 function showScene(id){
-
-    document.querySelectorAll(".scene").forEach(scene=>{
-        scene.classList.remove("active");
-    });
-
+    document.querySelectorAll(".scene").forEach(s=>s.classList.remove("active"));
     const target = document.getElementById(id);
-
-    if(target){
-        target.classList.add("active");
-    }
-
+    if(target) target.classList.add("active");
     const index = scenes.indexOf(id);
-
-    document.querySelectorAll(".progress span")
-        .forEach((dot,i)=>{
-
-            dot.classList.toggle(
-                "active",
-                i === index
-            );
-
-        });
-
+    document.querySelectorAll(".progress span").forEach((dot,i)=>{
+        dot.classList.toggle("active", i===index);
+    });
 }
 
-
-/* =========================================================
-   LOADER
-========================================================= */
-
+/* ================= LOADER ================= */
 setTimeout(()=>{
-
-    const loader =
-        document.getElementById("loader");
-
+    const loader = document.getElementById("loader");
     loader.style.opacity = "0";
-
-    setTimeout(()=>{
-        loader.remove();
-    },1000);
-
+    setTimeout(()=>loader.remove(),1000);
 },1600);
 
-
-/* =========================================================
-   MUSIC
-========================================================= */
-
-const music =
-    document.getElementById("music");
-
-const musicBtn =
-    document.getElementById("musicBtn");
-
+/* ================= MUSIC ================= */
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
 let playing = false;
-
 music.volume = .35;
-
 musicBtn.onclick = async ()=>{
-
     try{
-
         if(!playing){
-
             await music.play();
-
             playing = true;
-
             musicBtn.textContent = "♫";
-
         }else{
-
             music.pause();
-
             playing = false;
-
             musicBtn.textContent = "♪";
-
         }
-
-    }catch(error){
-
-        console.log(
-            "Music could not start:",
-            error
-        );
-
+    }catch(e){
+        console.log("Music could not start:", e);
     }
-
 };
 
-
-/* =========================================================
-   OPEN
-========================================================= */
-
-document.getElementById("openBtn").onclick =
-async ()=>{
-
+/* ================= OPEN ================= */
+document.getElementById("openBtn").onclick = async ()=>{
     showScene("invitation");
-
     try{
-
         await music.play();
-
         playing = true;
-
         musicBtn.textContent = "♫";
-
-    }catch(error){
-
-        console.log(error);
-
+    }catch(e){
+        console.log(e);
     }
-
 };
 
-
-/* =========================================================
-   THINK BUTTON
-========================================================= */
-
-const thinkBtn =
-    document.getElementById("thinkBtn");
-
+/* ================= THINK BUTTON ================= */
+const thinkBtn = document.getElementById("thinkBtn");
 const thinkMessages = [
-
-    "Let me think 😏",
-    "Still thinking? 😂",
-    "Take your time 👀",
-    "The suspense! 😂",
-    "Okay… I'm waiting ☕",
-    "You really like thinking 🤭"
-
+    "Let me think 😏","Still thinking? 😂","Take your time 👀",
+    "The suspense! 😂","Okay… I'm waiting ☕","You really like thinking 🤭"
 ];
-
 let thinkIndex = 0;
-
 thinkBtn.onclick = ()=>{
-
     thinkIndex++;
-
-    if(
-        thinkIndex >=
-        thinkMessages.length
-    ){
-        thinkIndex = 0;
-    }
-
-    thinkBtn.textContent =
-        thinkMessages[thinkIndex];
-
+    if(thinkIndex >= thinkMessages.length) thinkIndex = 0;
+    thinkBtn.textContent = thinkMessages[thinkIndex];
     thinkBtn.animate(
         [
-            {
-                transform:"scale(1) rotate(0deg)"
-            },
-            {
-                transform:"scale(.96) rotate(-2deg)"
-            },
-            {
-                transform:"scale(1.03) rotate(2deg)"
-            },
-            {
-                transform:"scale(1) rotate(0deg)"
-            }
+            {transform:"scale(1) rotate(0deg)"},
+            {transform:"scale(.96) rotate(-2deg)"},
+            {transform:"scale(1.03) rotate(2deg)"},
+            {transform:"scale(1) rotate(0deg)"}
         ],
-        {
-            duration:420,
-            easing:"ease-out"
-        }
+        {duration:420,easing:"ease-out"}
     );
-
 };
 
-
-/* =========================================================
-   YES
-========================================================= */
-
-document.getElementById("yesBtn").onclick =
-()=>{
-
+/* ================= YES ================= */
+document.getElementById("yesBtn").onclick = ()=>{
     celebrate();
-
     setTimeout(()=>{
-
         showScene("planner");
-
         initPlanner();
-
     },600);
-
 };
 
-
-/* =========================================================
-   CELEBRATION
-========================================================= */
-
+/* ================= CELEBRATION ================= */
 function celebrate(){
-
-    const symbols = [
-        "✦",
-        "✧",
-        "·",
-        "✨"
-    ];
-
+    const symbols = ["✦","✧","·","✨"];
     for(let i=0;i<28;i++){
-
-        const particle =
-            document.createElement("div");
-
-        particle.textContent =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
-
-        particle.style.position =
-            "fixed";
-
-        particle.style.left = "50%";
-        particle.style.top = "50%";
-        particle.style.zIndex = "300";
-        particle.style.pointerEvents =
-            "none";
-
-        particle.style.color =
-            "#e8c48b";
-
-        document.body.appendChild(
-            particle
-        );
-
-        const x =
-            (Math.random()-.5)*500;
-
-        const y =
-            (Math.random()-.5)*500;
-
-        particle.animate(
+        const p = document.createElement("div");
+        p.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+        p.style.position = "fixed";
+        p.style.left = "50%";
+        p.style.top = "50%";
+        p.style.zIndex = "300";
+        p.style.pointerEvents = "none";
+        p.style.color = "#e8c48b";
+        document.body.appendChild(p);
+        const x = (Math.random()-.5)*500;
+        const y = (Math.random()-.5)*500;
+        p.animate(
             [
-                {
-                    transform:"scale(0)",
-                    opacity:1
-                },
-                {
-                    transform:
-                        `translate(${x}px,${y}px) scale(1)`,
-                    opacity:0
-                }
+                {transform:"scale(0)",opacity:1},
+                {transform:`translate(${x}px,${y}px) scale(1)`,opacity:0}
             ],
-            {
-                duration:
-                    1000 +
-                    Math.random()*500,
-
-                easing:"ease-out"
-            }
+            {duration:1000+Math.random()*500,easing:"ease-out"}
         );
-
-        setTimeout(()=>{
-            particle.remove();
-        },1600);
-
+        setTimeout(()=>p.remove(),1600);
     }
-
 }
 
-
-/* =========================================================
-   PLANNER
-========================================================= */
-
+/* ================= PLANNER ================= */
 function initPlanner(){
-
-    if(plannerInitialized){
-        return;
-    }
-
+    if(plannerInitialized) return;
     plannerInitialized = true;
-
     initDatePicker();
     initTimePicker();
     initPlaces();
-
 }
 
-
-/* =========================================================
-   CLOSE MENUS
-========================================================= */
-
+/* ================= CLOSE MENUS ================= */
 function closeMenus(){
-
-    document
-        .querySelectorAll(".picker-menu")
-        .forEach(menu=>{
-
-            menu.classList.remove("open");
-
-        });
-
+    document.querySelectorAll(".picker-menu").forEach(m=>m.classList.remove("open"));
 }
 
-
-/* =========================================================
-   DATE PICKER
-========================================================= */
-
+/* ================= DATE PICKER ================= */
 function initDatePicker(){
-
-    const trigger =
-        document.getElementById(
-            "dateTrigger"
-        );
-
-    const menu =
-        document.getElementById(
-            "dateMenu"
-        );
-
-    const dateValue =
-        document.getElementById(
-            "dateValue"
-        );
-
-    const calendarDays =
-        document.getElementById(
-            "calendarDays"
-        );
-
-    const monthYear =
-        document.getElementById(
-            "monthYear"
-        );
-
+    const trigger = document.getElementById("dateTrigger");
+    const menu = document.getElementById("dateMenu");
+    const dateValue = document.getElementById("dateValue");
+    const calendarDays = document.getElementById("calendarDays");
+    const monthYear = document.getElementById("monthYear");
 
     function renderCalendar(){
-
-        const year =
-            calendarDate.getFullYear();
-
-        const month =
-            calendarDate.getMonth();
-
-        monthYear.textContent =
-            calendarDate.toLocaleDateString(
-                "en-US",
-                {
-                    month:"long",
-                    year:"numeric"
-                }
-            );
-
+        const year = calendarDate.getFullYear();
+        const month = calendarDate.getMonth();
+        monthYear.textContent = calendarDate.toLocaleDateString("en-US",{month:"long",year:"numeric"});
         calendarDays.innerHTML = "";
-
-        const firstDay =
-            new Date(
-                year,
-                month,
-                1
-            ).getDay();
-
-        const daysInMonth =
-            new Date(
-                year,
-                month + 1,
-                0
-            ).getDate();
-
-        for(
-            let i=0;
-            i<firstDay;
-            i++
-        ){
-
-            calendarDays.appendChild(
-                document.createElement("div")
-            );
-
+        const firstDay = new Date(year,month,1).getDay();
+        const daysInMonth = new Date(year,month+1,0).getDate();
+        for(let i=0;i<firstDay;i++){
+            calendarDays.appendChild(document.createElement("div"));
         }
-
-
-        for(
-            let day=1;
-            day<=daysInMonth;
-            day++
-        ){
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-            button.type = "button";
-
-            button.className =
-                "day";
-
-            button.textContent = day;
-
-
-            const date =
-                new Date(
-                    year,
-                    month,
-                    day
-                );
-
-            const today =
-                new Date();
-
-            today.setHours(
-                0,0,0,0
-            );
-
-
+        for(let day=1;day<=daysInMonth;day++){
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "day";
+            btn.textContent = day;
+            const date = new Date(year,month,day);
+            const today = new Date(); today.setHours(0,0,0,0);
             if(date < today){
-
-                button.classList.add(
-                    "disabled"
-                );
-
-                button.disabled = true;
-
+                btn.classList.add("disabled");
+                btn.disabled = true;
             }
-
-
-            if(
-                selectedDate &&
-                date.toDateString() ===
-                selectedDate.toDateString()
-            ){
-
-                button.classList.add(
-                    "selected"
-                );
-
+            if(selectedDate && date.toDateString() === selectedDate.toDateString()){
+                btn.classList.add("selected");
             }
-
-
             if(date >= today){
-
-                button.onclick = ()=>{
-
-                    selectedDate =
-                        new Date(date);
-
-                    dateValue.textContent =
-                        selectedDate
-                            .toLocaleDateString(
-                                "en-IN",
-                                {
-                                    weekday:"short",
-                                    day:"numeric",
-                                    month:"short"
-                                }
-                            );
-
-                    trigger.classList.add(
-                        "selected"
-                    );
-
+                btn.onclick = ()=>{
+                    selectedDate = new Date(date);
+                    dateValue.textContent = selectedDate.toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+                    trigger.classList.add("selected");
                     renderCalendar();
-
                     closeMenus();
-
                 };
-
             }
-
-
-            calendarDays.appendChild(
-                button
-            );
-
+            calendarDays.appendChild(btn);
         }
-
     }
 
-
-    trigger.onclick = event=>{
-
-        event.stopPropagation();
-
-        const alreadyOpen =
-            menu.classList.contains(
-                "open"
-            );
-
+    trigger.onclick = e=>{
+        e.stopPropagation();
+        const alreadyOpen = menu.classList.contains("open");
         closeMenus();
-
-        if(!alreadyOpen){
-
-            menu.classList.add(
-                "open"
-            );
-
-        }
-
+        if(!alreadyOpen) menu.classList.add("open");
     };
-
-
-    document.getElementById(
-        "prevMonth"
-    ).onclick = event=>{
-
-        event.stopPropagation();
-
-        const today =
-            new Date();
-
-        today.setHours(
-            0,0,0,0
-        );
-
-        const currentMonth =
-            new Date(
-                today.getFullYear(),
-                today.getMonth(),
-                1
-            );
-
-        const previousMonth =
-            new Date(
-                calendarDate.getFullYear(),
-                calendarDate.getMonth()-1,
-                1
-            );
-
-        if(
-            previousMonth <
-            currentMonth
-        ){
-
-            return;
-
-        }
-
-        calendarDate.setMonth(
-            calendarDate.getMonth()-1
-        );
-
+    document.getElementById("prevMonth").onclick = e=>{
+        e.stopPropagation();
+        const today = new Date(); today.setHours(0,0,0,0);
+        const currentMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+        const prevMonth = new Date(calendarDate.getFullYear(), calendarDate.getMonth()-1, 1);
+        if(prevMonth < currentMonth) return;
+        calendarDate.setMonth(calendarDate.getMonth()-1);
         renderCalendar();
-
     };
-
-
-    document.getElementById(
-        "nextMonth"
-    ).onclick = event=>{
-
-        event.stopPropagation();
-
-        calendarDate.setMonth(
-            calendarDate.getMonth()+1
-        );
-
+    document.getElementById("nextMonth").onclick = e=>{
+        e.stopPropagation();
+        calendarDate.setMonth(calendarDate.getMonth()+1);
         renderCalendar();
-
     };
-
-
-    menu.onclick = event=>{
-        event.stopPropagation();
-    };
-
-
+    menu.onclick = e=>e.stopPropagation();
     renderCalendar();
-
 }
 
-
-/* =========================================================
-   TIME PICKER
-========================================================= */
-
+/* ================= TIME PICKER ================= */
 function initTimePicker(){
+    const trigger = document.getElementById("timeTrigger");
+    const menu = document.getElementById("timeMenu");
+    const hours = document.getElementById("hours");
+    const minutes = document.getElementById("minutes");
+    const timeValue = document.getElementById("timeValue");
 
-    const trigger =
-        document.getElementById(
-            "timeTrigger"
-        );
-
-    const menu =
-        document.getElementById(
-            "timeMenu"
-        );
-
-    const hours =
-        document.getElementById(
-            "hours"
-        );
-
-    const minutes =
-        document.getElementById(
-            "minutes"
-        );
-
-    const timeValue =
-        document.getElementById(
-            "timeValue"
-        );
-
-
-    for(
-        let hour=1;
-        hour<=12;
-        hour++
-    ){
-
-        const button =
-            document.createElement(
-                "button"
-            );
-
-        button.type = "button";
-
-        button.className =
-            "time-option";
-
-        button.textContent =
-            String(hour).padStart(
-                2,
-                "0"
-            );
-
-
-        button.onclick = ()=>{
-
-            selectedHour =
-                String(hour).padStart(
-                    2,
-                    "0"
-                );
-
-            document
-                .querySelectorAll(
-                    "#hours .time-option"
-                )
-                .forEach(item=>{
-                    item.classList.remove(
-                        "selected"
-                    );
-                });
-
-            button.classList.add(
-                "selected"
-            );
-
+    for(let h=1;h<=12;h++){
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "time-option";
+        btn.textContent = String(h).padStart(2,"0");
+        btn.onclick = ()=>{
+            selectedHour = String(h).padStart(2,"0");
+            document.querySelectorAll("#hours .time-option").forEach(i=>i.classList.remove("selected"));
+            btn.classList.add("selected");
             updateTime();
-
         };
-
-
-        hours.appendChild(
-            button
-        );
-
+        hours.appendChild(btn);
     }
-
-
-    for(
-        let minute=0;
-        minute<60;
-        minute+=5
-    ){
-
-        const button =
-            document.createElement(
-                "button"
-            );
-
-        button.type = "button";
-
-        button.className =
-            "time-option";
-
-        button.textContent =
-            String(minute).padStart(
-                2,
-                "0"
-            );
-
-
-        button.onclick = ()=>{
-
-            selectedMinute =
-                String(minute).padStart(
-                    2,
-                    "0"
-                );
-
-            document
-                .querySelectorAll(
-                    "#minutes .time-option"
-                )
-                .forEach(item=>{
-                    item.classList.remove(
-                        "selected"
-                    );
-                });
-
-            button.classList.add(
-                "selected"
-            );
-
+    for(let m=0;m<60;m+=5){
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "time-option";
+        btn.textContent = String(m).padStart(2,"0");
+        btn.onclick = ()=>{
+            selectedMinute = String(m).padStart(2,"0");
+            document.querySelectorAll("#minutes .time-option").forEach(i=>i.classList.remove("selected"));
+            btn.classList.add("selected");
             updateTime();
-
         };
-
-
-        minutes.appendChild(
-            button
-        );
-
+        minutes.appendChild(btn);
     }
-
-
-    document
-        .querySelectorAll(
-            ".period-option"
-        )
-        .forEach(button=>{
-
-            button.onclick = ()=>{
-
-                selectedPeriod =
-                    button.dataset.period;
-
-                document
-                    .querySelectorAll(
-                        ".period-option"
-                    )
-                    .forEach(item=>{
-                        item.classList.remove(
-                            "selected"
-                        );
-                    });
-
-                button.classList.add(
-                    "selected"
-                );
-
-                updateTime();
-
-            };
-
-        });
-
+    document.querySelectorAll(".period-option").forEach(btn=>{
+        btn.onclick = ()=>{
+            selectedPeriod = btn.dataset.period;
+            document.querySelectorAll(".period-option").forEach(i=>i.classList.remove("selected"));
+            btn.classList.add("selected");
+            updateTime();
+        };
+    });
 
     function updateTime(){
-
-        if(
-            !selectedHour ||
-            !selectedMinute ||
-            !selectedPeriod
-        ){
-
-            return;
-
-        }
-
-        timeValue.textContent =
-            `${selectedHour}:${selectedMinute} ${selectedPeriod}`;
-
-        trigger.classList.add(
-            "selected"
-        );
-
-        setTimeout(
-            closeMenus,
-            180
-        );
-
+        if(!selectedHour || !selectedMinute || !selectedPeriod) return;
+        timeValue.textContent = `${selectedHour}:${selectedMinute} ${selectedPeriod}`;
+        trigger.classList.add("selected");
+        setTimeout(closeMenus,180);
     }
 
-
-    trigger.onclick = event=>{
-
-        event.stopPropagation();
-
-        const alreadyOpen =
-            menu.classList.contains(
-                "open"
-            );
-
+    trigger.onclick = e=>{
+        e.stopPropagation();
+        const alreadyOpen = menu.classList.contains("open");
         closeMenus();
-
-        if(!alreadyOpen){
-
-            menu.classList.add(
-                "open"
-            );
-
-        }
-
+        if(!alreadyOpen) menu.classList.add("open");
     };
-
-
-    menu.onclick = event=>{
-        event.stopPropagation();
-    };
-
+    menu.onclick = e=>e.stopPropagation();
 }
 
-
-/* =========================================================
-   PLACES
-========================================================= */
-
+/* ================= PLACES ================= */
 function initPlaces(){
-
-    document
-        .querySelectorAll(".place")
-        .forEach(button=>{
-
-            button.onclick = ()=>{
-
-                document
-                    .querySelectorAll(".place")
-                    .forEach(item=>{
-                        item.classList.remove(
-                            "selected"
-                        );
-                    });
-
-                button.classList.add(
-                    "selected"
-                );
-
-                selectedPlace =
-                    button.dataset.place;
-
-            };
-
-        });
-
+    document.querySelectorAll(".place").forEach(btn=>{
+        btn.onclick = ()=>{
+            document.querySelectorAll(".place").forEach(i=>i.classList.remove("selected"));
+            btn.classList.add("selected");
+            selectedPlace = btn.dataset.place;
+        };
+    });
 }
 
+/* ================= OUTSIDE CLICK ================= */
+document.addEventListener("click", closeMenus);
 
-/* =========================================================
-   OUTSIDE CLICK
-========================================================= */
-
-document.addEventListener(
-    "click",
-    closeMenus
-);
-
-
-/* =========================================================
-   CONTINUE
-========================================================= */
-
-document.getElementById(
-    "continueBtn"
-).onclick = ()=>{
-
-    if(
-        !selectedDate ||
-        !selectedHour ||
-        !selectedMinute ||
-        !selectedPeriod ||
-        !selectedPlace
-    ){
-
-        alert(
-            "Just one more thing — choose your date, time and plan. ❤️"
-        );
-
+/* ================= CONTINUE ================= */
+document.getElementById("continueBtn").onclick = ()=>{
+    if(!selectedDate || !selectedHour || !selectedMinute || !selectedPeriod || !selectedPlace){
+        alert("Just one more thing — choose your date, time and plan. ❤️");
         return;
-
     }
-
-
-    document.getElementById(
-        "finalDate"
-    ).textContent =
-        selectedDate.toLocaleDateString(
-            "en-IN",
-            {
-                weekday:"long",
-                day:"numeric",
-                month:"long"
-            }
-        );
-
-
-    document.getElementById(
-        "finalTime"
-    ).textContent =
-        `${selectedHour}:${selectedMinute} ${selectedPeriod}`;
-
-
-    document.getElementById(
-        "finalPlace"
-    ).textContent =
-        selectedPlace;
-
-
+    document.getElementById("finalDate").textContent = selectedDate.toLocaleDateString("en-IN",{weekday:"long",day:"numeric",month:"long"});
+    document.getElementById("finalTime").textContent = `${selectedHour}:${selectedMinute} ${selectedPeriod}`;
+    document.getElementById("finalPlace").textContent = selectedPlace;
     celebrate();
-
-
-    setTimeout(()=>{
-
-        showScene("final");
-
-    },500);
-
+    setTimeout(()=>showScene("final"),500);
 };
 
+/* ================= CANVAS HELPERS ================= */
+function roundRect(ctx,x,y,width,height,radius){
+    const r = Math.min(radius, width/2, height/2);
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.lineTo(x+width-r,y);
+    ctx.quadraticCurveTo(x+width,y,x+width,y+r);
+    ctx.lineTo(x+width,y+height-r);
+    ctx.quadraticCurveTo(x+width,y+height,x+width-r,y+height);
+    ctx.lineTo(x+r,y+height);
+    ctx.quadraticCurveTo(x,y+height,x,y+height-r);
+    ctx.lineTo(x,y+r);
+    ctx.quadraticCurveTo(x,y,x+r,y);
+    ctx.closePath();
+}
 
-/* =========================================================
-   PREMIUM CANVA-STYLE CARD
-========================================================= */
+function drawSpacedText(ctx,text,x,y,spacing){
+    const chars = [...text];
+    let totalWidth = 0;
+    chars.forEach(ch=>{
+        totalWidth += ctx.measureText(ch).width + spacing;
+    });
+    totalWidth -= spacing;
+    let current = x - totalWidth/2;
+    chars.forEach(ch=>{
+        const w = ctx.measureText(ch).width;
+        ctx.fillText(ch, current + w/2, y);
+        current += w + spacing;
+    });
+}
 
-/*
-    IMPORTANT FIX:
+function drawDivider(ctx,x,y){
+    ctx.strokeStyle = "rgba(231,195,139,.4)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x-115,y);
+    ctx.lineTo(x-30,y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x+30,y);
+    ctx.lineTo(x+115,y);
+    ctx.stroke();
+    ctx.fillStyle = "#d9b777";
+    ctx.font = "20px serif";
+    ctx.fillText("✦", x, y+7);
+}
 
-    We create a normal HTMLCanvasElement with
-    explicit dimensions BEFORE doing any drawing.
+function drawOrnament(ctx,x,y,direction){
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.scale(1,direction);
+    ctx.strokeStyle = "rgba(211,174,111,.58)";
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(-110,0);
+    ctx.bezierCurveTo(-75,-35,-42,-35,0,0);
+    ctx.bezierCurveTo(42,-35,75,-35,110,0);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(-80,-8);
+    ctx.bezierCurveTo(-55,18,-25,18,0,0);
+    ctx.bezierCurveTo(25,18,55,18,80,-8);
+    ctx.stroke();
+    ctx.fillStyle = "#d8b679";
+    ctx.font = "24px serif";
+    ctx.fillText("✦", 0, 8);
+    ctx.restore();
+}
 
-    No createPattern() is used.
+function formatCardDate(date){
+    if(!date) return "";
+    return date.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"});
+}
 
-    This completely avoids:
-
-    InvalidStateError:
-    Failed to execute 'createPattern'...
-*/
-
-function createInvitationCanvas() {
-
+/* ================= CREATE INVITATION CANVAS ================= */
+function createInvitationCanvas(){
     const width = 1080;
     const height = 1350;
-
     const canvas = document.createElement("canvas");
     canvas.width = width;
     canvas.height = height;
-
     const ctx = canvas.getContext("2d");
-
-    if (!ctx) {
-        throw new Error("Canvas not supported");
-    }
-
-    /* =====================================================
-       PALETTE — BRIGHT CREAM / BURGUNDY / GOLD
-    ===================================================== */
+    if(!ctx) throw new Error("Canvas not supported");
 
     const CREAM       = "#F1E1CC";
     const CREAM_LIGHT = "#FBF3E6";
     const CREAM_DEEP  = "#E7D1B3";
-
     const BURGUNDY    = "#671E2B";
-    const BURGUNDY_D  = "#4A101C";
-
     const GOLD        = "#A87932";
     const GOLD_LIGHT  = "#C9A65F";
-
     const INK         = "#34272A";
     const MUTED       = "#705D5D";
 
-
-    /* =====================================================
-       HELPERS
-    ===================================================== */
-
-    function line(x1, y1, x2, y2, color, width = 1) {
-
+    function line(x1,y1,x2,y2,color,width=1){
         ctx.beginPath();
-
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-
+        ctx.moveTo(x1,y1);
+        ctx.lineTo(x2,y2);
         ctx.strokeStyle = color;
         ctx.lineWidth = width;
-
         ctx.stroke();
     }
 
-
-    function spacedText(text, x, y, spacing) {
-
+    function spacedText(text,x,y,spacing){
         const chars = [...text];
-
         let total = 0;
-
-        chars.forEach(char => {
-            total += ctx.measureText(char).width;
-        });
-
-        total += spacing * Math.max(0, chars.length - 1);
-
-        let current = x - total / 2;
-
-        chars.forEach(char => {
-
-            ctx.fillText(char, current, y);
-
-            current +=
-                ctx.measureText(char).width + spacing;
+        chars.forEach(c=> total += ctx.measureText(c).width );
+        total += spacing * Math.max(0, chars.length-1);
+        let cur = x - total/2;
+        chars.forEach(c=>{
+            ctx.fillText(c, cur, y);
+            cur += ctx.measureText(c).width + spacing;
         });
     }
 
-
-    /* =====================================================
-       DIAMOND
-    ===================================================== */
-
-    function diamond(x, y, size = 1) {
-
+    function diamond(x,y,size=1){
         ctx.save();
-
-        ctx.translate(x, y);
-        ctx.scale(size, size);
-
-        ctx.strokeStyle =
-            "rgba(168,121,50,.9)";
-
+        ctx.translate(x,y);
+        ctx.scale(size,size);
+        ctx.strokeStyle = "rgba(168,121,50,.9)";
         ctx.lineWidth = 1.1;
-
         ctx.beginPath();
-
-        ctx.moveTo(0, -7);
-        ctx.lineTo(7, 0);
-        ctx.lineTo(0, 7);
-        ctx.lineTo(-7, 0);
-
+        ctx.moveTo(0,-7);
+        ctx.lineTo(7,0);
+        ctx.lineTo(0,7);
+        ctx.lineTo(-7,0);
         ctx.closePath();
-
         ctx.stroke();
-
         ctx.restore();
     }
 
-
-    /* =====================================================
-       LOTUS
-    ===================================================== */
-
-    function lotus(x, y, scale = 1) {
-
+    function lotus(x,y,scale=1){
         ctx.save();
-
-        ctx.translate(x, y);
-        ctx.scale(scale, scale);
-
-        ctx.strokeStyle =
-            "rgba(103,30,43,.82)";
-
+        ctx.translate(x,y);
+        ctx.scale(scale,scale);
+        ctx.strokeStyle = "rgba(103,30,43,.82)";
         ctx.lineWidth = 1.5;
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
 
-
-        // Center petal
-
         ctx.beginPath();
-
-        ctx.moveTo(0, 12);
-
-        ctx.bezierCurveTo(
-            -15, 2,
-            -15, -13,
-            0, -28
-        );
-
-        ctx.bezierCurveTo(
-            15, -13,
-            15, 2,
-            0, 12
-        );
-
+        ctx.moveTo(0,12);
+        ctx.bezierCurveTo(-15,2,-15,-13,0,-28);
+        ctx.bezierCurveTo(15,-13,15,2,0,12);
         ctx.stroke();
 
-
-        // Left inner petal
-
         ctx.beginPath();
-
-        ctx.moveTo(-3, 12);
-
-        ctx.bezierCurveTo(
-            -25, 9,
-            -34, -3,
-            -31, -19
-        );
-
-        ctx.bezierCurveTo(
-            -17, -16,
-            -7, -3,
-            -3, 12
-        );
-
+        ctx.moveTo(-3,12);
+        ctx.bezierCurveTo(-25,9,-34,-3,-31,-19);
+        ctx.bezierCurveTo(-17,-16,-7,-3,-3,12);
         ctx.stroke();
 
-
-        // Right inner petal
-
         ctx.beginPath();
-
-        ctx.moveTo(3, 12);
-
-        ctx.bezierCurveTo(
-            25, 9,
-            34, -3,
-            31, -19
-        );
-
-        ctx.bezierCurveTo(
-            17, -16,
-            7, -3,
-            3, 12
-        );
-
+        ctx.moveTo(3,12);
+        ctx.bezierCurveTo(25,9,34,-3,31,-19);
+        ctx.bezierCurveTo(17,-16,7,-3,3,12);
         ctx.stroke();
 
-
-        // Outer left petal
-
         ctx.beginPath();
-
-        ctx.moveTo(-9, 10);
-
-        ctx.bezierCurveTo(
-            -36, 8,
-            -46, -3,
-            -48, -15
-        );
-
-        ctx.bezierCurveTo(
-            -32, -15,
-            -18, -7,
-            -9, 10
-        );
-
+        ctx.moveTo(-9,10);
+        ctx.bezierCurveTo(-36,8,-46,-3,-48,-15);
+        ctx.bezierCurveTo(-32,-15,-18,-7,-9,10);
         ctx.stroke();
 
-
-        // Outer right petal
-
         ctx.beginPath();
-
-        ctx.moveTo(9, 10);
-
-        ctx.bezierCurveTo(
-            36, 8,
-            46, -3,
-            48, -15
-        );
-
-        ctx.bezierCurveTo(
-            32, -15,
-            18, -7,
-            9, 10
-        );
-
+        ctx.moveTo(9,10);
+        ctx.bezierCurveTo(36,8,46,-3,48,-15);
+        ctx.bezierCurveTo(32,-15,18,-7,9,10);
         ctx.stroke();
 
-
-        // Lotus base
-
         ctx.beginPath();
-
-        ctx.moveTo(-32, 16);
-
-        ctx.quadraticCurveTo(
-            0,
-            27,
-            32,
-            16
-        );
-
+        ctx.moveTo(-32,16);
+        ctx.quadraticCurveTo(0,27,32,16);
         ctx.stroke();
-
 
         ctx.restore();
     }
 
-
-    /* =====================================================
-       SMALL LOTUS MOTIF FOR BORDER
-    ===================================================== */
-
-    function miniLotus(x, y, scale = 1, rotation = 0) {
-
+    function miniLotus(x,y,scale=1,rotation=0){
         ctx.save();
-
-        ctx.translate(x, y);
+        ctx.translate(x,y);
         ctx.rotate(rotation);
-        ctx.scale(scale, scale);
-
-        ctx.strokeStyle =
-            "rgba(103,30,43,.72)";
-
+        ctx.scale(scale,scale);
+        ctx.strokeStyle = "rgba(103,30,43,.72)";
         ctx.lineWidth = 1;
 
-        // center
-
         ctx.beginPath();
-
-        ctx.moveTo(0, 6);
-
-        ctx.bezierCurveTo(
-            -6, 1,
-            -6, -5,
-            0, -10
-        );
-
-        ctx.bezierCurveTo(
-            6, -5,
-            6, 1,
-            0, 6
-        );
-
+        ctx.moveTo(0,6);
+        ctx.bezierCurveTo(-6,1,-6,-5,0,-10);
+        ctx.bezierCurveTo(6,-5,6,1,0,6);
         ctx.stroke();
 
-
-        // left
-
         ctx.beginPath();
-
-        ctx.moveTo(-2, 6);
-
-        ctx.bezierCurveTo(
-            -12, 4,
-            -17, -2,
-            -16, -9
-        );
-
-        ctx.bezierCurveTo(
-            -9, -8,
-            -4, -2,
-            -2, 6
-        );
-
+        ctx.moveTo(-2,6);
+        ctx.bezierCurveTo(-12,4,-17,-2,-16,-9);
+        ctx.bezierCurveTo(-9,-8,-4,-2,-2,6);
         ctx.stroke();
 
-
-        // right
-
         ctx.beginPath();
-
-        ctx.moveTo(2, 6);
-
-        ctx.bezierCurveTo(
-            12, 4,
-            17, -2,
-            16, -9
-        );
-
-        ctx.bezierCurveTo(
-            9, -8,
-            4, -2,
-            2, 6
-        );
-
+        ctx.moveTo(2,6);
+        ctx.bezierCurveTo(12,4,17,-2,16,-9);
+        ctx.bezierCurveTo(9,-8,4,-2,2,6);
         ctx.stroke();
 
         ctx.restore();
     }
 
-
-    /* =====================================================
-       INDIAN FLORAL CORNER
-    ===================================================== */
-
-    function floralCorner(x, y, flipX, flipY) {
-
+    function floralCorner(x,y,flipX,flipY){
         ctx.save();
-
-        ctx.translate(x, y);
-
-        ctx.scale(
-            flipX ? -1 : 1,
-            flipY ? -1 : 1
-        );
-
-        ctx.strokeStyle =
-            "rgba(103,30,43,.48)";
-
+        ctx.translate(x,y);
+        ctx.scale(flipX?-1:1, flipY?-1:1);
+        ctx.strokeStyle = "rgba(103,30,43,.48)";
         ctx.lineWidth = 1.35;
         ctx.lineCap = "round";
 
-
-        // Main vine
-
         ctx.beginPath();
-
-        ctx.moveTo(0, 0);
-
-        ctx.bezierCurveTo(
-            22, 12,
-            45, 44,
-            94, 88
-        );
-
+        ctx.moveTo(0,0);
+        ctx.bezierCurveTo(22,12,45,44,94,88);
         ctx.stroke();
 
-
-        // Second curve
-
         ctx.beginPath();
-
-        ctx.moveTo(8, 2);
-
-        ctx.bezierCurveTo(
-            34, 20,
-            54, 56,
-            66, 98
-        );
-
+        ctx.moveTo(8,2);
+        ctx.bezierCurveTo(34,20,54,56,66,98);
         ctx.stroke();
 
-
-        function leaf(px, py, angle, size) {
-
+        function leaf(px,py,angle,size){
             ctx.save();
-
-            ctx.translate(px, py);
+            ctx.translate(px,py);
             ctx.rotate(angle);
-
             ctx.beginPath();
-
-            ctx.moveTo(0, 0);
-
-            ctx.bezierCurveTo(
-                size * .25,
-                -size * .65,
-                size,
-                -size * .48,
-                size,
-                0
-            );
-
-            ctx.bezierCurveTo(
-                size * .55,
-                size * .35,
-                size * .18,
-                size * .25,
-                0,
-                0
-            );
-
+            ctx.moveTo(0,0);
+            ctx.bezierCurveTo(size*.25,-size*.65,size,-size*.48,size,0);
+            ctx.bezierCurveTo(size*.55,size*.35,size*.18,size*.25,0,0);
             ctx.stroke();
-
             ctx.restore();
         }
 
+        leaf(23,20,-.7,22);
+        leaf(39,37,.45,24);
+        leaf(54,53,-.7,24);
+        leaf(70,69,.45,22);
 
-        leaf(23, 20, -.7, 22);
-        leaf(39, 37, .45, 24);
-        leaf(54, 53, -.7, 24);
-        leaf(70, 69, .45, 22);
-
-
-        // Small gold dots
-
-        ctx.fillStyle =
-            "rgba(168,121,50,.75)";
-
-        [
-            [17, 12],
-            [34, 29],
-            [49, 45],
-            [65, 62]
-        ].forEach(([px, py]) => {
-
+        ctx.fillStyle = "rgba(168,121,50,.75)";
+        [[17,12],[34,29],[49,45],[65,62]].forEach(([px,py])=>{
             ctx.beginPath();
-
-            ctx.arc(
-                px,
-                py,
-                1.8,
-                0,
-                Math.PI * 2
-            );
-
+            ctx.arc(px,py,1.8,0,Math.PI*2);
             ctx.fill();
         });
 
         ctx.restore();
     }
 
-
-    /* =====================================================
-       INDIAN BORDER MOTIF
-       Inspired by traditional floral / jaali ornament
-    ===================================================== */
-
-    function borderMotif(x, y, rotation = 0, scale = 1) {
-
+    function borderMotif(x,y,rotation=0,scale=1){
         ctx.save();
-
-        ctx.translate(x, y);
+        ctx.translate(x,y);
         ctx.rotate(rotation);
-        ctx.scale(scale, scale);
-
-        ctx.strokeStyle =
-            "rgba(103,30,43,.65)";
-
+        ctx.scale(scale,scale);
+        ctx.strokeStyle = "rgba(103,30,43,.65)";
         ctx.lineWidth = 1;
 
-
-        // Central leaf
-
         ctx.beginPath();
-
-        ctx.moveTo(0, 7);
-
-        ctx.bezierCurveTo(
-            -7, 2,
-            -7, -5,
-            0, -10
-        );
-
-        ctx.bezierCurveTo(
-            7, -5,
-            7, 2,
-            0, 7
-        );
-
+        ctx.moveTo(0,7);
+        ctx.bezierCurveTo(-7,2,-7,-5,0,-10);
+        ctx.bezierCurveTo(7,-5,7,2,0,7);
         ctx.stroke();
 
-
-        // Left leaf
-
         ctx.beginPath();
-
-        ctx.moveTo(-5, 7);
-
-        ctx.bezierCurveTo(
-            -15, 4,
-            -19, -2,
-            -18, -9
-        );
-
-        ctx.bezierCurveTo(
-            -10, -8,
-            -6, -1,
-            -5, 7
-        );
-
+        ctx.moveTo(-5,7);
+        ctx.bezierCurveTo(-15,4,-19,-2,-18,-9);
+        ctx.bezierCurveTo(-10,-8,-6,-1,-5,7);
         ctx.stroke();
 
-
-        // Right leaf
-
         ctx.beginPath();
-
-        ctx.moveTo(5, 7);
-
-        ctx.bezierCurveTo(
-            15, 4,
-            19, -2,
-            18, -9
-        );
-
-        ctx.bezierCurveTo(
-            10, -8,
-            6, -1,
-            5, 7
-        );
-
+        ctx.moveTo(5,7);
+        ctx.bezierCurveTo(15,4,19,-2,18,-9);
+        ctx.bezierCurveTo(10,-8,6,-1,5,7);
         ctx.stroke();
-
 
         ctx.restore();
     }
 
+    // Background
+    const bg = ctx.createLinearGradient(0,0,width,height);
+    bg.addColorStop(0, CREAM_LIGHT);
+    bg.addColorStop(.5, CREAM);
+    bg.addColorStop(1, CREAM_DEEP);
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,width,height);
 
-    /* =====================================================
-       PAPER
-    ===================================================== */
-
-    const background =
-        ctx.createLinearGradient(
-            0,
-            0,
-            width,
-            height
-        );
-
-    background.addColorStop(
-        0,
-        CREAM_LIGHT
-    );
-
-    background.addColorStop(
-        .5,
-        CREAM
-    );
-
-    background.addColorStop(
-        1,
-        CREAM_DEEP
-    );
-
-    ctx.fillStyle = background;
-
-    ctx.fillRect(
-        0,
-        0,
-        width,
-        height
-    );
-
-
-    /* =====================================================
-       BRIGHT CENTER LIGHT
-    ===================================================== */
-
-    const glow =
-        ctx.createRadialGradient(
-            width / 2,
-            height * .42,
-            30,
-            width / 2,
-            height * .42,
-            720
-        );
-
-    glow.addColorStop(
-        0,
-        "rgba(255,255,255,.62)"
-    );
-
-    glow.addColorStop(
-        .55,
-        "rgba(255,255,255,.20)"
-    );
-
-    glow.addColorStop(
-        1,
-        "rgba(255,255,255,0)"
-    );
-
+    // Center glow
+    const glow = ctx.createRadialGradient(width/2, height*.42, 30, width/2, height*.42, 720);
+    glow.addColorStop(0, "rgba(255,255,255,.62)");
+    glow.addColorStop(.55, "rgba(255,255,255,.20)");
+    glow.addColorStop(1, "rgba(255,255,255,0)");
     ctx.fillStyle = glow;
+    ctx.fillRect(0,0,width,height);
 
-    ctx.fillRect(
-        0,
-        0,
-        width,
-        height
-    );
-
-
-    /* =====================================================
-       VERY SUBTLE PAPER TEXTURE
-    ===================================================== */
-
-    ctx.fillStyle =
-        "rgba(80,45,30,.014)";
-
-    for (let i = 0; i < 2200; i++) {
-
-        const px =
-            Math.random() * width;
-
-        const py =
-            Math.random() * height;
-
-        const size =
-            Math.random() * 1.1;
-
-        ctx.fillRect(
-            px,
-            py,
-            size,
-            size
-        );
+    // Paper texture
+    ctx.fillStyle = "rgba(80,45,30,.014)";
+    for(let i=0;i<2200;i++){
+        const px = Math.random()*width;
+        const py = Math.random()*height;
+        const sz = Math.random()*1.1;
+        ctx.fillRect(px,py,sz,sz);
     }
 
-
-    /* =====================================================
-       PREMIUM FRAME
-    ===================================================== */
-
-    ctx.strokeStyle =
-        "rgba(168,121,50,.92)";
-
+    // Frame
+    ctx.strokeStyle = "rgba(168,121,50,.92)";
     ctx.lineWidth = 2;
-
-    ctx.strokeRect(
-        40,
-        40,
-        width - 80,
-        height - 80
-    );
-
-
-    ctx.strokeStyle =
-        "rgba(103,30,43,.72)";
-
+    ctx.strokeRect(40,40,width-80,height-80);
+    ctx.strokeStyle = "rgba(103,30,43,.72)";
     ctx.lineWidth = 1;
-
-    ctx.strokeRect(
-        54,
-        54,
-        width - 108,
-        height - 108
-    );
-
-
-    ctx.strokeStyle =
-        "rgba(168,121,50,.38)";
-
+    ctx.strokeRect(54,54,width-108,height-108);
+    ctx.strokeStyle = "rgba(168,121,50,.38)";
     ctx.lineWidth = 1;
+    ctx.strokeRect(69,69,width-138,height-138);
 
-    ctx.strokeRect(
-        69,
-        69,
-        width - 138,
-        height - 138
-    );
+    // Border motifs
+    const borderTop = 92, borderBottom = height-92, borderLeft = 92, borderRight = width-92;
 
+    line(borderLeft+16, borderTop, borderRight-16, borderTop, "rgba(103,30,43,.38)", 1);
+    line(borderLeft+16, borderBottom, borderRight-16, borderBottom, "rgba(103,30,43,.38)", 1);
 
-    /* =====================================================
-       STRONGER INDIAN ORNAMENTAL BORDER
-    ===================================================== */
+    for(let x=borderLeft+45; x<=borderRight-45; x+=70) borderMotif(x, borderTop, 0, .82);
+    for(let x=borderLeft+45; x<=borderRight-45; x+=70) borderMotif(x, borderBottom, Math.PI, .82);
 
-    const borderTop = 92;
-    const borderBottom = height - 92;
-    const borderLeft = 92;
-    const borderRight = width - 92;
+    line(borderLeft, borderTop+16, borderLeft, borderBottom-16, "rgba(103,30,43,.38)", 1);
+    line(borderRight, borderTop+16, borderRight, borderBottom-16, "rgba(103,30,43,.38)", 1);
 
-
-    // horizontal lines
-
-    line(
-        borderLeft + 16,
-        borderTop,
-        borderRight - 16,
-        borderTop,
-        "rgba(103,30,43,.38)",
-        1
-    );
-
-    line(
-        borderLeft + 16,
-        borderBottom,
-        borderRight - 16,
-        borderBottom,
-        "rgba(103,30,43,.38)",
-        1
-    );
-
-
-    // repeating upper motifs
-
-    for (
-        let x = borderLeft + 45;
-        x <= borderRight - 45;
-        x += 70
-    ) {
-
-        borderMotif(
-            x,
-            borderTop,
-            0,
-            .82
-        );
+    for(let y=borderTop+48; y<=borderBottom-48; y+=74){
+        borderMotif(borderLeft, y, -Math.PI/2, .82);
+        borderMotif(borderRight, y, Math.PI/2, .82);
     }
 
+    // Corners
+    floralCorner(82,82,false,false);
+    floralCorner(width-82,82,true,false);
+    floralCorner(82,height-82,false,true);
+    floralCorner(width-82,height-82,true,true);
 
-    // repeating lower motifs
+    miniLotus(112,112,.82);
+    miniLotus(width-112,112,.82,0);
+    miniLotus(112,height-112,.82,Math.PI);
+    miniLotus(width-112,height-112,.82,Math.PI);
 
-    for (
-        let x = borderLeft + 45;
-        x <= borderRight - 45;
-        x += 70
-    ) {
-
-        borderMotif(
-            x,
-            borderBottom,
-            Math.PI,
-            .82
-        );
-    }
-
-
-    // vertical lines
-
-    line(
-        borderLeft,
-        borderTop + 16,
-        borderLeft,
-        borderBottom - 16,
-        "rgba(103,30,43,.38)",
-        1
-    );
-
-    line(
-        borderRight,
-        borderTop + 16,
-        borderRight,
-        borderBottom - 16,
-        "rgba(103,30,43,.38)",
-        1
-    );
-
-
-    // vertical motifs
-
-    for (
-        let y = borderTop + 48;
-        y <= borderBottom - 48;
-        y += 74
-    ) {
-
-        borderMotif(
-            borderLeft,
-            y,
-            -Math.PI / 2,
-            .82
-        );
-
-        borderMotif(
-            borderRight,
-            y,
-            Math.PI / 2,
-            .82
-        );
-    }
-
-
-    /* =====================================================
-       CORNER FLORAL DETAILS
-    ===================================================== */
-
-    floralCorner(
-        82,
-        82,
-        false,
-        false
-    );
-
-    floralCorner(
-        width - 82,
-        82,
-        true,
-        false
-    );
-
-    floralCorner(
-        82,
-        height - 82,
-        false,
-        true
-    );
-
-    floralCorner(
-        width - 82,
-        height - 82,
-        true,
-        true
-    );
-
-
-    /* =====================================================
-       CORNER MINI LOTUS
-    ===================================================== */
-
-    miniLotus(
-        112,
-        112,
-        .82
-    );
-
-    miniLotus(
-        width - 112,
-        112,
-        .82,
-        0
-    );
-
-    miniLotus(
-        112,
-        height - 112,
-        .82,
-        Math.PI
-    );
-
-    miniLotus(
-        width - 112,
-        height - 112,
-        .82,
-        Math.PI
-    );
-
-
-    /* =====================================================
-       TOP LOTUS — HERO ORNAMENT
-    ===================================================== */
-
-    lotus(
-        width / 2,
-        148,
-        .78
-    );
-
-
-    /* =====================================================
-       EYEBROW
-    ===================================================== */
+    lotus(width/2, 148, .78);
 
     ctx.textAlign = "center";
+    ctx.fillStyle = BURGUNDY;
+    ctx.font = "600 17px Inter, Arial, sans-serif";
+    spacedText("A LITTLE INVITATION", width/2, 245, 6);
 
-    ctx.fillStyle =
-        BURGUNDY;
+    ctx.fillStyle = INK;
+    ctx.font = "500 114px 'Cormorant Garamond', Georgia, serif";
+    ctx.fillText("Just Us.", width/2, 370);
 
-    ctx.font =
-        "600 17px Inter, Arial, sans-serif";
+    ctx.fillStyle = MUTED;
+    ctx.font = "italic 27px 'Cormorant Garamond', Georgia, serif";
+    ctx.fillText("an invitation to make a little time for us", width/2, 420);
 
-    spacedText(
-        "A LITTLE INVITATION",
-        width / 2,
-        245,
-        6
-    );
+    line(405,470,475,470,"rgba(168,121,50,.55)",1);
+    diamond(width/2,470,.78);
+    line(605,470,675,470,"rgba(168,121,50,.55)",1);
 
+    ctx.fillStyle = BURGUNDY;
+    ctx.font = "600 14px Inter, Arial, sans-serif";
+    spacedText("THE DATE", width/2, 540, 5);
 
-    /* =====================================================
-       MAIN TITLE
-    ===================================================== */
+    ctx.fillStyle = INK;
+    ctx.font = "500 50px 'Cormorant Garamond', Georgia, serif";
+    ctx.fillText(formatCardDate(selectedDate), width/2, 607);
 
-    ctx.fillStyle =
-        INK;
+    ctx.fillStyle = BURGUNDY;
+    ctx.font = "500 24px Inter, Arial, sans-serif";
+    ctx.fillText(`${selectedHour}:${selectedMinute} ${selectedPeriod}`, width/2, 650);
 
-    ctx.font =
-        "500 114px 'Cormorant Garamond', Georgia, serif";
+    line(350,700,730,700,"rgba(168,121,50,.42)",1);
+    diamond(width/2,700,.65);
 
-    ctx.fillText(
-        "Just Us.",
-        width / 2,
-        370
-    );
+    const placeText = selectedPlace.replace(/^./u,"").trim();
 
+    ctx.fillStyle = BURGUNDY;
+    ctx.font = "600 14px Inter, Arial, sans-serif";
+    spacedText("THE PLAN", width/2, 760, 5);
 
-    /* =====================================================
-       SUBTITLE
-    ===================================================== */
+    ctx.fillStyle = INK;
+    ctx.font = "500 60px 'Cormorant Garamond', Georgia, serif";
+    ctx.fillText(placeText, width/2, 830);
 
-    ctx.fillStyle =
-        MUTED;
+    line(420,868,660,868,"rgba(168,121,50,.42)",1);
 
-    ctx.font =
-        "italic 27px 'Cormorant Garamond', Georgia, serif";
+    ctx.fillStyle = MUTED;
+    ctx.font = "italic 31px 'Cormorant Garamond', Georgia, serif";
+    ctx.fillText("Good food. Good conversation.", width/2, 940);
+    ctx.fillText("And a little time together.", width/2, 982);
 
-    ctx.fillText(
-        "an invitation to make a little time for us",
-        width / 2,
-        420
-    );
+    lotus(width/2, 1060, .60);
 
+    ctx.fillStyle = BURGUNDY;
+    ctx.font = "600 13px Inter, Arial, sans-serif";
+    spacedText("SEE YOU THERE", width/2, 1135, 5);
 
-    /* =====================================================
-       GOLD DIVIDER
-    ===================================================== */
-
-    line(
-        405,
-        470,
-        475,
-        470,
-        "rgba(168,121,50,.55)",
-        1
-    );
-
-    diamond(
-        width / 2,
-        470,
-        .78
-    );
-
-    line(
-        605,
-        470,
-        675,
-        470,
-        "rgba(168,121,50,.55)",
-        1
-    );
-
-
-    /* =====================================================
-       DATE / TIME
-    ===================================================== */
-
-    ctx.fillStyle =
-        BURGUNDY;
-
-    ctx.font =
-        "600 14px Inter, Arial, sans-serif";
-
-    spacedText(
-        "THE DATE",
-        width / 2,
-        540,
-        5
-    );
-
-
-    ctx.fillStyle =
-        INK;
-
-    ctx.font =
-        "500 50px 'Cormorant Garamond', Georgia, serif";
-
-    ctx.fillText(
-        formatCardDate(selectedDate),
-        width / 2,
-        607
-    );
-
-
-    ctx.fillStyle =
-        BURGUNDY;
-
-    ctx.font =
-        "500 24px Inter, Arial, sans-serif";
-
-    ctx.fillText(
-        `${selectedHour}:${selectedMinute} ${selectedPeriod}`,
-        width / 2,
-        650
-    );
-
-
-    /* =====================================================
-       CENTER DIVIDER
-    ===================================================== */
-
-    line(
-        350,
-        700,
-        730,
-        700,
-        "rgba(168,121,50,.42)",
-        1
-    );
-
-    diamond(
-        width / 2,
-        700,
-        .65
-    );
-
-
-    /* =====================================================
-       PLACE / PLAN
-    ===================================================== */
-
-    const placeText =
-        selectedPlace
-            .replace(/^./u, "")
-            .trim();
-
-
-    ctx.fillStyle =
-        BURGUNDY;
-
-    ctx.font =
-        "600 14px Inter, Arial, sans-serif";
-
-    spacedText(
-        "THE PLAN",
-        width / 2,
-        760,
-        5
-    );
-
-
-    ctx.fillStyle =
-        INK;
-
-    ctx.font =
-        "500 60px 'Cormorant Garamond', Georgia, serif";
-
-    ctx.fillText(
-        placeText,
-        width / 2,
-        830
-    );
-
-
-    /* =====================================================
-       GOLD ACCENT
-    ===================================================== */
-
-    line(
-        420,
-        868,
-        660,
-        868,
-        "rgba(168,121,50,.42)",
-        1
-    );
-
-
-    /* =====================================================
-       SHORT PERSONAL MESSAGE
-    ===================================================== */
-
-    ctx.fillStyle =
-        MUTED;
-
-    ctx.font =
-        "italic 31px 'Cormorant Garamond', Georgia, serif";
-
-    ctx.fillText(
-        "Good food. Good conversation.",
-        width / 2,
-        940
-    );
-
-    ctx.fillText(
-        "And a little time together.",
-        width / 2,
-        982
-    );
-
-
-    /* =====================================================
-       LOWER LOTUS
-    ===================================================== */
-
-    lotus(
-        width / 2,
-        1060,
-        .60
-    );
-
-
-    /* =====================================================
-       SMALL CLOSING
-    ===================================================== */
-
-    ctx.fillStyle =
-        BURGUNDY;
-
-    ctx.font =
-        "600 13px Inter, Arial, sans-serif";
-
-    spacedText(
-        "SEE YOU THERE",
-        width / 2,
-        1135,
-        5
-    );
-
-
-    /* =====================================================
-       GOLD DOT ACCENTS
-    ===================================================== */
-
-    ctx.fillStyle =
-        GOLD_LIGHT;
-
-    [-22, 22].forEach(offset => {
-
+    ctx.fillStyle = GOLD_LIGHT;
+    [-22,22].forEach(off=>{
         ctx.beginPath();
-
-        ctx.arc(
-            width / 2 + offset,
-            1170,
-            2.2,
-            0,
-            Math.PI * 2
-        );
-
+        ctx.arc(width/2+off, 1170, 2.2, 0, Math.PI*2);
         ctx.fill();
     });
 
-
-    /* =====================================================
-       MICRO FOOTER
-    ===================================================== */
-
-    ctx.fillStyle =
-        "rgba(103,30,43,.55)";
-
-    ctx.font =
-        "500 11px Inter, Arial, sans-serif";
-
-    spacedText(
-        "MADE WITH A LITTLE LOVE",
-        width / 2,
-        1230,
-        4
-    );
-
-
-    /* =====================================================
-       RETURN
-    ===================================================== */
+    ctx.fillStyle = "rgba(103,30,43,.55)";
+    ctx.font = "500 11px Inter, Arial, sans-serif";
+    spacedText("MADE WITH A LITTLE LOVE", width/2, 1230, 4);
 
     return canvas;
 }
 
-
-/* =========================================================
-   CANVAS HELPERS
-========================================================= */
-
-function roundRect(
-    ctx,
-    x,
-    y,
-    width,
-    height,
-    radius
-){
-
-    const r =
-        Math.min(
-            radius,
-            width/2,
-            height/2
-        );
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        x+r,
-        y
-    );
-
-    ctx.lineTo(
-        x+width-r,
-        y
-    );
-
-    ctx.quadraticCurveTo(
-        x+width,
-        y,
-        x+width,
-        y+r
-    );
-
-    ctx.lineTo(
-        x+width,
-        y+height-r
-    );
-
-    ctx.quadraticCurveTo(
-        x+width,
-        y+height,
-        x+width-r,
-        y+height
-    );
-
-    ctx.lineTo(
-        x+r,
-        y+height
-    );
-
-    ctx.quadraticCurveTo(
-        x,
-        y+height,
-        x,
-        y+height-r
-    );
-
-    ctx.lineTo(
-        x,
-        y+r
-    );
-
-    ctx.quadraticCurveTo(
-        x,
-        y,
-        x+r,
-        y
-    );
-
-    ctx.closePath();
-
-}
-
-
-/* =========================================================
-   SPACED TEXT
-========================================================= */
-
-function drawSpacedText(
-    ctx,
-    text,
-    x,
-    y,
-    spacing
-){
-
-    const chars =
-        [...text];
-
-    let totalWidth = 0;
-
-    chars.forEach(char=>{
-
-        totalWidth +=
-            ctx.measureText(
-                char
-            ).width +
-            spacing;
-
-    });
-
-    totalWidth -= spacing;
-
-    let current =
-        x - totalWidth/2;
-
-    chars.forEach(char=>{
-
-        const charWidth =
-            ctx.measureText(
-                char
-            ).width;
-
-        ctx.fillText(
-            char,
-            current + charWidth/2,
-            y
-        );
-
-        current +=
-            charWidth +
-            spacing;
-
-    });
-
-}
-
-
-/* =========================================================
-   DIVIDER
-========================================================= */
-
-function drawDivider(
-    ctx,
-    x,
-    y
-){
-
-    ctx.strokeStyle =
-        "rgba(231,195,139,.4)";
-
-    ctx.lineWidth = 1;
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        x-115,
-        y
-    );
-
-    ctx.lineTo(
-        x-30,
-        y
-    );
-
-    ctx.stroke();
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        x+30,
-        y
-    );
-
-    ctx.lineTo(
-        x+115,
-        y
-    );
-
-    ctx.stroke();
-
-
-    ctx.fillStyle =
-        "#d9b777";
-
-    ctx.font =
-        "20px serif";
-
-    ctx.fillText(
-        "✦",
-        x,
-        y+7
-    );
-
-}
-
-
-/* =========================================================
-   ORNAMENT
-========================================================= */
-
-function drawOrnament(
-    ctx,
-    x,
-    y,
-    direction
-){
-
-    ctx.save();
-
-    ctx.translate(
-        x,
-        y
-    );
-
-    ctx.scale(
-        1,
-        direction
-    );
-
-
-    ctx.strokeStyle =
-        "rgba(211,174,111,.58)";
-
-    ctx.lineWidth = 1.2;
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        -110,
-        0
-    );
-
-    ctx.bezierCurveTo(
-        -75,
-        -35,
-        -42,
-        -35,
-        0,
-        0
-    );
-
-    ctx.bezierCurveTo(
-        42,
-        -35,
-        75,
-        -35,
-        110,
-        0
-    );
-
-    ctx.stroke();
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        -80,
-        -8
-    );
-
-    ctx.bezierCurveTo(
-        -55,
-        18,
-        -25,
-        18,
-        0,
-        0
-    );
-
-    ctx.bezierCurveTo(
-        25,
-        18,
-        55,
-        18,
-        80,
-        -8
-    );
-
-    ctx.stroke();
-
-
-    ctx.fillStyle =
-        "#d8b679";
-
-    ctx.font =
-        "24px serif";
-
-    ctx.fillText(
-        "✦",
-        0,
-        8
-    );
-
-
-    ctx.restore();
-
-}
-
-
-/* =========================================================
-   DATE FORMAT FOR CARD
-========================================================= */
-
-function formatCardDate(date){
-
-    if(!date){
-        return "";
-    }
-
-    return date.toLocaleDateString(
-        "en-US",
-        {
-            weekday:"long",
-            month:"long",
-            day:"numeric"
-        }
-    );
-
-}
-
-
-/* =========================================================
-   CREATE CARD
-========================================================= */
-
+/* ================= GENERATE INVITATION ================= */
 async function generateInvitation(){
-
     try{
-
-        const canvas =
-            createInvitationCanvas();
-
-        /*
-            Convert canvas directly to PNG.
-
-            Because canvas has explicit 1080x1350
-            dimensions, there is no zero-size canvas.
-        */
-
-        const blob =
-            await new Promise(
-                (resolve,reject)=>{
-
-                    canvas.toBlob(
-                        result=>{
-
-                            if(result){
-                                resolve(result);
-                            }else{
-                                reject(
-                                    new Error(
-                                        "Could not create invitation image."
-                                    )
-                                );
-                            }
-
-                        },
-                        "image/png",
-                        1
-                    );
-
-                }
-            );
-
-
-        generatedCardBlob =
-            blob;
-
-
-        if(generatedCardURL){
-
-            URL.revokeObjectURL(
-                generatedCardURL
-            );
-
-        }
-
-
-        generatedCardURL =
-            URL.createObjectURL(
-                blob
-            );
-
-
-        const preview =
-            document.getElementById(
-                "previewImage"
-            );
-
-        preview.src =
-            generatedCardURL;
-
-
-        document.getElementById(
-            "cardModal"
-        ).classList.add(
-            "open"
-        );
-
-
+        const canvas = createInvitationCanvas();
+        const blob = await new Promise((resolve,reject)=>{
+            canvas.toBlob(res=>{
+                if(res) resolve(res);
+                else reject(new Error("Could not create image"));
+            }, "image/png", 1);
+        });
+        generatedCardBlob = blob;
+        if(generatedCardURL) URL.revokeObjectURL(generatedCardURL);
+        generatedCardURL = URL.createObjectURL(blob);
+        document.getElementById("previewImage").src = generatedCardURL;
+        document.getElementById("cardModal").classList.add("open");
         return blob;
-
-    }catch(error){
-
-        console.error(
-            "Invitation generation error:",
-            error
-        );
-
-        alert(
-            "Something went wrong while creating the invitation. Please try again."
-        );
-
+    }catch(e){
+        console.error("Invitation generation error:", e);
+        alert("Something went wrong while creating the invitation. Please try again.");
         return null;
-
     }
-
 }
 
-
-/* =========================================================
-   CREATE CARD BUTTON
-========================================================= */
-
-document.getElementById(
-    "createCardBtn"
-).onclick = async ()=>{
-
+/* ================= CREATE CARD BUTTON ================= */
+document.getElementById("createCardBtn").onclick = async ()=>{
     await generateInvitation();
-
 };
 
-
-/* =========================================================
-   CLOSE PREVIEW
-========================================================= */
-
-document.getElementById(
-    "closePreview"
-).onclick = ()=>{
-
-    document.getElementById(
-        "cardModal"
-    ).classList.remove(
-        "open"
-    );
-
+/* ================= CLOSE PREVIEW ================= */
+document.getElementById("closePreview").onclick = ()=>{
+    document.getElementById("cardModal").classList.remove("open");
 };
-
-
-/* =========================================================
-   CLOSE MODAL BACKDROP
-========================================================= */
-
-document.getElementById(
-    "cardModal"
-).onclick = event=>{
-
-    if(
-        event.target.id ===
-        "cardModal"
-    ){
-
-        document.getElementById(
-            "cardModal"
-        ).classList.remove(
-            "open"
-        );
-
+document.getElementById("cardModal").onclick = e=>{
+    if(e.target.id === "cardModal"){
+        document.getElementById("cardModal").classList.remove("open");
     }
-
 };
 
-
-/* =========================================================
-   SAVE CARD
-========================================================= */
-
-document.getElementById(
-    "saveCardBtn"
-).onclick = async ()=>{
-
+/* ================= SAVE CARD ================= */
+document.getElementById("saveCardBtn").onclick = async ()=>{
     if(!generatedCardBlob){
-
-        const blob =
-            await generateInvitation();
-
-        if(!blob){
-            return;
-        }
-
+        const blob = await generateInvitation();
+        if(!blob) return;
     }
-
-
-    const filename =
-        "just-us-invitation.png";
-
-
-    /*
-       Use download link.
-
-       This is much more reliable than trying to
-       save a canvas directly.
-    */
-
-    const url =
-        URL.createObjectURL(
-            generatedCardBlob
-        );
-
-    const link =
-        document.createElement("a");
-
+    const url = URL.createObjectURL(generatedCardBlob);
+    const link = document.createElement("a");
     link.href = url;
-
-    link.download =
-        filename;
-
-    document.body.appendChild(
-        link
-    );
-
+    link.download = "just-us-invitation.png";
+    document.body.appendChild(link);
     link.click();
-
     link.remove();
-
-
-    setTimeout(()=>{
-
-        URL.revokeObjectURL(
-            url
-        );
-
-    },1000);
-
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
 
-
-/* =========================================================
-   SHARE CARD
-========================================================= */
-
-document.getElementById(
-    "shareCardBtn"
-).onclick = async ()=>{
-
+/* ================= SHARE CARD ================= */
+document.getElementById("shareCardBtn").onclick = async ()=>{
     if(!generatedCardBlob){
-
-        const blob =
-            await generateInvitation();
-
-        if(!blob){
-            return;
-        }
-
+        const blob = await generateInvitation();
+        if(!blob) return;
     }
-
-
-    const file =
-        new File(
-            [
-                generatedCardBlob
-            ],
-            "just-us-invitation.png",
-            {
-                type:"image/png"
-            }
-        );
-
-
-    /*
-       On Android / supported browsers this can open
-       the native share sheet and allow WhatsApp.
-    */
-
-    if(
-        navigator.share &&
-        navigator.canShare &&
-        navigator.canShare({
-            files:[file]
-        })
-    ){
-
+    const file = new File([generatedCardBlob],"just-us-invitation.png",{type:"image/png"});
+    if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
         try{
-
             await navigator.share({
-
-                title:
-                    "A Little Invitation",
-
-                text:
-                    "A little plan for us. 🤎",
-
-                files:[
-                    file
-                ]
-
+                title:"A Little Invitation",
+                text:"A little plan for us. 🤎",
+                files:[file]
             });
-
             return;
-
-        }catch(error){
-
-            /*
-               User may simply have cancelled
-               the native share dialog.
-            */
-
-            if(
-                error.name ===
-                "AbortError"
-            ){
-
-                return;
-
-            }
-
+        }catch(e){
+            if(e.name === "AbortError") return;
         }
-
     }
-
-
-    /*
-       Desktop browsers may not support
-       file sharing.
-
-       In that case, save the image.
-    */
-
-    alert(
-        "Image sharing isn't supported by this browser. The invitation will be saved instead."
-    );
-
-
-    const url =
-        URL.createObjectURL(
-            generatedCardBlob
-        );
-
-    const link =
-        document.createElement("a");
-
+    alert("Image sharing isn't supported by this browser. The invitation will be saved instead.");
+    const url = URL.createObjectURL(generatedCardBlob);
+    const link = document.createElement("a");
     link.href = url;
-
-    link.download =
-        "just-us-invitation.png";
-
-    document.body.appendChild(
-        link
-    );
-
+    link.download = "just-us-invitation.png";
+    document.body.appendChild(link);
     link.click();
-
     link.remove();
-
-    setTimeout(()=>{
-
-        URL.revokeObjectURL(
-            url
-        );
-
-    },1000);
-
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
 
-
-/* =========================================================
-   WHATSAPP TEXT
-========================================================= */
-
-document.getElementById(
-    "whatsappBtn"
-).onclick = ()=>{
-
-    const date =
-        document.getElementById(
-            "finalDate"
-        ).textContent;
-
-    const time =
-        document.getElementById(
-            "finalTime"
-        ).textContent;
-
-    const place =
-        document.getElementById(
-            "finalPlace"
-        ).textContent;
-
-
-    const message =
-`A little plan for us. 🤎
-
-${date}
-${time}
-${place}
-
-Good food. Good conversation.
-And some time together. ✨
-
-I'm looking forward to it. ❤️`;
-
-
-    window.open(
-        "https://wa.me/?text=" +
-        encodeURIComponent(message),
-        "_blank"
-    );
-
-};
-
-
-/* =========================================================
-   THEME
-========================================================= */
-
-const themeBtn =
-    document.getElementById(
-        "themeBtn"
-    );
-
+/* ================= THEME ================= */
+const themeBtn = document.getElementById("themeBtn");
 let lightMode = false;
-
 themeBtn.onclick = ()=>{
-
     lightMode = !lightMode;
-
-    document.body.classList.toggle(
-        "light-mode",
-        lightMode
-    );
-
-    themeBtn.textContent =
-        lightMode
-            ? "☾"
-            : "☼";
-
+    document.body.classList.toggle("light-mode", lightMode);
+    themeBtn.textContent = lightMode ? "☾" : "☼";
 };
 
-
-/* =========================================================
-   AMBIENT MOVEMENT
-========================================================= */
-
-document.addEventListener(
-    "mousemove",
-    event=>{
-
-        const x =
-            event.clientX /
-            window.innerWidth;
-
-        const y =
-            event.clientY /
-            window.innerHeight;
-
-        const one =
-            document.querySelector(
-                ".glow.one"
-            );
-
-        const two =
-            document.querySelector(
-                ".glow.two"
-            );
-
-
-        if(one){
-
-            one.style.transform =
-                `translate(${x*35}px,${y*25}px)`;
-
-        }
-
-
-        if(two){
-
-            two.style.transform =
-                `translate(${-x*30}px,${-y*20}px)`;
-
-        }
-
-    }
-);
-
+/* ================= AMBIENT MOVEMENT ================= */
+document.addEventListener("mousemove",e=>{
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+    const one = document.querySelector(".glow.one");
+    const two = document.querySelector(".glow.two");
+    if(one) one.style.transform = `translate(${x*35}px,${y*25}px)`;
+    if(two) two.style.transform = `translate(${-x*30}px,${-y*20}px)`;
+});
 </script>
 
 </body>
